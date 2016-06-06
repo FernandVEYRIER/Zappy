@@ -73,13 +73,13 @@ public class SocketClient {
 		}
 	}
 
-	public void Connect()
+	public void Connect(int milliseconds = 1000)
 	{
 		try
 		{
 			// Connect to the remote endpoint.
 			client.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), client);
-			connectDone.WaitOne(1000);
+			connectDone.WaitOne(milliseconds);
 			connectDone.Reset();
 		}
 		catch (Exception e)
@@ -89,13 +89,14 @@ public class SocketClient {
 	}
 
 	// Send test data to the remote device.
-	public void Send(string msg)
+	public void Send(string msg, int waitMilliseconds = -1)
 	{
 		Send (client, msg);
-		sendDone.WaitOne ();
+		sendDone.WaitOne (waitMilliseconds);
 		sendDone.Reset ();
 	}
 
+	// Asynchronous sending
 	private void Send(Socket client, String data)
 	{
 		try
@@ -120,7 +121,7 @@ public class SocketClient {
 			Socket client = (Socket) ar.AsyncState;
 
 			// Complete sending the data to the remote device.
-			int bytesSent = client.EndSend(ar);
+			/*int bytesSent = */client.EndSend(ar);
 
 			// Signal that all bytes have been sent.
 			sendDone.Set();

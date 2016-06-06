@@ -1,26 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour {
 
-	private SocketClient sockClient;
+	[Header("UI")]
+	[SerializeField] private GameObject panelConnection;
+	[SerializeField] private GameObject panelGame;
+	[SerializeField] private Text textIp;
+	[SerializeField] private Text textPort;
+	[SerializeField] private Text textConsoleOutput;
 
-	// Use this for initialization
-	void Start ()
+	// Socket client connected to server
+	private SocketClient sockClient = null;
+
+	void Start()
 	{
-		// Starts connection thread
-		sockClient = new SocketClient ("10.10.253.253", 6667);
-		sockClient.Connect ();
-		sockClient.Send ("NICK tamer\nUSER toto toto toto toto\n");
-		//sockClient.Disconnect ();
+		panelGame.SetActive (false);
+		panelConnection.SetActive (true);
 	}
 
 	void Update()
 	{
-		if (sockClient.Select())
+		if (sockClient != null && sockClient.Select())
 		{
-			Debug.Log("Received = " + sockClient.Receive (-1));
-			//sockClient.Send ("JOIN #toto\nPRIVMSG #toto penis\nusers\n");
+			textConsoleOutput.text += sockClient.Receive ();
+		}
+	}
+
+	public void ConnectToServer()
+	{
+		if (textIp.text == "" || textPort.text == "")
+			return;
+
+		sockClient = new SocketClient(textIp.text, Convert.ToInt32(textPort));
+		sockClient.Connect ();
+
+		if (!sockClient.IsConnected())
+		{
+			Debug.LogWarning ("Failed to connect to host");
+		}
+		else
+		{
+			sockClient.Send ("NICK tamer\nUSER toto toto toto toto\n", 500);
+			panelConnection.SetActive (false);
+			panelGame.SetActive (true);
 		}
 	}
 }
