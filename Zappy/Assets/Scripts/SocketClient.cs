@@ -9,15 +9,15 @@ using System.Text;
 public class SocketClient {
 
 	// ManualResetEvent instances signal completion.
-	private static ManualResetEvent connectDone = new ManualResetEvent(false);
-	private static ManualResetEvent sendDone = new ManualResetEvent(false);
-	private static ManualResetEvent receiveDone = new ManualResetEvent(false);
+	private ManualResetEvent connectDone = new ManualResetEvent(false);
+	private ManualResetEvent sendDone = new ManualResetEvent(false);
+	private ManualResetEvent receiveDone = new ManualResetEvent(false);
 
 	// The response from the remote device.
-	private static String response = String.Empty;
+	private String response = String.Empty;
 
 	// Socket attributes
-	private static IPEndPoint remoteEP;
+	private IPEndPoint remoteEP;
 	private Socket client;
 
 	// State object for receiving data from remote device.
@@ -77,22 +77,10 @@ public class SocketClient {
 	{
 		try
 		{
-			// Create a TCP/IP socket.
-			//Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
 			// Connect to the remote endpoint.
 			client.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), client);
 			connectDone.WaitOne(1000);
-
-			//Send(client, "This is a test<EOF>");
-			//sendDone.WaitOne();
-
-			// Receive the response from the remote device.
-			//Receive(client);
-			//receiveDone.WaitOne();
-
-			// Write the response to the console.
-			//Debug.Log("Response received : " + response);
+			connectDone.Reset();
 		}
 		catch (Exception e)
 		{
@@ -105,9 +93,10 @@ public class SocketClient {
 	{
 		Send (client, msg);
 		sendDone.WaitOne ();
+		sendDone.Reset ();
 	}
 
-	private static void Send(Socket client, String data)
+	private void Send(Socket client, String data)
 	{
 		try
 		{
@@ -123,7 +112,7 @@ public class SocketClient {
 		}
 	}
 
-	private static void SendCallback(IAsyncResult ar)
+	private void SendCallback(IAsyncResult ar)
 	{
 		try
 		{
@@ -142,14 +131,26 @@ public class SocketClient {
 		}
 	}
 
+	// If socket is available for reading
+	public bool Select()
+	{
+		if (client.Connected && client.Poll (0, SelectMode.SelectRead))
+		{
+			return true;
+		}
+		return false;
+	}
+
 	public string Receive(int milliseconds = -1)
 	{
+		response = "";
 		Receive(client);
 		receiveDone.WaitOne (milliseconds);
+		receiveDone.Reset ();
 		return response;
 	}
 
-	private static void Receive(Socket client)
+	private void Receive(Socket client)
 	{
 		try
 		{
@@ -166,7 +167,7 @@ public class SocketClient {
 		}
 	}
 
-	private static void ReceiveCallback(IAsyncResult ar)
+	private void ReceiveCallback(IAsyncResult ar)
 	{
 		try
 		{
