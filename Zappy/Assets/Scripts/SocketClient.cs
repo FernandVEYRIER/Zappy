@@ -8,6 +8,19 @@ using System.Text;
 
 public class SocketClient {
 
+	// List of connect delegates
+	public delegate void ConnectDel(params object[] p);
+	public ConnectDel connectDelegates = null;
+	// List of send delegates
+	public delegate void SendDel(params object[] p);
+	public ConnectDel sendDelegates = null;
+	// List of receive delegates
+	public delegate void ReceiveDel(params object[] p);
+	public ConnectDel receiveDelegates = null;
+	// List of error delegates
+	public delegate void ErrorDel(params object[] p);
+	public ConnectDel errorDelegates = null;
+
 	// ManualResetEvent instances signal completion.
 	private ManualResetEvent connectDone = new ManualResetEvent(false);
 	private ManualResetEvent sendDone = new ManualResetEvent(false);
@@ -34,9 +47,10 @@ public class SocketClient {
 	}
 
 	// CTOR
-	public SocketClient(string ip, int port, AddressFamily family = AddressFamily.InterNetwork, SocketType type = SocketType.Stream, ProtocolType protocol = ProtocolType.Tcp)
+	public SocketClient(string ip, int port, AddressFamily family = AddressFamily.InterNetwork,
+						SocketType type = SocketType.Stream, ProtocolType protocol = ProtocolType.Tcp)
 	{
-		remoteEP = new IPEndPoint(IPAddress.Parse("10.10.253.253"), 6667);
+		remoteEP = new IPEndPoint(IPAddress.Parse(ip), port);
 
 		// Create a TCP/IP socket.
 		client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -46,6 +60,7 @@ public class SocketClient {
 	{
 		if (client.Connected)
 		{
+			//client.DisconnectAsync ();
 			// Release the socket.
 			client.Shutdown (SocketShutdown.Both);
 			client.Close ();
@@ -66,34 +81,48 @@ public class SocketClient {
 
 			// Signal that the connection has been made.
 			connectDone.Set();
+
+			// Calls all the connection callbacks
+			if (connectDelegates.Method != null)
+				connectDelegates();
 		}
 		catch (Exception e)
 		{
 			Debug.LogWarning("Connection callback error: " + e.ToString());
+			errorDelegates (e);
 		}
 	}
 
-	public void Connect(int milliseconds = 1000)
+	public void Connect(int milliseconds = 0)
 	{
 		try
 		{
+			connectDone.Reset();
+
 			// Connect to the remote endpoint.
 			client.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), client);
-			connectDone.WaitOne(milliseconds);
-			connectDone.Reset();
+			if (milliseconds != 0)
+			{
+				connectDone.WaitOne(milliseconds);
+			}
 		}
 		catch (Exception e)
 		{
 			Debug.LogWarning ("Socket connection failed. Reason: " + e.Message);
+			errorDelegates (e);
 		}
 	}
 
 	// Send test data to the remote device.
-	public void Send(string msg, int waitMilliseconds = -1)
+	public void Send(string msg, int waitMilliseconds = 0)
 	{
-		Send (client, msg);
-		sendDone.WaitOne (waitMilliseconds);
 		sendDone.Reset ();
+
+		Send (client, msg);
+		if (waitMilliseconds != 0)
+		{
+			sendDone.WaitOne (waitMilliseconds);
+		}
 	}
 
 	// Asynchronous sending
@@ -110,6 +139,7 @@ public class SocketClient {
 		catch (Exception e)
 		{
 			Debug.LogWarning ("Send error: " + e.Message);
+			errorDelegates (e);
 		}
 	}
 
@@ -125,10 +155,14 @@ public class SocketClient {
 
 			// Signal that all bytes have been sent.
 			sendDone.Set();
+
+			// Calls the sending delegates
+			sendDelegates();
 		}
 		catch (Exception e)
 		{
-			Debug.LogWarning(e.ToString());
+			Debug.LogWarning("Send callback error: " + e.ToString());
+			errorDelegates (e);
 		}
 	}
 
@@ -142,13 +176,16 @@ public class SocketClient {
 		return false;
 	}
 
-	public string Receive(int milliseconds = -1)
+	public void Receive(int milliseconds = 0)
 	{
+		receiveDone.Reset ();
+
 		response = "";
 		Receive(client);
-		receiveDone.WaitOne (milliseconds);
-		receiveDone.Reset ();
-		return response;
+		if (milliseconds != 0)
+		{
+			receiveDone.WaitOne (milliseconds);
+		}
 	}
 
 	private void Receive(Socket client)
@@ -165,6 +202,7 @@ public class SocketClient {
 		catch (Exception e)
 		{
 			Console.WriteLine("Receive error: " + e.ToString());
+			errorDelegates (e);
 		}
 	}
 
@@ -192,6 +230,8 @@ public class SocketClient {
 				{
 					response = state.sb.ToString();
 					receiveDone.Set();
+
+					receiveDelegates(response);
 				}
 			}
 			else
@@ -203,11 +243,15 @@ public class SocketClient {
 				}
 				// Signal that all bytes have been received.
 				receiveDone.Set();
+
+				// Calls all the receive delegates
+				receiveDelegates(response);
 			}
 		}
 		catch (Exception e)
 		{
 			Debug.LogWarning("Receive callback error: " + e.ToString());
+			errorDelegates (e);
 		}
 	}
 

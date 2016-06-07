@@ -12,21 +12,31 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private Text textPort;
 	[SerializeField] private Text textConsoleOutput;
 
+	[Header("Panel State")]
+	[SerializeField] private bool panelGameActive = false;
+	[SerializeField] private bool panelConnectionActive = true;
+
 	// Socket client connected to server
 	private SocketClient sockClient = null;
 
 	void Start()
 	{
-		panelGame.SetActive (false);
-		panelConnection.SetActive (true);
+		RefreshPanels ();
 	}
 
 	void Update()
 	{
 		if (sockClient != null && sockClient.Select())
 		{
-			textConsoleOutput.text += sockClient.Receive ();
+			sockClient.Receive ();
 		}
+		RefreshPanels ();
+	}
+
+	void RefreshPanels()
+	{
+		panelConnection.SetActive(panelConnectionActive);
+		panelGame.SetActive(panelGameActive);	
 	}
 
 	public void ConnectToServer()
@@ -34,18 +44,24 @@ public class GameManager : MonoBehaviour {
 		if (textIp.text == "" || textPort.text == "")
 			return;
 
-		sockClient = new SocketClient(textIp.text, Convert.ToInt32(textPort));
-		sockClient.Connect ();
+		sockClient = new SocketClient(textIp.text, Convert.ToInt32(textPort.text));
 
-		if (!sockClient.IsConnected())
+		sockClient.connectDelegates += delegate(object[] p)
 		{
-			Debug.LogWarning ("Failed to connect to host");
-		}
-		else
+			sockClient.Send ("GRAPHIC\n", 0);
+
+			panelGameActive = true;
+			panelConnectionActive = false;
+		};
+
+		sockClient.receiveDelegates += delegate(object[] p)
 		{
-			sockClient.Send ("NICK tamer\nUSER toto toto toto toto\n", 500);
-			panelConnection.SetActive (false);
-			panelGame.SetActive (true);
-		}
+			foreach (object obj in p)
+			{
+				textConsoleOutput.text += obj.ToString ();
+			}
+		};
+
+		sockClient.Connect ();
 	}
 }
