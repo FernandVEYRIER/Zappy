@@ -1,0 +1,373 @@
+fileFormatVersion: 2
+guid: b15882e1ff94bf14083f098637d53f43
+timeCreated: 1465357043
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: B_gown_a
+    100004: B_gown_a_end
+    100006: BUFFBONE_GLB_GROUND_LOC
+    100008: BUFFBONE_GLB_GROUND_LOC_end
+    100010: C_BUFFBONE_GLB_CENTER_LOC
+    100012: C_BUFFBONE_GLB_CENTER_LOC_end
+    100014: cane
+    100016: cane_end
+    100018: cap_a
+    100020: cap_b
+    100022: cap_c
+    100024: cap_c_end
+    100026: head
+    100028: joint2
+    100030: joint2_end
+    100032: joint3
+    100034: joint3_end
+    100036: L_arm
+    100038: L_BUFFBONE_GLB_FOOT_LOC
+    100040: L_BUFFBONE_GLB_FOOT_LOC_end
+    100042: L_BUFFBONE_GLB_HAND_LOC
+    100044: L_BUFFBONE_GLB_HAND_LOC_end
+    100046: L_finger_a
+    100048: L_finger_b
+    100050: L_finger_b_end
+    100052: L_foot
+    100054: L_forearm
+    100056: L_hand
+    100058: L_leg
+    100060: L_PARENTING_HAND_LOC
+    100062: L_PARENTING_HAND_LOC_end
+    100064: L_shoulder
+    100066: L_thumb_a
+    100068: L_thumb_b
+    100070: L_thumb_b_end
+    100072: L_toe_base
+    100074: L_up_leg
+    100076: mantle_a
+    100078: mantle_b
+    100080: mantle_b_end
+    100082: mantle_c
+    100084: mantle_c_end
+    100086: mantle_e
+    100088: mantle_f
+    100090: mantle_f_end
+    100092: //RootNode
+    100094: R_arm
+    100096: R_BUFFBONE_GLB_HAND_LOC
+    100098: R_BUFFBONE_GLB_HAND_LOC_end
+    100100: R_finger_a
+    100102: R_finger_b
+    100104: R_finger_b_end
+    100106: R_foot
+    100108: R_forearm
+    100110: R_hand
+    100112: R_leg
+    100114: R_PARENTING_HAND_LOC
+    100116: R_PARENTING_HAND_LOC_end
+    100118: R_shoulder
+    100120: R_thumb_a
+    100122: R_thumb_b
+    100124: R_thumb_b_end
+    100126: R_toe_base
+    100128: R_up_leg
+    100130: root
+    100132: transformBlue_Minion_Wizard
+    400000: Armature
+    400002: B_gown_a
+    400004: B_gown_a_end
+    400006: BUFFBONE_GLB_GROUND_LOC
+    400008: BUFFBONE_GLB_GROUND_LOC_end
+    400010: C_BUFFBONE_GLB_CENTER_LOC
+    400012: C_BUFFBONE_GLB_CENTER_LOC_end
+    400014: cane
+    400016: cane_end
+    400018: cap_a
+    400020: cap_b
+    400022: cap_c
+    400024: cap_c_end
+    400026: head
+    400028: joint2
+    400030: joint2_end
+    400032: joint3
+    400034: joint3_end
+    400036: L_arm
+    400038: L_BUFFBONE_GLB_FOOT_LOC
+    400040: L_BUFFBONE_GLB_FOOT_LOC_end
+    400042: L_BUFFBONE_GLB_HAND_LOC
+    400044: L_BUFFBONE_GLB_HAND_LOC_end
+    400046: L_finger_a
+    400048: L_finger_b
+    400050: L_finger_b_end
+    400052: L_foot
+    400054: L_forearm
+    400056: L_hand
+    400058: L_leg
+    400060: L_PARENTING_HAND_LOC
+    400062: L_PARENTING_HAND_LOC_end
+    400064: L_shoulder
+    400066: L_thumb_a
+    400068: L_thumb_b
+    400070: L_thumb_b_end
+    400072: L_toe_base
+    400074: L_up_leg
+    400076: mantle_a
+    400078: mantle_b
+    400080: mantle_b_end
+    400082: mantle_c
+    400084: mantle_c_end
+    400086: mantle_e
+    400088: mantle_f
+    400090: mantle_f_end
+    400092: //RootNode
+    400094: R_arm
+    400096: R_BUFFBONE_GLB_HAND_LOC
+    400098: R_BUFFBONE_GLB_HAND_LOC_end
+    400100: R_finger_a
+    400102: R_finger_b
+    400104: R_finger_b_end
+    400106: R_foot
+    400108: R_forearm
+    400110: R_hand
+    400112: R_leg
+    400114: R_PARENTING_HAND_LOC
+    400116: R_PARENTING_HAND_LOC_end
+    400118: R_shoulder
+    400120: R_thumb_a
+    400122: R_thumb_b
+    400124: R_thumb_b_end
+    400126: R_toe_base
+    400128: R_up_leg
+    400130: root
+    400132: transformBlue_Minion_Wizard
+    4300000: transformBlue_Minion_Wizard
+    7400000: Armature|Armature.001Action
+    7400002: Idle
+    7400004: Armature|ArmatureAction.002
+    9500000: //RootNode
+    13700000: transformBlue_Minion_Wizard
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/B_gown_a
+        weight: 1
+      - path: Armature/root/B_gown_a/B_gown_a_end
+        weight: 1
+      - path: Armature/root/BUFFBONE_GLB_GROUND_LOC
+        weight: 1
+      - path: Armature/root/BUFFBONE_GLB_GROUND_LOC/BUFFBONE_GLB_GROUND_LOC_end
+        weight: 1
+      - path: Armature/root/C_BUFFBONE_GLB_CENTER_LOC
+        weight: 1
+      - path: Armature/root/C_BUFFBONE_GLB_CENTER_LOC/C_BUFFBONE_GLB_CENTER_LOC_end
+        weight: 1
+      - path: Armature/root/head
+        weight: 1
+      - path: Armature/root/head/cap_a
+        weight: 1
+      - path: Armature/root/head/cap_a/cap_b
+        weight: 1
+      - path: Armature/root/head/cap_a/cap_b/cap_c
+        weight: 1
+      - path: Armature/root/head/cap_a/cap_b/cap_c/cap_c_end
+        weight: 1
+      - path: Armature/root/L_shoulder
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_BUFFBONE_GLB_FOOT_LOC
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_BUFFBONE_GLB_FOOT_LOC/L_BUFFBONE_GLB_FOOT_LOC_end
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_BUFFBONE_GLB_HAND_LOC
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_BUFFBONE_GLB_HAND_LOC/L_BUFFBONE_GLB_HAND_LOC_end
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_finger_a
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_finger_a/L_finger_b
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_finger_a/L_finger_b/L_finger_b_end
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_PARENTING_HAND_LOC
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_PARENTING_HAND_LOC/L_PARENTING_HAND_LOC_end
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_thumb_a
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: Armature/root/L_shoulder/L_arm/L_forearm/L_hand/L_thumb_a/L_thumb_b/L_thumb_b_end
+        weight: 1
+      - path: Armature/root/L_up_leg
+        weight: 1
+      - path: Armature/root/L_up_leg/L_leg
+        weight: 1
+      - path: Armature/root/L_up_leg/L_leg/L_foot
+        weight: 1
+      - path: Armature/root/L_up_leg/L_leg/L_foot/L_toe_base
+        weight: 1
+      - path: Armature/root/L_up_leg/L_leg/L_foot/L_toe_base/joint2
+        weight: 1
+      - path: Armature/root/L_up_leg/L_leg/L_foot/L_toe_base/joint2/joint2_end
+        weight: 1
+      - path: Armature/root/mantle_a
+        weight: 1
+      - path: Armature/root/mantle_a/mantle_b
+        weight: 1
+      - path: Armature/root/mantle_a/mantle_b/mantle_b_end
+        weight: 1
+      - path: Armature/root/mantle_c
+        weight: 1
+      - path: Armature/root/mantle_c/mantle_c_end
+        weight: 1
+      - path: Armature/root/mantle_e
+        weight: 1
+      - path: Armature/root/mantle_e/mantle_f
+        weight: 1
+      - path: Armature/root/mantle_e/mantle_f/mantle_f_end
+        weight: 1
+      - path: Armature/root/R_shoulder
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/cane
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/cane/cane_end
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_BUFFBONE_GLB_HAND_LOC
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_BUFFBONE_GLB_HAND_LOC/R_BUFFBONE_GLB_HAND_LOC_end
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_finger_a
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_finger_a/R_finger_b
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_finger_a/R_finger_b/R_finger_b_end
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_PARENTING_HAND_LOC
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_PARENTING_HAND_LOC/R_PARENTING_HAND_LOC_end
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_thumb_a
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: Armature/root/R_shoulder/R_arm/R_forearm/R_hand/R_thumb_a/R_thumb_b/R_thumb_b_end
+        weight: 1
+      - path: Armature/root/R_up_leg
+        weight: 1
+      - path: Armature/root/R_up_leg/R_leg
+        weight: 1
+      - path: Armature/root/R_up_leg/R_leg/R_foot
+        weight: 1
+      - path: Armature/root/R_up_leg/R_leg/R_foot/R_toe_base
+        weight: 1
+      - path: Armature/root/R_up_leg/R_leg/R_foot/R_toe_base/joint3
+        weight: 1
+      - path: Armature/root/R_up_leg/R_leg/R_foot/R_toe_base/joint3/joint3_end
+        weight: 1
+      - path: transformBlue_Minion_Wizard
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
