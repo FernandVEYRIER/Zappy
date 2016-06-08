@@ -17,6 +17,10 @@ public class SocketClientAsync : MonoBehaviour {
 	public delegate void ConnectDel(params object[] p);
 	public ConnectDel connectDelegates = null;
 	private bool shouldCallConnect = false;
+	// List of disconnect delegates
+	public delegate void DisconnectDel(params object[] p);
+	public ConnectDel disconnectDelegates = null;
+	private bool shouldCallDisconnect = false;
 	// List of send delegates
 	public delegate void SendDel(params object[] p);
 	public ConnectDel sendDelegates = null;
@@ -34,6 +38,7 @@ public class SocketClientAsync : MonoBehaviour {
 	private ManualResetEvent connectDone = new ManualResetEvent(false);
 	private ManualResetEvent sendDone = new ManualResetEvent(false);
 	private ManualResetEvent receiveDone = new ManualResetEvent(false);
+	private ManualResetEvent disconnectDone = new ManualResetEvent(false);
 
 	// The response from the remote device.
 	private String response = String.Empty;
@@ -79,23 +84,38 @@ public class SocketClientAsync : MonoBehaviour {
 			shouldCallReceive = false;
 			receiveDelegates (response);
 		}
+		if (shouldCallDisconnect)
+		{
+			shouldCallDisconnect = false;
+			disconnectDelegates ();
+		}
 	}
 
-	void TestInvoke()
-	{
-		Debug.Log ("Test invoke");
-		connectDelegates (GetConnectionIp ());
-	}
-
-	public void Disconnect()
+	public void Disconnect(int milliseconds = 0)
 	{
 		if (client.Connected)
 		{
-			//client.DisconnectAsync ();
-			// Release the socket.
-			client.Shutdown (SocketShutdown.Both);
-			client.Close ();
+			disconnectDone.Reset ();
+			client.BeginDisconnect (true, new AsyncCallback (DisconnectCallback), client);
+			if (milliseconds != 0)
+			{
+				disconnectDone.WaitOne (milliseconds);
+			}
 		}
+	}
+
+	private void DisconnectCallback(IAsyncResult ar)
+	{
+		// Complete the socket request
+		Socket client = (Socket) ar.AsyncState;
+		client.EndDisconnect (ar);
+
+		// Release the socket.
+		//client.Shutdown (SocketShutdown.Both);
+		//client.Close ();
+		client = null;
+		disconnectDone.Set ();
+		shouldCallDisconnect = true;
 	}
 
 	void ConnectCallback(IAsyncResult ar)
