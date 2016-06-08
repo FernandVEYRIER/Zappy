@@ -9,22 +9,26 @@ using System.Text;
 /// <summary>
 /// Socket client.
 /// Class used to handle socket client connections.
-/// This class IS NOT THREAD SAFE.
+/// Extends Mono since we need Mono functions to act as a thread safe class.
 /// </summary>
-public class SocketClient {
+public class SocketClientAsync : MonoBehaviour {
 
 	// List of connect delegates
 	public delegate void ConnectDel(params object[] p);
 	public ConnectDel connectDelegates = null;
+	private bool shouldCallConnect = false;
 	// List of send delegates
 	public delegate void SendDel(params object[] p);
 	public ConnectDel sendDelegates = null;
+	private bool shouldCallSend = false;
 	// List of receive delegates
 	public delegate void ReceiveDel(params object[] p);
 	public ConnectDel receiveDelegates = null;
+	private bool shouldCallReceive = false;
 	// List of error delegates
 	public delegate void ErrorDel(params object[] p);
 	public ConnectDel errorDelegates = null;
+	private bool shouldCallError = false;
 
 	// ManualResetEvent instances signal completion.
 	private ManualResetEvent connectDone = new ManualResetEvent(false);
@@ -33,10 +37,12 @@ public class SocketClient {
 
 	// The response from the remote device.
 	private String response = String.Empty;
+	// The sent string
+	private String sent = String.Empty;
 
 	// Socket attributes
 	private IPEndPoint remoteEP;
-	private Socket client;
+	private Socket client = null;
 
 	// State object for receiving data from remote device.
 	public class StateObject
@@ -51,14 +57,34 @@ public class SocketClient {
 		public StringBuilder sb = new StringBuilder();
 	}
 
-	// CTOR
-	public SocketClient(string ip, int port, AddressFamily family = AddressFamily.InterNetwork,
-						SocketType type = SocketType.Stream, ProtocolType protocol = ProtocolType.Tcp)
+	void Update()
 	{
-		remoteEP = new IPEndPoint(IPAddress.Parse(ip), port);
+		if (shouldCallConnect)
+		{
+			shouldCallConnect = false;
+			connectDelegates (GetConnectionIp());
+		}
+		if (shouldCallError)
+		{
+			shouldCallError = false;
+			errorDelegates ();
+		}
+		if (shouldCallSend)
+		{
+			shouldCallSend = false;
+			sendDelegates (sent);
+		}
+		if (shouldCallReceive)
+		{
+			shouldCallReceive = false;
+			receiveDelegates (response);
+		}
+	}
 
-		// Create a TCP/IP socket.
-		client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+	void TestInvoke()
+	{
+		Debug.Log ("Test invoke");
+		connectDelegates (GetConnectionIp ());
 	}
 
 	public void Disconnect()
@@ -88,7 +114,8 @@ public class SocketClient {
 			connectDone.Set();
 
 			// Calls all the connection callbacks
-			connectDelegates(client.RemoteEndPoint.ToString());
+			//connectDelegates(client.RemoteEndPoint.ToString());
+			shouldCallConnect = true;
 		}
 		catch (Exception e)
 		{
@@ -97,10 +124,16 @@ public class SocketClient {
 		}
 	}
 
-	public void Connect(int milliseconds = 0)
+	public void Connect(string ip, int port, AddressFamily family = AddressFamily.InterNetwork,
+		SocketType type = SocketType.Stream, ProtocolType protocol = ProtocolType.Tcp, int milliseconds = 0)
 	{
+		remoteEP = new IPEndPoint(IPAddress.Parse(ip), port);
+
 		try
 		{
+			// Create a TCP/IP socket.
+			client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
 			connectDone.Reset();
 
 			// Connect to the remote endpoint.
@@ -120,6 +153,7 @@ public class SocketClient {
 	// Send test data to the remote device.
 	public void Send(string msg, int waitMilliseconds = 0)
 	{
+		sent = "";
 		sendDone.Reset ();
 
 		Send (client, msg);
@@ -139,6 +173,8 @@ public class SocketClient {
 
 			// Begin sending the data to the remote device.
 			client.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), client);
+			sent = data;
+			shouldCallSend = true;
 		}
 		catch (Exception e)
 		{
@@ -170,7 +206,7 @@ public class SocketClient {
 	// If socket is available for reading
 	public bool Select()
 	{
-		if (client.Connected && client.Poll (0, SelectMode.SelectRead))
+		if (client != null && client.Connected && client.Poll (0, SelectMode.SelectRead))
 		{
 			return true;
 		}
@@ -232,7 +268,7 @@ public class SocketClient {
 					response = state.sb.ToString();
 					receiveDone.Set();
 
-					receiveDelegates(response);
+					shouldCallReceive = true;
 				}
 			}
 			else
@@ -246,7 +282,7 @@ public class SocketClient {
 				receiveDone.Set();
 
 				// Calls all the receive delegates
-				receiveDelegates(response);
+				shouldCallReceive = true;
 			}
 		}
 		catch (Exception e)
