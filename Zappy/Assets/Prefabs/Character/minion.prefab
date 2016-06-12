@@ -1193,10 +1193,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155592}
-  m_LocalRotation: {x: 0, y: 0.96292746, z: 0, w: -0.2697605}
-  m_LocalPosition: {x: 2.2, y: 0.06, z: -6.7}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: -1000, y: -1000.45, z: -998.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 211.29999, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 435122}
   - {fileID: 403994}
@@ -1985,7 +1985,15 @@ MonoBehaviour:
     - Mendiane
     - Phiras
     - Thystame
-    values: 00000000000000000000000000000000000000000000000000000000
+    values: 02000000010000000100000001000000010000000100000001000000
+  textures:
+  - {fileID: 21300010, guid: 6ea6ede729e4f0741b26e0999e16181a, type: 3}
+  - {fileID: 21300064, guid: 32bbc6f93a01a484bbab5137598ea5b9, type: 3}
+  - {fileID: 21300030, guid: 32bbc6f93a01a484bbab5137598ea5b9, type: 3}
+  - {fileID: 21300072, guid: 32bbc6f93a01a484bbab5137598ea5b9, type: 3}
+  - {fileID: 21300006, guid: 204eacc9cb7cb74429b089c3406402f0, type: 3}
+  - {fileID: 21300042, guid: 204eacc9cb7cb74429b089c3406402f0, type: 3}
+  - {fileID: 21300046, guid: 32bbc6f93a01a484bbab5137598ea5b9, type: 3}
 --- !u!137 &13778972
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

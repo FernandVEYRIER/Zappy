@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BuilderScript.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\DisplayCharac.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Plateform.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\SerializeDictonary\DictonaryTester.cs" />
     <Compile Include="Assets\SerializeDictonary\DrawableDictionary.cs" />
     <Compile Include="Assets\SerializeDictonary\SerializableDictionary.cs" />
+    <Compile Include="Assets\Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
