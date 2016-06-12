@@ -564,6 +564,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 423886}
   - 95: {fileID: 9550982}
+  - 114: {fileID: 11413550}
   m_Layer: 0
   m_Name: minion
   m_TagString: Untagged
@@ -1964,6 +1965,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11413550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b578b821d35faf24da676aba54073529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+    keys:
+    - Nourriture
+    - Linemate
+    - "Deraum\xE8re"
+    - Sibur
+    - Mendiane
+    - Phiras
+    - Thystame
+    values: 00000000000000000000000000000000000000000000000000000000
 --- !u!137 &13778972
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

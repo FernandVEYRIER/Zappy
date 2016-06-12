@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: b40528f6d961aea4dbfb5a2c1dfcd684
-timeCreated: 1465349143
+timeCreated: 1465702681
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: INGAMETEXTURESHEETS5_0
+    21300002: INGAMETEXTURESHEETS5_1
+    21300004: INGAMETEXTURESHEETS5_2
+    21300006: INGAMETEXTURESHEETS5_3
+    21300008: INGAMETEXTURESHEETS5_4
+    21300010: INGAMETEXTURESHEETS5_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,6 +71,61 @@ TextureImporter:
         - {x: -151.5, y: -168}
         - {x: 151.5, y: -168}
         - {x: 151.5, y: 168}
+    - name: INGAMETEXTURESHEETS5_1
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 127
+        width: 22
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS5_2
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 74
+        width: 22
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS5_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS5_4
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 6
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS5_5
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 7
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 

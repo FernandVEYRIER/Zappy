@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: 5b2810ba9afe1f440ba1fde23789e9b9
-timeCreated: 1465347939
+timeCreated: 1465702600
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: INGAMETEXTURESHEETS6_0
+    21300002: INGAMETEXTURESHEETS6_1
+    21300004: INGAMETEXTURESHEETS6_2
+    21300006: INGAMETEXTURESHEETS6_3
+    21300008: INGAMETEXTURESHEETS6_4
+    21300010: INGAMETEXTURESHEETS6_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,26 +36,116 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: INGAMETEXTURESHEETS6_0
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 871
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_1
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 879
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 915
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_3
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 918
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_4
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 871
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_5
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 915
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21.5, y: 21.5}
+        - {x: -21.5, y: -21.5}
+        - {x: 21.5, y: -21.5}
+        - {x: 21.5, y: 21.5}
     outline: []
   spritePackingTag: 
   userData: 
