@@ -81,6 +81,7 @@
     <Compile Include="Assets\SerializeDictonary\DictonaryTester.cs" />
     <Compile Include="Assets\SerializeDictonary\DrawableDictionary.cs" />
     <Compile Include="Assets\SerializeDictonary\SerializableDictionary.cs" />
+    <Compile Include="Assets\SliderUI.cs" />
     <Compile Include="Assets\Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

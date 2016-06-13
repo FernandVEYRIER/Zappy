@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5b2810ba9afe1f440ba1fde23789e9b9
-timeCreated: 1465702600
+timeCreated: 1465858019
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,11 @@ TextureImporter:
     21300006: INGAMETEXTURESHEETS6_3
     21300008: INGAMETEXTURESHEETS6_4
     21300010: INGAMETEXTURESHEETS6_5
+    21300012: INGAMETEXTURESHEETS6_6
+    21300014: INGAMETEXTURESHEETS6_7
+    21300016: INGAMETEXTURESHEETS6_8
+    21300018: INGAMETEXTURESHEETS6_9
+    21300020: INGAMETEXTURESHEETS6_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -146,6 +151,65 @@ TextureImporter:
         - {x: -21.5, y: -21.5}
         - {x: 21.5, y: -21.5}
         - {x: 21.5, y: 21.5}
+    - name: INGAMETEXTURESHEETS6_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 546
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS6_7
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 541
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS6_8
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 553
+        width: 2
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS6_9
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 541
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS6_10
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 179
+        width: 423
+        height: 347
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -211.5, y: 173.5}
+        - {x: -211.5, y: -173.5}
+        - {x: 211.5, y: -173.5}
+        - {x: 211.5, y: 173.5}
     outline: []
   spritePackingTag: 
   userData: 
