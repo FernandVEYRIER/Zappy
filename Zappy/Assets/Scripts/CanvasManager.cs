@@ -1,17 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
+using UnityEngine.EventSystems;
 
 public class CanvasManager : MonoBehaviour {
 
+    public Button dialogButton;
+    public Button openButton;
+    public EventSystem eventSystem;
     private GameObject open = null;
+    private AxisKeyDown axes;
+    private bool rightOpen = false;
+
+    void Start()
+    {
+        axes = GetComponent<AxisKeyDown>();
+        axes.callbacks.Add("Cancel", OnCancel);
+        axes.callbacks.Add("Start", OnStart);
+    }
+
     public void Show(GameObject obj)
     {
         obj.SetActive(!obj.activeSelf);
         if (obj.activeSelf)
             open = obj;
         else
+        {
+            eventSystem.SetSelectedGameObject(null);
             open = null;
+        }
     }
 
     public void FlipImage(RectTransform source)
@@ -34,12 +52,27 @@ public class CanvasManager : MonoBehaviour {
         Camera.main.GetComponent<AudioListener>().enabled = !Camera.main.GetComponent<AudioListener>().enabled;
     }
 
-    void Update()
+    void OnCancel()
     {
-        if ((Input.GetKeyDown(KeyCode.Escape) ||  Input.GetAxis("Cancel") != 0) && open != null)
+        if (open == null)
+        {
+            dialogButton.onClick.Invoke();
+        }
+        else
         {
             open.SetActive(false);
             open = null;
         }
+    }
+
+    void OnStart()
+    {
+        openButton.onClick.Invoke();
+    }
+
+    public void selectEventSystem(GameObject obj)
+    {
+        if (open)
+            eventSystem.SetSelectedGameObject(obj);
     }
 }

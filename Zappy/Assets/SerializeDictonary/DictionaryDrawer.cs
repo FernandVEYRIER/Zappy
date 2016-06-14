@@ -82,6 +82,9 @@ public class DictionaryDrawer : PropertyDrawer  {
             case SerializedPropertyType.String:
                 property.stringValue = Convert.ToString(null);
                 break;
+            case SerializedPropertyType.Boolean:
+                property.boolValue = Convert.ToBoolean(null);
+                break;
             default:
                 break;
         }

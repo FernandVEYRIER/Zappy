@@ -12,6 +12,15 @@ public class DictionaryStringInt : SerializableDictionary<string, int>
 }
 
 [Serializable]
+public class DictionaryStringBool : SerializableDictionary<string, bool>
+{
+    public AbscractDictionary GetDico()
+    {
+        return this;
+    }
+}
+
+[Serializable]
 public class DictionaryIntString : SerializableDictionary<int, string>
 {
 

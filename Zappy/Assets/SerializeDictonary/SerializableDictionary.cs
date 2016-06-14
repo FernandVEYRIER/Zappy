@@ -42,7 +42,7 @@ using System.Collections;
     {
         get
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 
@@ -104,7 +104,7 @@ using System.Collections;
 
     public bool TryGetValue(TKey key, out TValue value)
     {
-        throw new NotImplementedException();
+        return dictionary.TryGetValue(key, out value);
     }
 
     public void Add(KeyValuePair<TKey, TValue> item)
@@ -119,17 +119,17 @@ using System.Collections;
 
     public bool Contains(KeyValuePair<TKey, TValue> item)
     {
-        throw new NotImplementedException();
+        return (dictionary as ICollection<KeyValuePair<TKey, TValue>>).Contains(item);
     }
 
     public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
     {
-        throw new NotImplementedException();
+        (dictionary as ICollection<KeyValuePair<TKey, TValue>>).CopyTo(array, arrayIndex);
     }
 
     public bool Remove(KeyValuePair<TKey, TValue> item)
     {
-        throw new NotImplementedException();
+        return (dictionary as ICollection<KeyValuePair<TKey, TValue>>).Remove(item);
     }
 
     public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
@@ -139,7 +139,7 @@ using System.Collections;
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        throw new NotImplementedException();
+        return dictionary.GetEnumerator();
     }
 
     public void Add(TKey key, TValue value)
