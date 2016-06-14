@@ -53,9 +53,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 7)
             return;
-        Character player = new Character();
-        player.Init(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), args[6]);
-        GM.addPlayer(args[6], player);
+        GM.addPlayer(Convert.ToInt32(args[1]), terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[2])), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), args[6]);
     }
 
     // Position d’un joueur. 

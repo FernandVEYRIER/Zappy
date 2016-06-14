@@ -4040,6 +4040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commands: {fileID: 11460124}
+  playerPrefab: {fileID: 155592, guid: f7ab6a2de28126942bcb0933678aea73, type: 2}
   timeButton: {fileID: 11475246}
   panelConnection: {fileID: 100384}
   panelGame: {fileID: 145162}

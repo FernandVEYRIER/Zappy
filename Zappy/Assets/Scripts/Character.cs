@@ -25,7 +25,7 @@ public class Character : MonoBehaviour {
     private string  _team;
     private int     _id;
     private int     _orientation;
-    private Vector2 _pos;
+    private Vector3 _pos;
 
     private Animator animator;
 
@@ -33,25 +33,27 @@ public class Character : MonoBehaviour {
     public string Team { get; set; }
     public int ID { get; set; }
     public int Orientation { get; set; }
-    public Vector2 Pos { get; set; }
+    public Vector3 Pos { get; set; }
 
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void Init(int id, int X, int Y, int orientation, int level, string team)
+    public void Init(int id, float X, float Y, int orientation, int level, string team)
     {
         _id = id;
-        _pos = new Vector2(X, Y);
+        _pos = new Vector3(X, 1, Y);
         _orientation = orientation;
         _level = level;
         _team = team;
+        print(_orientation);
+        transform.rotation = getOrientation();
     }
 
     void Update()
     {
-        if (_pos != (Vector2)transform.position)
+        if (_pos != transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, _pos, Time.deltaTime * speed);
             animator.SetBool("Move", true);
@@ -62,10 +64,30 @@ public class Character : MonoBehaviour {
         }
     }
 
-    public void setPos(int x, int y, int orientation)
+    private Quaternion getOrientation()
     {
-        _pos = new Vector2(x, y);
+        switch (_orientation)
+        {
+            case 1:
+                return Quaternion.Euler(Vector3.zero);
+            case 2:
+                return Quaternion.Euler(new Vector3(0, -90, 0));
+            case 3:
+                return Quaternion.Euler(new Vector3(0, 180, 0));
+            case 4:
+                return Quaternion.Euler(new Vector3(0, 90, 0));
+            default:
+                break;
+        }
+        return Quaternion.Euler(Vector3.forward);
+    }
+
+
+    public void setPos(float x, float y, int orientation)
+    {
+        _pos = new Vector3(x, 1, y);
         _orientation = orientation;
+        transform.rotation = getOrientation();
     }
 
     public void updateInventory(int x, int y, int[] items)

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     
     public SendCommands commands;
+    public GameObject playerPrefab;
     [Header("UI")]
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
@@ -135,9 +136,11 @@ public class GameManager : MonoBehaviour {
         teams.Add(name, new List<Character>());
     }
 
-    public void addPlayer(string team, Character player)
+    public void addPlayer(int id, Vector3 pos, int orientation, int level, string team)
     {
-        teams[team].Add(player);
+        GameObject player = (Instantiate(playerPrefab, new Vector3(pos.x, 1, pos.z), Quaternion.identity) as GameObject);
+        player.GetComponent<Character>().Init(id, pos.x, pos.z, orientation, level, team);
+        teams[team].Add(player.GetComponent<Character>());
     }
 
     public Character getCharacter(int id)

@@ -29,21 +29,8 @@ public class InfinitTerrain : Plateform {
         block_transform.GetChild(6).gameObject.SetActive(block.Thystame > 0);
     }
 
-    private Quaternion getOrientation(int Orientation)
+    public Vector3 getMapPos(int x, int y)
     {
-        switch (Orientation)
-        {
-            case 1:
-                return Quaternion.Euler(Vector3.forward);
-            case 2:
-                return Quaternion.Euler(Vector3.right);
-            case 3:
-                return Quaternion.Euler(-Vector3.forward);
-            case 4:
-                return Quaternion.Euler(Vector3.left);
-            default:
-                break;
-        }
-        return Quaternion.Euler(Vector3.forward);
+        return blocks[x + y * map.GetLength(1)].transform.position;
     }
 }
