@@ -11,7 +11,6 @@ public class CanvasManager : MonoBehaviour {
     public EventSystem eventSystem;
     private GameObject open = null;
     private AxisKeyDown axes;
-    private bool rightOpen = false;
 
     void Start()
     {

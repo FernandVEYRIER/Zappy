@@ -5,7 +5,8 @@ using System;
 
 public class GameManager : MonoBehaviour {
 
-	[Header("UI")]
+    [Header("UI")]
+    public SendCommands commands;
 	[SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
 	[SerializeField] private GameObject panelConsole;
@@ -84,7 +85,8 @@ public class GameManager : MonoBehaviour {
 		foreach (object obj in p)
 		{
 			textConsoleOutput.text += "< " + obj.ToString ();
-		}		
+            commands.SendMessage(obj.ToString());
+		}
 	}
 
 	void OnSend(params object[] p)
@@ -105,4 +107,9 @@ public class GameManager : MonoBehaviour {
 	{
 		panelConsole.SetActive (!panelConsole.activeSelf);
 	}
+
+    public InfinitTerrain getMap()
+    {
+        return GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
+    }
 }

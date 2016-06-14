@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Plateform : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Plateform : MonoBehaviour {
     public float sizeBlockZ = 1;
     public Vector3 centerCollider;
     public Vector3 sizeCollider = Vector3.one;
+    protected List<GameObject> blocks = new List<GameObject>();
 
     public void Build()
     {
@@ -28,6 +30,7 @@ public class Plateform : MonoBehaviour {
                 tmp = (GameObject)Instantiate(prefab, origin + new Vector3(x * sizeBlockX, 0, z * sizeBlockZ), Quaternion.identity);
                 if (tmp != null)
                     tmp.transform.parent = transform;
+                blocks.Add(tmp);
             }
         }
         createGrid(totalSizeX, totalSizeZ, origin);

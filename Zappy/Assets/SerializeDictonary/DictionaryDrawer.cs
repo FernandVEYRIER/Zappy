@@ -77,13 +77,13 @@ public class DictionaryDrawer : PropertyDrawer  {
         switch (property.propertyType)
         {
             case SerializedPropertyType.Integer:
-                property.intValue = Convert.ToInt32(null);
+                property.intValue = Convert.ToInt32(value);
                 break;
             case SerializedPropertyType.String:
-                property.stringValue = Convert.ToString(null);
+                property.stringValue = Convert.ToString(value);
                 break;
             case SerializedPropertyType.Boolean:
-                property.boolValue = Convert.ToBoolean(null);
+                property.boolValue = Convert.ToBoolean(value);
                 break;
             default:
                 break;
