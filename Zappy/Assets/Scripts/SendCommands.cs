@@ -110,6 +110,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 6)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -118,6 +119,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 4)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -127,6 +129,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -136,6 +139,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -144,6 +148,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -152,6 +157,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -159,12 +165,18 @@ public class SendCommands : MonoBehaviour
     //L’œuf a été pondu sur la case par le joueur.
     void enw(string[] args)
     {
+        if (args.GetLength(0) < 5)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
     //L’œuf éclot.
     void eht(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -172,6 +184,9 @@ public class SendCommands : MonoBehaviour
     //Un joueur s’est connecté pour l’œuf.
     void ebo(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -179,6 +194,9 @@ public class SendCommands : MonoBehaviour
     //L’œuf éclos est mort de faim.
     void edi(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -186,24 +204,34 @@ public class SendCommands : MonoBehaviour
     //Demande de l’unité de temps courante sur le serveur. / Modification de l’unité de temps sur le serveur.
     void sgt(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
     //Fin du jeu.L’équipe donnée remporte la partie.
     void seg(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
     //Message du serveur.
     void smg(string[] args)
     {
+        if (args.GetLength(0) < 2)
+            return;
+        print(args[0]);
         throw new NotImplementedException();
     }
 
     //Commande inconnue.
     void suc(string[] args)
     {
+        print(args[0]);
         throw new NotImplementedException();
     }
 
@@ -211,6 +239,7 @@ public class SendCommands : MonoBehaviour
     //Mauvais paramètres pour la commande.
     void sbp(string[] args)
     {
+        print(args[0]);
         throw new NotImplementedException();
     }
 
