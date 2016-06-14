@@ -3,6 +3,7 @@ using System.Collections;
 
 public class InfinitTerrain : Plateform {
 
+    public Character player;
     private MapBlock[,] map = null;
     public void initMap(int X, int Y)
     {
@@ -26,5 +27,23 @@ public class InfinitTerrain : Plateform {
         block_transform.GetChild(4).gameObject.SetActive(block.Mendiane > 0);
         block_transform.GetChild(5).gameObject.SetActive(block.Phiras > 0);
         block_transform.GetChild(6).gameObject.SetActive(block.Thystame > 0);
+    }
+
+    private Quaternion getOrientation(int Orientation)
+    {
+        switch (Orientation)
+        {
+            case 1:
+                return Quaternion.Euler(Vector3.forward);
+            case 2:
+                return Quaternion.Euler(Vector3.right);
+            case 3:
+                return Quaternion.Euler(-Vector3.forward);
+            case 4:
+                return Quaternion.Euler(Vector3.left);
+            default:
+                break;
+        }
+        return Quaternion.Euler(Vector3.forward);
     }
 }

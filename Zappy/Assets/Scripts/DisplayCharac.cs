@@ -83,12 +83,12 @@ public class DisplayCharac : MonoBehaviour {
                 instances.Add(tmp);
                 ++i;
             }
-            for (int h = 0; h < leveltxt[character.level].Length; h++)
+            for (int h = 0; h < leveltxt[character.Level].Length; h++)
             {
-                if (leveltxt[character.level][h] != null)
+                if (leveltxt[character.Level][h] != null)
                 {
                     GameObject tmp = (GameObject)Instantiate(textInfo, transform.position, Quaternion.identity);
-                    tmp.GetComponent<Text>().text = leveltxt[character.level][h];
+                    tmp.GetComponent<Text>().text = leveltxt[character.Level][h];
                     if (h != 0)
                         tmp.GetComponent<Text>().color = character.inventory[h - 1].color;
                     tmp.transform.SetParent(parentInfos.transform);
@@ -96,7 +96,7 @@ public class DisplayCharac : MonoBehaviour {
                     instances.Add(tmp);
                 }
             }
-            level.text = "Level " + (character.level + 1).ToString();
+            level.text = "Level " + (character.Level + 1).ToString();
         }
     }
 }

@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using System;
 
 public class GameManager : MonoBehaviour {
 
-    [Header("UI")]
+    
     public SendCommands commands;
-	[SerializeField] private GameObject panelConnection;
+    [Header("UI")]
+    [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
 	[SerializeField] private GameObject panelConsole;
 	[SerializeField] private Text textIp;
 	[SerializeField] private Text textPort;
 	[SerializeField] private Text textConsoleOutput;
-
-	// Socket client connected to server
-	private SocketClientAsync sockClient = null;
+    private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
+    // Socket client connected to server
+    private SocketClientAsync sockClient = null;
 
 	void Awake()
 	{
@@ -110,5 +112,28 @@ public class GameManager : MonoBehaviour {
     public InfinitTerrain getMap()
     {
         return GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
+    }
+
+    public void addTeam(string name)
+    {
+        teams.Add(name, new List<Character>());
+    }
+
+    public void addPlayer(string team, Character player)
+    {
+        teams[team].Add(player);
+    }
+
+    public Character getCharacter(int id)
+    {
+        foreach (KeyValuePair<string, List<Character>> team in teams)
+        {
+            foreach (Character player in team.Value)
+            {
+                if (player.ID == id)
+                    return player;
+            }
+        }
+        return null;
     }
 }
