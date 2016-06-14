@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     
     public SendCommands commands;
     [Header("UI")]
+    [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
 	[SerializeField] private GameObject panelConsole;
@@ -17,10 +18,24 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private Text textConsoleOutput;
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
     private List<Egg> eggs = new List<Egg>();
+    private int timeScale;
     // Socket client connected to server
     private SocketClientAsync sockClient = null;
 
-	void Awake()
+    public int TimeScale
+    {
+        get
+        {
+            return timeScale;
+        }
+        set
+        {
+            timeScale = value;
+            timeButton.value = timeScale;
+        }
+    }
+
+    void Awake()
 	{
 		sockClient = GetComponent<SocketClientAsync> ();
 	}

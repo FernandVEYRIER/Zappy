@@ -206,8 +206,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.TimeScale = Convert.ToInt32(args[1]);
     }
 
     //Fin du jeu.L’équipe donnée remporte la partie.
