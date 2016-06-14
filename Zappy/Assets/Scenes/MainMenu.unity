@@ -640,13 +640,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe31b1891e3cfe4aaa7e2c0a9df4d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commands: {fileID: 0}
   panelConnection: {fileID: 2062704777}
   panelGame: {fileID: 356091481}
+  panelConsole: {fileID: 0}
   textIp: {fileID: 711869818}
   textPort: {fileID: 315492512}
   textConsoleOutput: {fileID: 1746228127}
-  bPanelGameActive: 0
-  bPanelConnectionActive: 1
 --- !u!1 &635799282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,68 +1551,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1406803283}
---- !u!1 &1629033843
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1629033846}
-  - 114: {fileID: 1629033845}
-  - 114: {fileID: 1629033844}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1629033844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629033843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1629033845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629033843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 327676784}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!4 &1629033846
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629033843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1 &1658124199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1708,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 312751166}
   m_HandleRect: {fileID: 312751165}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

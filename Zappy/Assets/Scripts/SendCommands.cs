@@ -6,34 +6,12 @@ using System;
 public class SendCommands : MonoBehaviour
 {
     private InfinitTerrain terrain;
-
-    void Start()
-    {
-        terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
-    }
-
-    public void CallCommand(string arg)
-    {
-        arg.Trim();
-
-        string[] args = arg.Split(' ');
-
-        if (args.Length <= 0)
-        {
-            return;
-        }
-
-        MethodInfo meth = this.GetType().GetMethod(args[0]);
-
-        if (meth == null)
-            return;
-
-        meth.Invoke(this, args);
-    }
+    public delegate void cmd(string[] args);
 
     void msz(string[] args)
     {
-        if (args.Length != 2)
+        terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
+        if (args.Length != 3)
             return;
         terrain.initMap(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
     }
@@ -116,4 +94,21 @@ public class SendCommands : MonoBehaviour
     { }
     void sbp(string[] args)
     { }
+
+    public void CallCommand(string arg)
+    {
+        cmd method;
+        arg.Trim();
+        string[] args = arg.Split(' ');
+
+        if (args.Length <= 0)
+        {
+            return;
+        }
+        MethodInfo meth = GetType().GetMethod(args[0], BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+        if (meth == null)
+            return;
+        method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
+        method(args);
+    }
 }

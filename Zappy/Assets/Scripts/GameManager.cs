@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour {
 	{
 		panelConnection.SetActive (true);
 		panelGame.SetActive (false);
-	}
+        commands.CallCommand("msz 10 10");
+    }
 
 	void Update()
 	{
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour {
 		// Handles disconnection
 		sockClient.disconnectDelegates -= OnDisconnect;
 		sockClient.disconnectDelegates += OnDisconnect;
-
+        print(textPort.text);
 		sockClient.Connect (textIp.text, Convert.ToInt32(textPort.text));
 	}
 
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour {
 		foreach (object obj in p)
 		{
 			textConsoleOutput.text += "< " + obj.ToString ();
-            commands.SendMessage(obj.ToString());
+            commands.CallCommand(obj.ToString());
 		}
 	}
 
