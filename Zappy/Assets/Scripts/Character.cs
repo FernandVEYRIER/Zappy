@@ -94,4 +94,9 @@ public class Character : MonoBehaviour {
     {
         animator.SetBool("Die", true);
     }
+
+    public void destroyPlayer()
+    {
+        Destroy(gameObject);
+    }
 }
