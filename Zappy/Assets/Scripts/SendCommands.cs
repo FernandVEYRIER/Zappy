@@ -137,8 +137,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.getCharacter(Convert.ToInt32(args[1])).throwResource(Convert.ToInt32(args[2]));
     }
 
     //Le joueur prend une ressource.
@@ -146,8 +145,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.getCharacter(Convert.ToInt32(args[1])).takeResource(Convert.ToInt32(args[2]));
     }
 
     //Le joueur est mort de faim.
@@ -155,8 +153,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.getCharacter(Convert.ToInt32(args[1])).die();
     }
 
 

@@ -26,6 +26,7 @@ public class Character : MonoBehaviour {
     private int     _id;
     private int     _orientation;
     private Vector3 _pos;
+    private bool _isUpdate = false;
 
     private Animator animator;
 
@@ -34,6 +35,7 @@ public class Character : MonoBehaviour {
     public int ID { get; set; }
     public int Orientation { get; set; }
     public Vector3 Pos { get; set; }
+    public bool IsUpdate { get; set; }
 
     void Start()
     {
@@ -47,7 +49,6 @@ public class Character : MonoBehaviour {
         _orientation = orientation;
         _level = level;
         _team = team;
-        print(_orientation);
         transform.rotation = getOrientation();
     }
 
@@ -96,6 +97,7 @@ public class Character : MonoBehaviour {
         {
             inventory[i].count = items[i];
         }
+        IsUpdate = false;
     }
 
     public void talk(string message)
@@ -120,5 +122,20 @@ public class Character : MonoBehaviour {
     public void destroyPlayer()
     {
         Destroy(gameObject);
+    }
+
+    public void takeResource(int index)
+    {
+        ++inventory[index].count;
+        IsUpdate = false;
+    }
+
+    public void throwResource(int index)
+    {
+        if (inventory[index].count > 0)
+        {
+            --inventory[index].count;
+            IsUpdate = false;
+        }
     }
 }

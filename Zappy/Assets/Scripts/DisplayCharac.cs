@@ -51,10 +51,20 @@ public class DisplayCharac : MonoBehaviour {
         updateDisplay();
     }
 
+    void Update()
+    {
+        if (character != null && !character.IsUpdate)
+        {
+            updateDisplay();
+        }
+    }
+
     void OnNext()
     {
         ++index;
+        Character tmp = character;
         character = characters[index % characters.Count];
+        tmp.IsUpdate = false;
         updateDisplay();
     }
 
@@ -63,7 +73,9 @@ public class DisplayCharac : MonoBehaviour {
         --index;
         if (index < 0)
             index = characters.Count - 1;
+        Character tmp = character;
         character = characters[index % characters.Count];
+        tmp.IsUpdate = false;
         updateDisplay();
     }
 
@@ -97,6 +109,7 @@ public class DisplayCharac : MonoBehaviour {
                 }
             }
             level.text = "Level " + (character.Level + 1).ToString();
+            character.IsUpdate = true;
         }
     }
 }
