@@ -11,14 +11,14 @@ public class SendCommands : MonoBehaviour
     void msz(string[] args)
     {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
-        if (args.Length != 3)
+        if (args.GetLength(0) != 3)
             return;
         terrain.initMap(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
     }
 
     void bct(string[] args)
     {
-        if (args.Length != 9)
+        if (args.GetLength(0) != 10)
             return;
         MapBlock block = new MapBlock(
             Convert.ToInt32(args[2]),
@@ -99,16 +99,20 @@ public class SendCommands : MonoBehaviour
     {
         cmd method;
         arg.Trim();
-        string[] args = arg.Split(' ');
-
-        if (args.Length <= 0)
+        string[] lines = arg.Split('\n');
+        foreach (string line in lines)
         {
-            return;
+            string[] args = line.Split(' ');
+
+            if (args.Length <= 0)
+            {
+                return;
+            }
+            MethodInfo meth = GetType().GetMethod(args[0], BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+            if (meth == null)
+                return;
+            method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
+            method(args);
         }
-        MethodInfo meth = GetType().GetMethod(args[0], BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-        if (meth == null)
-            return;
-        method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
-        method(args);
     }
 }

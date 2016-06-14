@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour {
 	{
 		panelConnection.SetActive (true);
 		panelGame.SetActive (false);
-        commands.CallCommand("msz 10 10");
     }
 
 	void Update()
