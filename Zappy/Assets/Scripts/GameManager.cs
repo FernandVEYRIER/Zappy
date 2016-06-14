@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private Text textPort;
 	[SerializeField] private Text textConsoleOutput;
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
+    private List<Egg> eggs = new List<Egg>();
     // Socket client connected to server
     private SocketClientAsync sockClient = null;
 

@@ -27,11 +27,18 @@ public class Character : MonoBehaviour {
     private int     _orientation;
     private Vector2 _pos;
 
+    private Animator animator;
+
     public int Level { get; set; }
     public string Team { get; set; }
     public int ID { get; set; }
     public int Orientation { get; set; }
     public Vector2 Pos { get; set; }
+
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void Init(int id, int X, int Y, int orientation, int level, string team)
     {
@@ -47,6 +54,11 @@ public class Character : MonoBehaviour {
         if (_pos != (Vector2)transform.position)
         {
             transform.position = Vector3.MoveTowards(transform.position, _pos, Time.deltaTime * speed);
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
         }
     }
 
@@ -76,5 +88,10 @@ public class Character : MonoBehaviour {
         talkInfos.renderer.enabled = true;
         yield return new WaitForSeconds(talkInfos.time);
         talkInfos.renderer.enabled = false;
+    }
+
+    public void die()
+    {
+        animator.SetBool("Die", true);
     }
 }
