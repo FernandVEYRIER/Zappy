@@ -61,7 +61,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 5)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).setPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), Convert.ToInt32(args[4]));
+        GM.getCharacter(Convert.ToInt32(args[1])).setPos(terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[2])), Convert.ToInt32(args[4]));
     }
 
     //Niveau d’un joueur.

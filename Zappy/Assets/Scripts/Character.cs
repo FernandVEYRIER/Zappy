@@ -83,9 +83,9 @@ public class Character : MonoBehaviour {
     }
 
 
-    public void setPos(float x, float y, int orientation)
+    public void setPos(Vector3 pos, int orientation)
     {
-        _pos = new Vector3(x, 1, y);
+        _pos = new Vector3(pos.x, 1, pos.y);
         _orientation = orientation;
         transform.rotation = getOrientation();
     }
