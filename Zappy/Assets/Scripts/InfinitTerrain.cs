@@ -17,7 +17,6 @@ public class InfinitTerrain : Plateform {
             return;
         if (map.GetLength(0) <= Y || map.GetLength(1) <= X)
             return;
-        print("coucou");
         map[Y, X] = block;
         Transform block_transform = blocks[X + Y * map.GetLength(1)].transform.GetChild(2);
         block_transform.GetChild(0).gameObject.SetActive(block.Food > 0);

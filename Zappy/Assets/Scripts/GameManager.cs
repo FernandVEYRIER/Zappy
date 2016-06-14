@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour {
 		// Handles disconnection
 		sockClient.disconnectDelegates -= OnDisconnect;
 		sockClient.disconnectDelegates += OnDisconnect;
-        print(textPort.text);
 		sockClient.Connect (textIp.text, Convert.ToInt32(textPort.text));
 	}
 
