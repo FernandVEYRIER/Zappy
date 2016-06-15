@@ -162,8 +162,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 5)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.addEgg(Convert.ToInt32(args[1]), GM.getCharacter(Convert.ToInt32(args[2])));
     }
 
     //L’œuf éclot.
@@ -171,8 +170,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.getEgg(Convert.ToInt32(args[1])).hatch();
     }
 
 
@@ -191,8 +189,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        GM.getEgg(Convert.ToInt32(args[1])).die();
     }
 
 

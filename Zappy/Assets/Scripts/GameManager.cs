@@ -7,8 +7,9 @@ using System;
 public class GameManager : MonoBehaviour {
 
     
-    public SendCommands commands;
+    [SerializeField] private SendCommands commands;
     public GameObject playerPrefab;
+    public GameObject egg;
     [Header("UI")]
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
@@ -143,6 +144,13 @@ public class GameManager : MonoBehaviour {
         teams[team].Add(player.GetComponent<Character>());
     }
 
+    public void addEgg(int id_egg, Character character)
+    {
+        GameObject tmp = (Instantiate(egg, character.Pos , Quaternion.identity) as GameObject);
+        tmp.GetComponent<Egg>().Init(id_egg, character);
+        eggs.Add(tmp.GetComponent<Egg>());
+    }
+
     public Character getCharacter(int id)
     {
         foreach (KeyValuePair<string, List<Character>> team in teams)
@@ -152,6 +160,16 @@ public class GameManager : MonoBehaviour {
                 if (player.ID == id)
                     return player;
             }
+        }
+        return null;
+    }
+
+    public Egg getEgg(int id)
+    {
+        foreach (Egg eg in eggs)
+        {
+            if (eg.ID == id)
+                return eg;
         }
         return null;
     }
