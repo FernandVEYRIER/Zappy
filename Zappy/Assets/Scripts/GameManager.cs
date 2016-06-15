@@ -92,19 +92,28 @@ public class GameManager : MonoBehaviour {
 		{
 			textConsoleOutput.text += "Connected to host: " + obj.ToString() + "\n";
 		}
-
-		sockClient.Send ("GRAPHIC\n", 0);
-
-		panelGame.SetActive (true);
-		panelConnection.SetActive (false);
 	}
 
 	void OnReceive(params object[] p)
 	{
 		foreach (object obj in p)
 		{
+			string[] str = p.ToString ().Split ('\n');
+			Debug.Log ("String len on receive = " + obj.ToString ().Length);
 			textConsoleOutput.text += "< " + obj.ToString ();
-            commands.CallCommand(obj.ToString());
+
+			// If we get the welcome message from the server
+			if (obj.ToString () == "BIENVENUE\n")
+			{
+				sockClient.Send ("GRAPHIC\n", 0);
+
+				panelGame.SetActive (true);
+				panelConnection.SetActive (false);
+			}
+			else
+			{
+				commands.CallCommand (obj.ToString ());
+			}
 		}
 	}
 

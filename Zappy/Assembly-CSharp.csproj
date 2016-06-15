@@ -45,17 +45,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraScaling.cs" />
      <Compile Include="Assets\Scripts\AxisKeyDown.cs" />
+     <Compile Include="Assets\Scripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\BuilderScript.cs" />
+     <Compile Include="Assets\Scripts\CameraScaling.cs" />
      <Compile Include="Assets\Scripts\CanvasManager.cs" />
      <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\DisplayCharac.cs" />
+     <Compile Include="Assets\Scripts\Egg.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\InfinitTerrain.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
+     <Compile Include="Assets\Scripts\MapBlock.cs" />
      <Compile Include="Assets\Scripts\Plateform.cs" />
+     <Compile Include="Assets\Scripts\ReceiveCommands.cs" />
+     <Compile Include="Assets\Scripts\SendCommands.cs" />
+     <Compile Include="Assets\Scripts\SliderUI.cs" />
      <Compile Include="Assets\Scripts\SocketClient.cs" />
      <Compile Include="Assets\Scripts\SocketClientAsync.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\Turntable.cs" />
      <Compile Include="Assets\SerializeDictonary\AbstractDictionary.cs" />
      <Compile Include="Assets\SerializeDictonary\Dictionaries.cs" />
@@ -65,8 +73,6 @@
      <Compile Include="Assets\SerializeDictonary\DictonaryTester.cs" />
      <Compile Include="Assets\SerializeDictonary\DrawableDictionary.cs" />
      <Compile Include="Assets\SerializeDictonary\SerializableDictionary.cs" />
-     <Compile Include="Assets\SliderUI.cs" />
-     <Compile Include="Assets\Timer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
