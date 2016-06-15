@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 422334}
   - 65: {fileID: 6572968}
   - 114: {fileID: 11485196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   sizeBlockZ: 1
   centerCollider: {x: 0, y: 0.3, z: 0}
   sizeCollider: {x: 1, y: 0.6, z: 1}
+  status: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

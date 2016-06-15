@@ -3,13 +3,15 @@ using System.Collections;
 
 public class InfinitTerrain : Plateform {
 
-    public Character player;
     private MapBlock[,] map = null;
+    public bool status = false;
+
     public void initMap(int X, int Y)
     {
         size = new Vector2(X, Y);
         map = new MapBlock[Y, X];
         Build();
+        status = true;
     }
 
     public void setBlock(int X, int Y, ref MapBlock block)
