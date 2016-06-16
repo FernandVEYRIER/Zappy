@@ -21,21 +21,15 @@ public class Character : MonoBehaviour {
     public ItemInventory[] inventory;
     public float speed = 10;
     public Talk talkInfos;
-    private int _level = 0;
-    private string  _team;
-    private int     _id;
-    private int     _orientation;
-    private Vector3 _pos;
-    private bool _isUpdate = false;
+    public int _level = 0;
+    public string  _team;
+    public int     _id;
+    public int     _orientation;
+    public Vector3 _pos;
+    public bool _isUpdate = false;
+    public bool lay = true;
 
     private Animator animator;
-
-    public int Level { get; set; }
-    public string Team { get; set; }
-    public int ID { get; set; }
-    public int Orientation { get; set; }
-    public Vector3 Pos { get; set; }
-    public bool IsUpdate { get; set; }
 
     void Start()
     {
@@ -70,13 +64,13 @@ public class Character : MonoBehaviour {
         switch (_orientation)
         {
             case 1:
-                return Quaternion.Euler(Vector3.zero);
-            case 2:
                 return Quaternion.Euler(new Vector3(0, -90, 0));
+            case 2:
+                return Quaternion.Euler(new Vector3(0, 0, 0));
             case 3:
-                return Quaternion.Euler(new Vector3(0, 180, 0));
-            case 4:
                 return Quaternion.Euler(new Vector3(0, 90, 0));
+            case 4:
+                return Quaternion.Euler(new Vector3(0, 180, 0));
             default:
                 break;
         }
@@ -86,7 +80,7 @@ public class Character : MonoBehaviour {
 
     public void setPos(Vector3 pos, int orientation)
     {
-        _pos = new Vector3(pos.x, 1, pos.y);
+        _pos = new Vector3(pos.x, 1, pos.z);
         _orientation = orientation;
         transform.rotation = getOrientation();
     }
@@ -97,7 +91,7 @@ public class Character : MonoBehaviour {
         {
             inventory[i].count = items[i];
         }
-        IsUpdate = false;
+        _isUpdate = false;
     }
 
     public void talk(string message)
@@ -127,7 +121,7 @@ public class Character : MonoBehaviour {
     public void takeResource(int index)
     {
         ++inventory[index].count;
-        IsUpdate = false;
+        _isUpdate = false;
     }
 
     public void throwResource(int index)
@@ -135,7 +129,7 @@ public class Character : MonoBehaviour {
         if (inventory[index].count > 0)
         {
             --inventory[index].count;
-            IsUpdate = false;
+            _isUpdate = false;
         }
     }
 }
