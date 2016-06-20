@@ -69,9 +69,11 @@
     <Compile Include="Assets\Scripts\CameraScaling.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
+    <Compile Include="Assets\Scripts\Commands.cs" />
     <Compile Include="Assets\Scripts\DisplayCharac.cs" />
     <Compile Include="Assets\Scripts\Egg.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\ICommands.cs" />
     <Compile Include="Assets\Scripts\InfinitTerrain.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\MapBlock.cs" />

@@ -8,7 +8,7 @@ public class InfinitTerrain : Plateform {
 
     public void initMap(int X, int Y)
     {
-        size = new Vector2(X, Y);
+        size = new Vector2(Y, X);
         map = new MapBlock[Y, X];
         Build();
         status = true;

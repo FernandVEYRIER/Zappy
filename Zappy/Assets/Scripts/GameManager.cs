@@ -3,11 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using System.Net.Sockets;
 
 public class GameManager : MonoBehaviour {
 
     
-    [SerializeField] private SendCommands commands;
+    [SerializeField] private SendCommands sendCommands;
+    [SerializeField] private ReceiveCommands receiveCommands;
     public GameObject playerPrefab;
     public GameObject egg;
     [Header("UI")]
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour {
     private int timeScale;
     // Socket client connected to server
     private SocketClientAsync sockClient = null;
-
+    TcpClient tcpClient;
     public int TimeScale
     {
         get
@@ -60,25 +62,26 @@ public class GameManager : MonoBehaviour {
 	{
 		if (textIp.text == "" || textPort.text == "")
 			return;
+        tcpClient = new TcpClient();
+        tcpClient.ConnectAsync(textIp.text, Convert.ToInt32(textPort.text));
+  //      //sockClient = new SocketClientAsync(textIp.text, Convert.ToInt32(textPort.text));
 
-		//sockClient = new SocketClientAsync(textIp.text, Convert.ToInt32(textPort.text));
+  //      // On connection we notify the server and tell the user where we connected
+  //      sockClient.connectDelegates -= OnConnection;
+		//sockClient.connectDelegates += OnConnection;
 
-		// On connection we notify the server and tell the user where we connected
-		sockClient.connectDelegates -= OnConnection;
-		sockClient.connectDelegates += OnConnection;
+		//// Writes the received data to the console log
+		//sockClient.receiveDelegates -= OnReceive;
+		//sockClient.receiveDelegates += OnReceive;
 
-		// Writes the received data to the console log
-		sockClient.receiveDelegates -= OnReceive;
-		sockClient.receiveDelegates += OnReceive;
+		//// Writes the data sent to the console log
+		//sockClient.sendDelegates -= OnSend;
+		//sockClient.sendDelegates += OnSend;
 
-		// Writes the data sent to the console log
-		sockClient.sendDelegates -= OnSend;
-		sockClient.sendDelegates += OnSend;
-
-		// Handles disconnection
-		sockClient.disconnectDelegates -= OnDisconnect;
-		sockClient.disconnectDelegates += OnDisconnect;
-		sockClient.Connect (textIp.text, Convert.ToInt32(textPort.text));
+		//// Handles disconnection
+		//sockClient.disconnectDelegates -= OnDisconnect;
+		//sockClient.disconnectDelegates += OnDisconnect;
+		//sockClient.Connect (textIp.text, Convert.ToInt32(textPort.text));
 	}
 
 	public void DisconnectFromServer()
@@ -112,7 +115,7 @@ public class GameManager : MonoBehaviour {
 			}
 			else
 			{
-				commands.CallCommand (obj.ToString ());
+				receiveCommands.CallCommand (obj.ToString ());
 			}
 		}
 	}

@@ -3,274 +3,66 @@ using System.Collections;
 using System.Reflection;
 using System;
 
-public class SendCommands : MonoBehaviour
+public class SendCommands : Commands, ICommands
 {
-    private InfinitTerrain terrain;
-    public delegate void cmd(string[] args);
-    private GameManager GM;
 
-    void Start()
+    public object msz(params object[] args)
     {
-        terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        return "msz\n";
     }
 
-    // Taille de la carte. 
-    void msz(string[] args)
-    {
-        if (args.GetLength(0) < 3)
-            return;
-        terrain.initMap(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
-    }
-
-    // Contenu d’une case de la carte. 
-    void bct(string[] args)
-    {
-        if (args.GetLength(0) < 9)
-            return;
-        MapBlock block = new MapBlock(
-            Convert.ToInt32(args[2]),
-            Convert.ToInt32(args[3]),
-            Convert.ToInt32(args[4]),
-            Convert.ToInt32(args[5]),
-            Convert.ToInt32(args[6]),
-            Convert.ToInt32(args[7]),
-            Convert.ToInt32(args[8])
-            );
-        terrain.setBlock(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]), ref block);
-    }
-
-    // Nom des équipes.
-    void tna(string[] args)
+    public object bct(params object[] args)
     {
         if (args.GetLength(0) < 2)
-            return;
-        GM.addTeam(args[1]);
+            return null;
+        return "bct " + args[0] + args[1] + "\n";
     }
 
-    // Connexion d’un nouveau joueur.
-    void pnw(string[] args)
+    public object pin(params object[] args)
     {
-        if (args.GetLength(0) < 7)
-            return;
-        GM.addPlayer(Convert.ToInt32(args[1]), terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), args[6]);
+        if (args.GetLength(0) < 1)
+            return null;
+        return "pin " + args.GetLength(0) + "\n";
     }
 
-    // Position d’un joueur. 
-    void ppo(string[] args)
+    public object plv(params object[] args)
     {
-        if (args.GetLength(0) < 5)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.setPos(terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]));
+        if (args.GetLength(0) < 1)
+            return null;
+        return "plv " + args.GetLength(0) + "\n";
     }
 
-    //Niveau d’un joueur.
-    void plv(string[] args)
+    public object ppo(params object[] args)
     {
-        if (args.GetLength(0) < 3)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac._level = Convert.ToInt32(args[2]);
+        if (args.GetLength(0) < 1)
+            return null;
+        return "ppo " + args[0] + "\n";
     }
 
-    //Inventaire d’un joueur.
-    void pin(string[] args)
+    public object sgt(params object[] args)
     {
-        if (args.GetLength(0) < 10)
-            return;
-        int[] inventory = new int[7] 
-        {
-            Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), Convert.ToInt32(args[5]),
-            Convert.ToInt32(args[6]), Convert.ToInt32(args[7]), Convert.ToInt32(args[8]),
-            Convert.ToInt32(args[9])
-        };
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.updateInventory(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), inventory);
+        return "sgt\n";
     }
 
-
-    //Un joueur expulse.
-    void pex(string[] args)
+    public object tna(params object[] args)
     {
-        if (args.GetLength(0) < 2)
-            return;
-        throw new  NotImplementedException();
+        return "tna\n";
     }
 
-    //Un joueur fait un broadcast.
-    void pbc(string[] args)
+    public object mct(params object[] args)
     {
-        if (args.GetLength(0) < 3)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.talk(args[2]);
+        return "mct\n";
     }
 
-    //Premier joueur lance l’incantation pour tous les suivants sur la case.
-    void pic(string[] args)
+    public object sst(params object[] args)
     {
-        if (args.GetLength(0) < 6)
-            return;
-        print(args[0]);
-        throw new NotImplementedException();
+        if (args.GetLength(0) < 1)
+            return null;
+        return "sst " + args.GetLength(0) + "\n";
     }
 
-    //Fin de l’incantation sur la case donnée avec le résultat R (0 ou 1).
-    void pie(string[] args)
+    public object pnw(params object[] args)
     {
-        if (args.GetLength(0) < 4)
-            return;
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-
-    //Le joueur pond un œuf.
-    void pfk(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.lay = true;
-    }
-
-
-    //Le joueur jette une ressource.
-    void pdr(string[] args)
-    {
-        if (args.GetLength(0) < 3)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.throwResource(Convert.ToInt32(args[2]));
-    }
-
-    //Le joueur prend une ressource.
-    void pgt(string[] args)
-    {
-        if (args.GetLength(0) < 3)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.takeResource(Convert.ToInt32(args[2]));
-    }
-
-    //Le joueur est mort de faim.
-    void pdi(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.die();
-    }
-
-
-    //L’œuf a été pondu sur la case par le joueur.
-    void enw(string[] args)
-    {
-        if (args.GetLength(0) < 5)
-            return;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[2]));
-        if (charac)
-            GM.addEgg(Convert.ToInt32(args[1]), charac);
-    }
-
-    //L’œuf éclot.
-    void eht(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        Egg egg = GM.getEgg(Convert.ToInt32(args[1]));
-        if (egg)
-            egg.hatch();
-    }
-
-
-    //Un joueur s’est connecté pour l’œuf.
-    void ebo(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-
-    //L’œuf éclos est mort de faim.
-    void edi(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        GM.getEgg(Convert.ToInt32(args[1])).die();
-    }
-
-
-    //Demande de l’unité de temps courante sur le serveur. / Modification de l’unité de temps sur le serveur.
-    void sgt(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        GM.TimeScale = Convert.ToInt32(args[1]);
-    }
-
-    //Fin du jeu.L’équipe donnée remporte la partie.
-    void seg(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-    //Message du serveur.
-    void smg(string[] args)
-    {
-        if (args.GetLength(0) < 2)
-            return;
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-    //Commande inconnue.
-    void suc(string[] args)
-    {
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-
-    //Mauvais paramètres pour la commande.
-    void sbp(string[] args)
-    {
-        print(args[0]);
-        throw new NotImplementedException();
-    }
-
-    public void CallCommand(string arg)
-    {
-        cmd method;
-        arg.Trim();
-        string[] lines = arg.Split('\n');
-        foreach (string line in lines)
-        {
-            string[] args = line.Split(' ');
-
-            if (args.Length <= 0)
-            {
-                return;
-            }
-            MethodInfo meth = GetType().GetMethod(args[0], BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
-            if (meth == null)
-                return;
-            method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
-            method(args);
-        }
+        return null;
     }
 }

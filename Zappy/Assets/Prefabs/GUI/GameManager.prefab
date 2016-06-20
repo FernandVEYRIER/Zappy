@@ -1052,6 +1052,7 @@ GameObject:
   - 114: {fileID: 11464638}
   - 114: {fileID: 11466072}
   - 114: {fileID: 11460124}
+  - 114: {fileID: 11488286}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4039,7 +4040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe31b1891e3cfe4aaa7e2c0a9df4d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commands: {fileID: 11460124}
+  sendCommands: {fileID: 0}
+  receiveCommands: {fileID: 0}
   playerPrefab: {fileID: 155592, guid: f7ab6a2de28126942bcb0933678aea73, type: 2}
   egg: {fileID: 153756, guid: fc3ce90c4198dca4cb62d6890c5aa939, type: 2}
   timeButton: {fileID: 11475246}
@@ -4778,6 +4780,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11488286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a4b61a8c020224983a8deed2c0a551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11489990
 MonoBehaviour:
   m_ObjectHideFlags: 1
