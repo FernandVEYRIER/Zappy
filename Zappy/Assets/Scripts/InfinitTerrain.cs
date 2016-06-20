@@ -11,6 +11,7 @@ public class InfinitTerrain : Plateform {
         size = new Vector2(Y, X);
         map = new MapBlock[Y, X];
         Build();
+        GetComponent<InfinitMove>().Init();
         status = true;
     }
 

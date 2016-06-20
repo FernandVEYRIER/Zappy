@@ -3,7 +3,7 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 
-public class Commands : MonoBehaviour {
+public abstract class Commands : MonoBehaviour, ICommands {
 
     public delegate object cmd(object[] args);
     protected InfinitTerrain terrain;
@@ -17,6 +17,7 @@ public class Commands : MonoBehaviour {
 
     public List<object> CallCommand(string arg)
     {
+        print(arg);
         List<object> ret = new List<object>();
         cmd method;
         arg.Trim();
@@ -37,4 +38,20 @@ public class Commands : MonoBehaviour {
         }
         return ret;
     }
+
+    public abstract object msz(params object[] args);
+
+    public abstract object bct(params object[] args);
+
+    public abstract object tna(params object[] args);
+
+    public abstract object pnw(params object[] args);
+
+    public abstract object ppo(params object[] args);
+
+    public abstract object plv(params object[] args);
+
+    public abstract object pin(params object[] args);
+
+    public abstract object sgt(params object[] args);
 }

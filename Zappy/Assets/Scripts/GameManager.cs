@@ -42,6 +42,8 @@ public class GameManager : UnityTcpClientAsync {
 	{
 		panelConnection.SetActive (true);
 		panelGame.SetActive (false);
+        sendCommands = GetComponent<SendCommands>();
+        receiveCommands = GetComponent<ReceiveCommands>();
     }
 
     public void ConnectToServer()
@@ -133,7 +135,7 @@ public class GameManager : UnityTcpClientAsync {
         foreach (object obj in p)
         {
             textConsoleOutput.text += "< " + obj.ToString();
-            sendCommands.CallCommand(obj.ToString());
+            receiveCommands.CallCommand(obj.ToString());
         }
     }
 

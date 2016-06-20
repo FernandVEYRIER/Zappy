@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 422334}
   - 65: {fileID: 6572968}
   - 114: {fileID: 11485196}
+  - 114: {fileID: 11423498}
   m_Layer: 8
   m_Name: Terrain
   m_TagString: Terrain
@@ -42,6 +43,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.3, z: 0}
+--- !u!114 &11423498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6257bc0d0ae600c41af86192013b5015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 10, y: 10}
+  cubeSize: {x: 1, y: 1, z: 1}
+  speed: 20
 --- !u!114 &11485196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -60,6 +75,7 @@ MonoBehaviour:
   sizeBlockZ: 1
   centerCollider: {x: 0, y: 0.3, z: 0}
   sizeCollider: {x: 1, y: 0.6, z: 1}
+  grid: 0
   status: 0
 --- !u!1001 &100100000
 Prefab:

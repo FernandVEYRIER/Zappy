@@ -13,9 +13,6 @@ public class InfinitMove : MonoBehaviour {
     private float totalX;
     private float totalZ;
 
-    private Vector3 lastPos;
-    private Transform firstChild;
-
     private Transform[] right;
     private float rightValue;
 
@@ -30,15 +27,14 @@ public class InfinitMove : MonoBehaviour {
 
     private Transform[] children;
 
+    private bool init = false;
+
     void Start()
     {
         halfX = cubeSize.x / 2;
         halfZ = cubeSize.z / 2;
         totalX = size.x * cubeSize.x;
         totalZ = size.x * cubeSize.x;
-        firstChild = transform.GetChild(0);
-        lastPos = firstChild.position;
-        children = new Transform[transform.childCount];
         right = new Transform[(int)size.x];
         left = new Transform[(int)size.x];
         up = new Transform[(int)size.y];
@@ -47,38 +43,40 @@ public class InfinitMove : MonoBehaviour {
         leftValue = -rightValue;
         upValue = totalZ / 2 - halfZ;
         downValue = -upValue;
+    }
+
+    public void Init()
+    {
         int r = 0;
         int l = 0;
         int u = 0;
         int d = 0;
+        children = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
             children[i] = transform.GetChild(i);
             if (children[i].position.x == rightValue)
             {
                 right[r] = children[i];
-                right[r].GetComponent<MeshRenderer>().material.color = Color.red;
                 r++;
             }
             if (children[i].position.x == leftValue)
             {
                 left[l] = children[i];
-                left[l].GetComponent<MeshRenderer>().material.color = Color.green;
                 l++;
             }
             if (children[i].position.z == upValue)
             {
                 up[u] = children[i];
-                up[u].GetComponent<MeshRenderer>().material.color = Color.red;
                 u++;
             }
             if (children[i].position.z == downValue)
             {
                 down[d] = children[i];
-                down[d].GetComponent<MeshRenderer>().material.color = Color.green;
                 d++;
             }
         }
+        init = true;
     }
 
     void MoveChildrendVertical()
@@ -142,7 +140,7 @@ public class InfinitMove : MonoBehaviour {
                 }
             }
         }
-        debugBorder();
+        //debugBorder();
     }
 
     void MoveChildrendHorizontal()
@@ -228,13 +226,16 @@ public class InfinitMove : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0)
+        if (init)
         {
-            MoveChildrendHorizontal();
-        }
-        if (Input.GetAxis("Vertical") != 0)
-        {
-            MoveChildrendVertical();
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                MoveChildrendHorizontal();
+            }
+            if (Input.GetAxis("Vertical") != 0)
+            {
+                MoveChildrendVertical();
+            }
         }
     }
 }

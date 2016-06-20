@@ -11,6 +11,7 @@ public class Plateform : MonoBehaviour {
     public float sizeBlockZ = 1;
     public Vector3 centerCollider;
     public Vector3 sizeCollider = Vector3.one;
+    public bool grid = false;
     protected List<GameObject> blocks = new List<GameObject>();
 
     public void Build()
@@ -33,7 +34,8 @@ public class Plateform : MonoBehaviour {
                 blocks.Add(tmp);
             }
         }
-        createGrid(totalSizeX, totalSizeZ, origin);
+        if (grid)
+            createGrid(totalSizeX, totalSizeZ, origin);
         GetComponent<BoxCollider>().size = new Vector3(totalSizeX, sizeCollider.y, totalSizeZ);
         GetComponent<BoxCollider>().center = centerCollider;
     }

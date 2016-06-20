@@ -5,7 +5,7 @@ public class ReceiveCommands : Commands, ICommands {
 
 
     // Taille de la carte. 
-    public object msz(params object[] args)
+    public override object msz(params object[] args)
     {
         if (args.GetLength(0) < 3)
             return null;
@@ -14,7 +14,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     // Contenu d’une case de la carte. 
-    public object bct(params object[] args)
+    public override object bct(params object[] args)
     {
         if (args.GetLength(0) < 9)
             return null;
@@ -32,7 +32,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     // Nom des équipes.
-    public object tna(params object[] args)
+    public override object tna(params object[] args)
     {
         if (args.GetLength(0) < 2)
             return null;
@@ -41,7 +41,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     // Connexion d’un nouveau joueur.
-    public object pnw(params object[] args)
+    public override object pnw(params object[] args)
     {
         if (args.GetLength(0) < 7)
             return null;
@@ -50,7 +50,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     // Position d’un joueur. 
-    public object ppo(params object[] args)
+    public override object ppo(params object[] args)
     {
         if (args.GetLength(0) < 5)
             return null;
@@ -61,7 +61,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     //Niveau d’un joueur.
-    public object plv(params object[] args)
+    public override object plv(params object[] args)
     {
         if (args.GetLength(0) < 3)
             return null;
@@ -72,7 +72,7 @@ public class ReceiveCommands : Commands, ICommands {
     }
 
     //Inventaire d’un joueur.
-    public object pin(params object[] args)
+    public override object pin(params object[] args)
     {
         if (args.GetLength(0) < 10)
             return null;
@@ -217,7 +217,7 @@ public class ReceiveCommands : Commands, ICommands {
 
 
     //Demande de l’unité de temps courante sur le serveur. / Modification de l’unité de temps sur le serveur.
-    public object sgt(params object[] args)
+    public override object sgt(params object[] args)
     {
         if (args.GetLength(0) < 2)
             return null;
