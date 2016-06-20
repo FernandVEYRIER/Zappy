@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\InfinitMove.cs" />
     <Compile Include="Assets\Scripts\AxisKeyDown.cs" />
     <Compile Include="Assets\Scripts\Billboard.cs" />
     <Compile Include="Assets\Scripts\BuilderScript.cs" />
