@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 
@@ -98,3 +99,4 @@ public class DictionaryDrawer : PropertyDrawer  {
             return base.GetPropertyHeight(property, label);
     }
 }
+#endif
