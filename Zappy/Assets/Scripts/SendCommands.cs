@@ -53,7 +53,7 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 7)
             return;
-        GM.addPlayer(Convert.ToInt32(args[1]), terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[2])), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), args[6]);
+        GM.addPlayer(Convert.ToInt32(args[1]), terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), args[6]);
     }
 
     // Position d’un joueur. 
@@ -61,7 +61,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 5)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).setPos(terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[2])), Convert.ToInt32(args[4]));
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.setPos(terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]));
     }
 
     //Niveau d’un joueur.
@@ -69,7 +71,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).Level = Convert.ToInt32(args[2]);
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac._level = Convert.ToInt32(args[2]);
     }
 
     //Inventaire d’un joueur.
@@ -83,7 +87,9 @@ public class SendCommands : MonoBehaviour
             Convert.ToInt32(args[6]), Convert.ToInt32(args[7]), Convert.ToInt32(args[8]),
             Convert.ToInt32(args[9])
         };
-        GM.getCharacter(Convert.ToInt32(args[1])).updateInventory(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), inventory);
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.updateInventory(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), inventory);
     }
 
 
@@ -100,7 +106,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).talk(args[2]);
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.talk(args[2]);
     }
 
     //Premier joueur lance l’incantation pour tous les suivants sur la case.
@@ -127,8 +135,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        print(args[0]);
-        throw new NotImplementedException();
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.lay = true;
     }
 
 
@@ -137,7 +146,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).throwResource(Convert.ToInt32(args[2]));
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.throwResource(Convert.ToInt32(args[2]));
     }
 
     //Le joueur prend une ressource.
@@ -145,7 +156,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 3)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).takeResource(Convert.ToInt32(args[2]));
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.takeResource(Convert.ToInt32(args[2]));
     }
 
     //Le joueur est mort de faim.
@@ -153,7 +166,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        GM.getCharacter(Convert.ToInt32(args[1])).die();
+        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        if (charac)
+            charac.die();
     }
 
 
@@ -162,7 +177,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 5)
             return;
-        GM.addEgg(Convert.ToInt32(args[1]), GM.getCharacter(Convert.ToInt32(args[2])));
+        Character charac = GM.getCharacter(Convert.ToInt32(args[2]));
+        if (charac)
+            GM.addEgg(Convert.ToInt32(args[1]), charac);
     }
 
     //L’œuf éclot.
@@ -170,7 +187,9 @@ public class SendCommands : MonoBehaviour
     {
         if (args.GetLength(0) < 2)
             return;
-        GM.getEgg(Convert.ToInt32(args[1])).hatch();
+        Egg egg = GM.getEgg(Convert.ToInt32(args[1]));
+        if (egg)
+            egg.hatch();
     }
 
 

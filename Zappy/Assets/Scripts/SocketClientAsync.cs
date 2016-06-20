@@ -107,8 +107,8 @@ public class SocketClientAsync : MonoBehaviour {
 	private void DisconnectCallback(IAsyncResult ar)
 	{
 		// Complete the socket request
-		Socket client = (Socket) ar.AsyncState;
-		client.EndDisconnect (ar);
+		Socket cl = (Socket) ar.AsyncState;
+		cl.EndDisconnect (ar);
 
 		// Release the socket.
 		//client.Shutdown (SocketShutdown.Both);
@@ -116,6 +116,8 @@ public class SocketClientAsync : MonoBehaviour {
 		client = null;
 		disconnectDone.Set ();
 		shouldCallDisconnect = true;
+		response = "";
+		sent = "";
 	}
 
 	void ConnectCallback(IAsyncResult ar)

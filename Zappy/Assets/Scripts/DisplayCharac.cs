@@ -53,7 +53,7 @@ public class DisplayCharac : MonoBehaviour {
 
     void Update()
     {
-        if (character != null && !character.IsUpdate)
+        if (character != null && !character._isUpdate)
         {
             updateDisplay();
         }
@@ -64,7 +64,7 @@ public class DisplayCharac : MonoBehaviour {
         ++index;
         Character tmp = character;
         character = characters[index % characters.Count];
-        tmp.IsUpdate = false;
+        tmp._isUpdate = false;
         updateDisplay();
     }
 
@@ -75,7 +75,7 @@ public class DisplayCharac : MonoBehaviour {
             index = characters.Count - 1;
         Character tmp = character;
         character = characters[index % characters.Count];
-        tmp.IsUpdate = false;
+        tmp._isUpdate = false;
         updateDisplay();
     }
 
@@ -95,12 +95,12 @@ public class DisplayCharac : MonoBehaviour {
                 instances.Add(tmp);
                 ++i;
             }
-            for (int h = 0; h < leveltxt[character.Level].Length; h++)
+            for (int h = 0; h < leveltxt[character._level].Length; h++)
             {
-                if (leveltxt[character.Level][h] != null)
+                if (leveltxt[character._level][h] != null)
                 {
                     GameObject tmp = (GameObject)Instantiate(textInfo, transform.position, Quaternion.identity);
-                    tmp.GetComponent<Text>().text = leveltxt[character.Level][h];
+                    tmp.GetComponent<Text>().text = leveltxt[character._level][h];
                     if (h != 0)
                         tmp.GetComponent<Text>().color = character.inventory[h - 1].color;
                     tmp.transform.SetParent(parentInfos.transform);
@@ -108,8 +108,8 @@ public class DisplayCharac : MonoBehaviour {
                     instances.Add(tmp);
                 }
             }
-            level.text = "Level " + (character.Level + 1).ToString();
-            character.IsUpdate = true;
+            level.text = "Level " + (character._level + 1).ToString();
+            character._isUpdate = true;
         }
     }
 }

@@ -71,16 +71,17 @@ public class GameManager : UnityTcpClientAsync {
         teams.Add(name, new List<Character>());
     }
 
-    public void addPlayer(int id, Vector3 pos, int orientation, int level, string team)
+    public GameObject addPlayer(int id, Vector3 pos, int orientation, int level, string team)
     {
         GameObject player = (Instantiate(playerPrefab, new Vector3(pos.x, 1, pos.z), Quaternion.identity) as GameObject);
         player.GetComponent<Character>().Init(id, pos.x, pos.z, orientation, level, team);
         teams[team].Add(player.GetComponent<Character>());
+        return player;
     }
 
     public void addEgg(int id_egg, Character character)
     {
-        GameObject tmp = (Instantiate(egg, character.Pos , Quaternion.identity) as GameObject);
+        GameObject tmp = (Instantiate(egg, character._pos, Quaternion.identity) as GameObject);
         tmp.GetComponent<Egg>().Init(id_egg, character);
         eggs.Add(tmp.GetComponent<Egg>());
     }
@@ -91,7 +92,8 @@ public class GameManager : UnityTcpClientAsync {
         {
             foreach (Character player in team.Value)
             {
-                if (player.ID == id)
+                print(player._id);
+                if (player._id == id)
                     return player;
             }
         }
@@ -102,7 +104,7 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (Egg eg in eggs)
         {
-            if (eg.ID == id)
+            if (eg._id == id)
                 return eg;
         }
         return null;
