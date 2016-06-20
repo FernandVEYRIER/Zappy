@@ -4,8 +4,9 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 using System.Net.Sockets;
+using TcpAsync;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : UnityTcpClientAsync {
 
     
     [SerializeField] private SendCommands sendCommands;
@@ -23,9 +24,7 @@ public class GameManager : MonoBehaviour {
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
     private List<Egg> eggs = new List<Egg>();
     private int timeScale;
-    // Socket client connected to server
-    private SocketClientAsync sockClient = null;
-    TcpClient tcpClient;
+
     public int TimeScale
     {
         get
@@ -39,100 +38,25 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void Awake()
-	{
-		sockClient = GetComponent<SocketClientAsync> ();
-	}
-
 	void Start()
 	{
 		panelConnection.SetActive (true);
 		panelGame.SetActive (false);
     }
 
-	void Update()
-	{
-		if (sockClient != null && sockClient.Select())
-		{
-			sockClient.Receive ();
-		}
-	}
-
-	public void ConnectToServer()
+    public void ConnectToServer()
 	{
 		if (textIp.text == "" || textPort.text == "")
 			return;
-        tcpClient = new TcpClient();
-        tcpClient.ConnectAsync(textIp.text, Convert.ToInt32(textPort.text));
-  //      //sockClient = new SocketClientAsync(textIp.text, Convert.ToInt32(textPort.text));
-
-  //      // On connection we notify the server and tell the user where we connected
-  //      sockClient.connectDelegates -= OnConnection;
-		//sockClient.connectDelegates += OnConnection;
-
-		//// Writes the received data to the console log
-		//sockClient.receiveDelegates -= OnReceive;
-		//sockClient.receiveDelegates += OnReceive;
-
-		//// Writes the data sent to the console log
-		//sockClient.sendDelegates -= OnSend;
-		//sockClient.sendDelegates += OnSend;
-
-		//// Handles disconnection
-		//sockClient.disconnectDelegates -= OnDisconnect;
-		//sockClient.disconnectDelegates += OnDisconnect;
-		//sockClient.Connect (textIp.text, Convert.ToInt32(textPort.text));
-	}
+        Connect(textIp.text, Convert.ToInt32(textPort.text));
+    }
 
 	public void DisconnectFromServer()
 	{
-		sockClient.Disconnect ();
-	}
-
-	void OnConnection(params object[] p)
-	{
-		foreach (object obj in p)
-		{
-			textConsoleOutput.text += "Connected to host: " + obj.ToString() + "\n";
-		}
-	}
-
-	void OnReceive(params object[] p)
-	{
-		foreach (object obj in p)
-		{
-			string[] str = p.ToString ().Split ('\n');
-			Debug.Log ("String len on receive = " + obj.ToString ().Length);
-			textConsoleOutput.text += "< " + obj.ToString ();
-
-			// If we get the welcome message from the server
-			if (obj.ToString () == "BIENVENUE\n")
-			{
-				sockClient.Send ("GRAPHIC\n", 0);
-
-				panelGame.SetActive (true);
-				panelConnection.SetActive (false);
-			}
-			else
-			{
-				receiveCommands.CallCommand (obj.ToString ());
-			}
-		}
-	}
-
-	void OnSend(params object[] p)
-	{
-		foreach (object obj in p)
-		{
-			textConsoleOutput.text += "> " + obj.ToString ();
-		}		
-	}
-
-	void OnDisconnect(params object[] p)
-	{
-		panelGame.SetActive (false);
-		panelConnection.SetActive (true);
-	}
+        Disconnect();
+        panelGame.SetActive(false);
+        panelConnection.SetActive(true);
+    }
 
 	public void ShowConsole()
 	{
@@ -187,4 +111,39 @@ public class GameManager : MonoBehaviour {
         }
         return null;
     }
+
+    #region Abstact TcpAsync
+    // Call on Main thread after connect
+    public override void OnConnect(params object[] p)
+    {
+        foreach (object obj in p)
+        {
+            textConsoleOutput.text += "Connected to host: " + obj.ToString() + "\n";
+        }
+        //sockClient.Send ("GRAPHIC\n", 0);
+        Send("GRAPHIC\n");
+
+        panelGame.SetActive(true);
+        panelConnection.SetActive(false);
+    }
+
+    // Call on Main thread after receive
+    public override void OnReceive(params object[] p)
+    {
+        foreach (object obj in p)
+        {
+            textConsoleOutput.text += "< " + obj.ToString();
+            sendCommands.CallCommand(obj.ToString());
+        }
+    }
+
+    // Call on Main thread after send
+    public override void OnSend(params object[] p)
+    {
+        foreach (object obj in p)
+        {
+            textConsoleOutput.text += "> " + obj.ToString();
+        }
+    }
+    #endregion
 }

@@ -19,19 +19,19 @@ public class SocketClientAsync : MonoBehaviour {
 	private bool shouldCallConnect = false;
 	// List of disconnect delegates
 	public delegate void DisconnectDel(params object[] p);
-	public ConnectDel disconnectDelegates = null;
+	public DisconnectDel disconnectDelegates = null;
 	private bool shouldCallDisconnect = false;
 	// List of send delegates
 	public delegate void SendDel(params object[] p);
-	public ConnectDel sendDelegates = null;
+	public SendDel sendDelegates = null;
 	private bool shouldCallSend = false;
 	// List of receive delegates
 	public delegate void ReceiveDel(params object[] p);
-	public ConnectDel receiveDelegates = null;
+	public ReceiveDel receiveDelegates = null;
 	private bool shouldCallReceive = false;
 	// List of error delegates
 	public delegate void ErrorDel(params object[] p);
-	public ConnectDel errorDelegates = null;
+	public ErrorDel errorDelegates = null;
 	private bool shouldCallError = false;
 
 	// ManualResetEvent instances signal completion.
@@ -281,7 +281,7 @@ public class SocketClientAsync : MonoBehaviour {
 			{
 				// There might be more data, so store the data received so far.
 				state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
-
+                Debug.Log(state.sb.ToString());
 				// Get the rest of the data.
 				if (bytesRead == 256)
 					client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
@@ -289,7 +289,6 @@ public class SocketClientAsync : MonoBehaviour {
 				{
 					response = state.sb.ToString();
 					receiveDone.Set();
-
 					shouldCallReceive = true;
 				}
 			}
@@ -299,7 +298,7 @@ public class SocketClientAsync : MonoBehaviour {
 				if (state.sb.Length > 1)
 				{
 					response = state.sb.ToString();
-				}
+                }
 				// Signal that all bytes have been received.
 				receiveDone.Set();
 
