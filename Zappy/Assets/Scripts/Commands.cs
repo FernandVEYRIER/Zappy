@@ -17,7 +17,6 @@ public abstract class Commands : MonoBehaviour, ICommands {
 
     public List<object> CallCommand(string arg)
     {
-        print(arg);
         List<object> ret = new List<object>();
         cmd method;
         arg.Trim();

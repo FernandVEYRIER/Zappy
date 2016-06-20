@@ -27,7 +27,8 @@ public class Character : MonoBehaviour {
     public int     _orientation;
     public Vector3 _pos;
     public bool _isUpdate = false;
-    public bool lay = true;
+    public bool lay = true; 
+    private GameManager GM;
 
     private Animator animator;
 
@@ -44,6 +45,8 @@ public class Character : MonoBehaviour {
         _level = level;
         _team = team;
         transform.rotation = getOrientation();
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        GM.SendServer(GameManager.CMD.pin, _id);
     }
 
     void Update()
@@ -91,7 +94,7 @@ public class Character : MonoBehaviour {
         {
             inventory[i].count = items[i];
         }
-        _isUpdate = false;
+        _isUpdate = true;
     }
 
     public void talk(string message)
@@ -131,5 +134,10 @@ public class Character : MonoBehaviour {
             --inventory[index].count;
             _isUpdate = false;
         }
+    }
+
+    public void updateInventoryInfos()
+    {
+        GM.SendServer(GameManager.CMD.pin, _id);
     }
 }

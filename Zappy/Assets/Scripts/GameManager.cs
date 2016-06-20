@@ -24,7 +24,8 @@ public class GameManager : UnityTcpClientAsync {
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
     private List<Egg> eggs = new List<Egg>();
     private int timeScale;
-
+    public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
+    private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
     public int TimeScale
     {
         get
@@ -134,7 +135,7 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-            textConsoleOutput.text += "< " + obj.ToString();
+            textConsoleOutput.text += "> " + obj.ToString();
             receiveCommands.CallCommand(obj.ToString());
         }
     }
@@ -144,8 +145,15 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-            textConsoleOutput.text += "> " + obj.ToString();
+            textConsoleOutput.text += "< " + obj.ToString();
         }
+    }
+
+    public void SendServer(CMD cmd, params object[] p)
+    {
+        string res = sendCommands.CallCommand(cmdNames[Convert.ToInt32(cmd)], p).ToString();
+        print("[" + res + "]");
+        Send(res);
     }
     #endregion
 }

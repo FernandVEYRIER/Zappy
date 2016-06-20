@@ -2083,39 +2083,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory:
-  - name: lenemate
+  - name: Nourriture
     count: 1
     sprite: {fileID: 21300000, guid: 94c0b23aa16af0b428a34914c76d4b31, type: 3}
-    color: {r: 0.39607847, g: 0.69803923, b: 0.9058824, a: 1}
-  - name: "deraum\xE8re"
+    color: {r: 0.52156866, g: 0, b: 0, a: 1}
+  - name: Linemate
     count: 1
-    sprite: {fileID: 21300000, guid: 088f29fa1fdd4e6449c21f4366f269b3, type: 3}
-    color: {r: 0.5921569, g: 0.8117648, b: 0.46274513, a: 1}
-  - name: sibur
+    sprite: {fileID: 21300000, guid: 94c0b23aa16af0b428a34914c76d4b31, type: 3}
+    color: {r: 0.39607844, g: 0.69803923, b: 0.90588236, a: 1}
+  - name: "Deraum\xE8re"
     count: 1
     sprite: {fileID: 21300000, guid: 29cd1045dcec094478c3dd0e1aae26b6, type: 3}
     color: {r: 0.73333335, g: 0.46274513, b: 0.8078432, a: 1}
-  - name: mendiane
+  - name: Sibur
     count: 1
     sprite: {fileID: 21300000, guid: d3b6847d2b26cc949a3caeb76e3e37d9, type: 3}
     color: {r: 0.93725497, g: 0.39607847, b: 0.38823533, a: 1}
-  - name: phiras
+  - name: Mendiane
     count: 1
     sprite: {fileID: 21300000, guid: 070bcc71c8e395845b0ab2389bc5558f, type: 3}
     color: {r: 0.45098042, g: 0.8117648, b: 0.8078432, a: 1}
-  - name: thystame
+  - name: Phiras
     count: 1
     sprite: {fileID: 21300000, guid: 2898ba3018a79964a8ab69353a0e9046, type: 3}
-    color: {r: 0.7411765, g: 0.6039216, b: 0.25882354, a: 1}
-  - name: nourriture
+    color: {r: 0.8961565, g: 0.9044118, b: 0.305904, a: 1}
+  - name: Thystame
     count: 1
-    sprite: {fileID: 21300002, guid: 6ea6ede729e4f0741b26e0999e16181a, type: 3}
-    color: {r: 0.52205884, g: 0, b: 0, a: 1}
+    sprite: {fileID: 21300000, guid: 088f29fa1fdd4e6449c21f4366f269b3, type: 3}
+    color: {r: 0.59401023, g: 0.9338235, b: 0.39824826, a: 1}
   speed: 10
   talkInfos:
     renderer: {fileID: 21229894}
     sound: {fileID: 8238090}
     time: 0.5
+  _level: 0
+  _team: 
+  _id: 0
+  _orientation: 0
+  _pos: {x: 0, y: 0, z: 0}
+  _isUpdate: 0
+  lay: 1
 --- !u!114 &11463234
 MonoBehaviour:
   m_ObjectHideFlags: 1

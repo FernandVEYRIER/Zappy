@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System;
 
@@ -22,14 +22,14 @@ public class SendCommands : Commands
     {
         if (args.GetLength(0) < 1)
             return null;
-        return "pin " + args.GetLength(0) + "\n";
+        return "pin " + args[0] + "\n";
     }
 
     public override object plv(params object[] args)
     {
         if (args.GetLength(0) < 1)
             return null;
-        return "plv " + args.GetLength(0) + "\n";
+        return "plv " + args[0] + "\n";
     }
 
     public override object ppo(params object[] args)
@@ -58,11 +58,23 @@ public class SendCommands : Commands
     {
         if (args.GetLength(0) < 1)
             return null;
-        return "sst " + args.GetLength(0) + "\n";
+        return "sst " + args[0] + "\n";
     }
 
-    public override  object pnw(params object[] args)
+    public override object pnw(params object[] args)
     {
         return null;
+    }
+
+    public object CallCommand(string arg, params object[] p)
+    {
+        cmd method;
+
+        MethodInfo meth = GetType().GetMethod(arg, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+        if (meth == null)
+            return null;
+        print(arg);
+        method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
+        return method(p);
     }
 }
