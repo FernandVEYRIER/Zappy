@@ -6,6 +6,7 @@ using System;
 using System.Net.Sockets;
 using TcpAsync;
 
+// TODO: add security for text
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;
@@ -135,11 +136,20 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-            textConsoleOutput.text += "> " + obj.ToString();
+			//textConsoleOutput.text += "> " + obj.ToString ();
+
+			string [] toDisp = obj.ToString ().Split('\n');
+
+			foreach(string str in toDisp)
+			{
+				if (str != "")
+					textConsoleOutput.text += "> " + str + "\n";
+			}
+
             receiveCommands.CallCommand(obj.ToString());
         }
 
-		// Forces the canvas to update
+		// Forces the canvas to update to scroll
 		Canvas.ForceUpdateCanvases();
 		scrollbarConsole.value = 0f;
 		Canvas.ForceUpdateCanvases ();
