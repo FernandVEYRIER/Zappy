@@ -8,9 +8,8 @@ using TcpAsync;
 
 public class GameManager : UnityTcpClientAsync {
 
-    
-    [SerializeField] private SendCommands sendCommands;
-    [SerializeField] private ReceiveCommands receiveCommands;
+    private SendCommands sendCommands;
+    private ReceiveCommands receiveCommands;
     public GameObject playerPrefab;
     public GameObject egg;
     [Header("UI")]
@@ -21,6 +20,7 @@ public class GameManager : UnityTcpClientAsync {
 	[SerializeField] private Text textIp;
 	[SerializeField] private Text textPort;
 	[SerializeField] private Text textConsoleOutput;
+	[SerializeField] private Scrollbar scrollbarConsole;
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
     private List<Egg> eggs = new List<Egg>();
     private int timeScale;
@@ -138,6 +138,11 @@ public class GameManager : UnityTcpClientAsync {
             textConsoleOutput.text += "> " + obj.ToString();
             receiveCommands.CallCommand(obj.ToString());
         }
+
+		// Forces the canvas to update
+		Canvas.ForceUpdateCanvases();
+		scrollbarConsole.value = 0f;
+		Canvas.ForceUpdateCanvases ();
     }
 
     // Call on Main thread after send

@@ -29,19 +29,20 @@ public class InfinitMove : MonoBehaviour {
 
     private bool init = false;
 
-    void Start()
+	public void StartTerrain(Vector2 s)
     {
-        halfX = cubeSize.x / 2;
-        halfZ = cubeSize.z / 2;
+		size = s;
+		halfX = cubeSize.x / 2.0f;
+		halfZ = cubeSize.z / 2.0f;
         totalX = size.x * cubeSize.x;
-        totalZ = size.x * cubeSize.x;
-        right = new Transform[(int)size.x];
-        left = new Transform[(int)size.x];
-        up = new Transform[(int)size.y];
-        down = new Transform[(int)size.y];
-        rightValue = totalX / 2 - halfX;
+		totalZ = size.y * cubeSize.z;
+		right = new Transform[(int)size.y];
+		left = new Transform[(int)size.y];
+		up = new Transform[(int)size.x];
+		down = new Transform[(int)size.x];
+		rightValue = totalX / 2.0f - halfX;
         leftValue = -rightValue;
-        upValue = totalZ / 2 - halfZ;
+		upValue = totalZ / 2.0f - halfZ;
         downValue = -upValue;
     }
 
@@ -228,7 +229,7 @@ public class InfinitMove : MonoBehaviour {
     {
         if (init)
         {
-            if (Input.GetAxis("Horizontal") != 0)
+			if (Input.GetAxis("Horizontal") != 0)
             {
                 MoveChildrendHorizontal();
             }

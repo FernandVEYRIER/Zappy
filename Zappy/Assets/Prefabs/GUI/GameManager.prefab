@@ -4028,8 +4028,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe31b1891e3cfe4aaa7e2c0a9df4d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sendCommands: {fileID: 0}
-  receiveCommands: {fileID: 0}
   playerPrefab: {fileID: 155592, guid: f7ab6a2de28126942bcb0933678aea73, type: 2}
   egg: {fileID: 153756, guid: fc3ce90c4198dca4cb62d6890c5aa939, type: 2}
   timeButton: {fileID: 11475246}
@@ -4039,6 +4037,7 @@ MonoBehaviour:
   textIp: {fileID: 11434106}
   textPort: {fileID: 11452476}
   textConsoleOutput: {fileID: 11442958}
+  scrollbarConsole: {fileID: 11414578}
 --- !u!114 &11466350
 MonoBehaviour:
   m_ObjectHideFlags: 1
