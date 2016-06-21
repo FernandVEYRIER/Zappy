@@ -6,7 +6,7 @@ using System;
 using System.Net.Sockets;
 using TcpAsync;
 
-// TODO: add security for text
+// TODO: set minion as children to the terrain
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;

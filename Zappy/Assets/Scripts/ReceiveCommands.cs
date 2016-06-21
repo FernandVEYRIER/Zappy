@@ -94,8 +94,7 @@ public class ReceiveCommands : Commands, ICommands {
     {
         if (args.GetLength(0) < 2)
             return null;
-        //throw new NotImplementedException();
-		return null;
+        throw new NotImplementedException();
     }
 
     //Un joueur fait un broadcast.
