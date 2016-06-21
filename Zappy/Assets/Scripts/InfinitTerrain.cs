@@ -34,8 +34,8 @@ public class InfinitTerrain : Plateform {
         block_transform.GetChild(6).gameObject.SetActive(block.Thystame > 0);
     }
 
-    public Vector3 getMapPos(int x, int y)
+    public GameObject getMapPos(int x, int y)
     {
-        return blocks[x + y * map.GetLength(1)].transform.position;
+        return blocks[x + y * map.GetLength(1)];
     }
 }

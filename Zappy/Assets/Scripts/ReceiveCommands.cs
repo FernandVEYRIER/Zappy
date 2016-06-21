@@ -45,7 +45,9 @@ public class ReceiveCommands : Commands, ICommands {
     {
         if (args.GetLength(0) < 7)
             return null;
-        GM.addPlayer(Convert.ToInt32(args[1]), terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), (args[6] as string));
+        GameObject cubeMap = terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]));
+        GameObject player = GM.addPlayer(Convert.ToInt32(args[1]), cubeMap.transform.position, Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), (args[6] as string));
+        player.transform.SetParent(cubeMap.transform);
         return null;
     }
 
@@ -56,7 +58,11 @@ public class ReceiveCommands : Commands, ICommands {
             return null;
         Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
-            charac.setPos(terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3])), Convert.ToInt32(args[4]));
+        {
+            GameObject cubeMap = terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]));
+            charac.setPos(cubeMap.transform.position, Convert.ToInt32(args[4]));
+            charac.transform.SetParent(cubeMap.transform);
+        }
         return null;
     }
 
