@@ -24,6 +24,7 @@ public class GameManager : UnityTcpClientAsync {
     private int timeScale;
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
+
     public int TimeScale
     {
         get
@@ -102,7 +103,6 @@ public class GameManager : UnityTcpClientAsync {
         {
             foreach (Character player in team.Value)
             {
-                print(player._id);
                 if (player._id == id)
                     return player;
             }
@@ -147,15 +147,14 @@ public class GameManager : UnityTcpClientAsync {
         {
 			//textConsoleOutput.text += "> " + obj.ToString ();
 
-			string [] toDisp = obj.ToString ().Split('\n');
+			//string [] toDisp = obj.ToString ().Split('\n');
 
-			foreach(string str in toDisp)
-			{
-				if (str != "")
-					textConsoleOutput.text += "> " + str + "\n";
-			}
-
-            receiveCommands.CallCommand(obj.ToString());
+			//foreach(string str in toDisp)
+			//{
+			//	if (str != "")
+			//		textConsoleOutput.text += "> " + str + "\n";
+			//}
+            receiveCommands.PushQueue(obj.ToString());
         }
 
 		// Suppress characters in order not to overflow the box
@@ -182,7 +181,6 @@ public class GameManager : UnityTcpClientAsync {
     public void SendServer(CMD cmd, params object[] p)
     {
         string res = sendCommands.CallCommand(cmdNames[Convert.ToInt32(cmd)], p).ToString();
-        print("[" + res + "]");
         Send(res);
     }
     #endregion

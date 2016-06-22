@@ -124,6 +124,90 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 22498230, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22498230, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22458540, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22458540, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22486984, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -278.45593
+      objectReference: {fileID: 0}
+    - target: {fileID: 22486984, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22486984, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.9048475
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.09351449
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.3208987
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.26368558
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -32.4937
+      objectReference: {fileID: 0}
+    - target: {fileID: 417708, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 219.0535
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416020, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416020, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416020, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 22416020, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 22430820, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22430820, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 22472158, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22472158, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
   m_IsPrefabParent: 0
@@ -208,7 +292,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_Strength: 1
     m_Bias: 0.05

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8e6a8d04819f5b24982f559dbeb82b5b
-timeCreated: 1465861135
+timeCreated: 1466609950
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,8 @@ TextureImporter:
     21300002: INGAMETEXTURESHEETS3_1
     21300004: INGAMETEXTURESHEETS3_2
     21300006: INGAMETEXTURESHEETS3_3
+    21300008: INGAMETEXTURESHEETS3_4
+    21300010: INGAMETEXTURESHEETS3_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -102,6 +104,28 @@ TextureImporter:
         y: 33
         width: 20
         height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS3_4
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 6
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS3_5
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 32
+        width: 106
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

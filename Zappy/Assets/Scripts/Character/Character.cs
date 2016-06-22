@@ -106,7 +106,6 @@ public class Character : MonoBehaviour {
     {
         StartCoroutine("talkCoroutine");
         talkInfos.sound.Play();
-        print(message);
     }
 
     // Display bubble while talkInfos time

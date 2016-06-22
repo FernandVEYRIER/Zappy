@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b40528f6d961aea4dbfb5a2c1dfcd684
-timeCreated: 1466596937
+timeCreated: 1466609753
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,7 @@ TextureImporter:
     21300012: INGAMETEXTURESHEETS5_6
     21300014: INGAMETEXTURESHEETS5_7
     21300016: INGAMETEXTURESHEETS5_8
+    21300018: INGAMETEXTURESHEETS5_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -179,6 +180,17 @@ TextureImporter:
         - {x: -32, y: -24.5}
         - {x: 32, y: -24.5}
         - {x: 32, y: 24.5}
+    - name: INGAMETEXTURESHEETS5_9
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 364
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
