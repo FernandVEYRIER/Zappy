@@ -7,14 +7,12 @@ public abstract class ACommands : MonoBehaviour, ICommands {
 
     public delegate object cmd(object[] args);
     protected InfinitTerrain terrain;
-    protected GameManager GM;
-    protected CanvasManager CM;
+    protected GameManager GM = null;
 
     void Start()
     {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        CM = GameObject.Find("CanvasGame").GetComponent<CanvasManager>();
     }
 
     // Call commands with reflection system (with function name)

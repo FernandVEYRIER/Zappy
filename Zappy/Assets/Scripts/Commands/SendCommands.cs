@@ -87,7 +87,6 @@ public class SendCommands : ACommands
         MethodInfo meth = GetType().GetMethod(arg, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
         if (meth == null)
             return null;
-        print(arg);
         method = (cmd)Delegate.CreateDelegate(typeof(cmd), this, meth);
         return method(p);
     }

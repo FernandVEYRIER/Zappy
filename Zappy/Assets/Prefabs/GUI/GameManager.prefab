@@ -4031,6 +4031,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 155592, guid: f7ab6a2de28126942bcb0933678aea73, type: 2}
   egg: {fileID: 153756, guid: fc3ce90c4198dca4cb62d6890c5aa939, type: 2}
   timeButton: {fileID: 11475246}
+  canvasGame: {fileID: 115428}
+  canvasLogin: {fileID: 194840}
   panelConnection: {fileID: 100384}
   panelGame: {fileID: 145162}
   panelConsole: {fileID: 185962}

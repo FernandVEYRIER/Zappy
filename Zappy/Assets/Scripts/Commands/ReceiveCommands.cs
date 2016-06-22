@@ -2,13 +2,14 @@
 using System;
 
 public class ReceiveCommands : ACommands {
-
+   
     // Taille de la carte. 
     public override object msz(params object[] args)
     {
         if (args.GetLength(0) < 3)
             return null;
         terrain.initMap(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
+        GM.StartGame();
         return null;
     }
 
@@ -98,7 +99,7 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 2)
             return null;
-        CM.SetTimer(args[1].ToString());
+        GM.SetTimer(args[1].ToString());
         return null;
     }
 

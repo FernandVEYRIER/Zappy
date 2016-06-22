@@ -5,7 +5,7 @@ using System;
 public class Timer : MonoBehaviour {
 
     private Text txt;
-    private float time;
+    private double time;
     private bool init = false;
 
     void Start()
@@ -17,7 +17,9 @@ public class Timer : MonoBehaviour {
     // Init time with server time
     public void Init(string t)
     {
-        time = Convert.ToSingle(t);
+        DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        dtDateTime = dtDateTime.AddSeconds(Convert.ToDouble(t));
+        time = (DateTime.Now - dtDateTime).TotalSeconds;
         init = true;
     }
 
