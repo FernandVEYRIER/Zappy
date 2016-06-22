@@ -149,6 +149,12 @@ public class GameManager : UnityTcpClientAsync {
             receiveCommands.CallCommand(obj.ToString());
         }
 
+		// Suppress characters in order not to overflow the box
+		if (textConsoleOutput.text.Length > 10000)
+		{
+			textConsoleOutput.text = textConsoleOutput.text.Remove (0, textConsoleOutput.text.Length - 10000);
+		}
+
 		// Forces the canvas to update to scroll
 		Canvas.ForceUpdateCanvases();
 		scrollbarConsole.value = 0f;
