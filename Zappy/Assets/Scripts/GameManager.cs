@@ -12,8 +12,6 @@ public class GameManager : UnityTcpClientAsync {
     public GameObject egg;
     [Header("UI")]
     [SerializeField] private Slider timeButton;
-    [SerializeField] private GameObject canvasGame;
-    [SerializeField] private GameObject canvasLogin;
     [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
 	[SerializeField] private GameObject panelConsole;
@@ -41,7 +39,7 @@ public class GameManager : UnityTcpClientAsync {
 
 	void Start()
 	{
-		panelConnection.SetActive (true);
+        panelConnection.SetActive (true);
 		panelGame.SetActive (false);
         sendCommands = GetComponent<SendCommands>();
         receiveCommands = GetComponent<ReceiveCommands>();
@@ -63,9 +61,9 @@ public class GameManager : UnityTcpClientAsync {
 
     public void StartGame()
     {
-        canvasLogin.SetActive(false);
+        panelConnection.SetActive(false);
         Send(sendCommands.CallCommand("time", null).ToString());
-        canvasGame.SetActive(true);
+        panelGame.SetActive(true);
     }
 
 	public void ShowConsole()
@@ -124,7 +122,7 @@ public class GameManager : UnityTcpClientAsync {
 
     public void SetTimer(string time)
     {
-        canvasGame.GetComponent<CanvasManager>().SetTimer(time);
+        panelGame.transform.parent.GetComponent<CanvasManager>().SetTimer(time);
     }
 
     #region Abstact TcpAsync

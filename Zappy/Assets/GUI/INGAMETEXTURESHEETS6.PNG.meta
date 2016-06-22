@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5b2810ba9afe1f440ba1fde23789e9b9
-timeCreated: 1465873901
+timeCreated: 1466596797
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,8 @@ TextureImporter:
     21300018: INGAMETEXTURESHEETS6_9
     21300020: INGAMETEXTURESHEETS6_10
     21300022: INGAMETEXTURESHEETS6_11
+    21300024: INGAMETEXTURESHEETS6_12
+    21300026: INGAMETEXTURESHEETS6_13
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -222,6 +224,38 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+    - name: INGAMETEXTURESHEETS6_12
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 718
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 22}
+        - {x: -19, y: 20}
+        - {x: -19, y: -22}
+        - {x: 19, y: -22}
+        - {x: 19, y: 22}
+    - name: INGAMETEXTURESHEETS6_13
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 718
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 22}
+        - {x: -19, y: 20}
+        - {x: -19, y: -22}
+        - {x: 19, y: -22}
+        - {x: 19, y: 22}
     outline: []
   spritePackingTag: 
   userData: 

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 33ed8fc86061d074490d25b28c00fe30
-timeCreated: 1465861102
+timeCreated: 1466597054
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,12 @@ TextureImporter:
     21300004: INGAMETEXTURESHEETS4_2
     21300006: INGAMETEXTURESHEETS4_3
     21300008: INGAMETEXTURESHEETS4_4
+    21300010: INGAMETEXTURESHEETS4_5
+    21300012: INGAMETEXTURESHEETS4_6
+    21300014: INGAMETEXTURESHEETS4_7
+    21300016: INGAMETEXTURESHEETS4_8
+    21300018: INGAMETEXTURESHEETS4_9
+    21300020: INGAMETEXTURESHEETS4_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -134,6 +140,85 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+    - name: INGAMETEXTURESHEETS4_5
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 286
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS4_6
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 258
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS4_7
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 140
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: INGAMETEXTURESHEETS4_8
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 10
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 16}
+        - {x: -32, y: -16}
+        - {x: 32, y: -16}
+        - {x: 32, y: 16}
+    - name: INGAMETEXTURESHEETS4_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 24.5}
+        - {x: -32, y: -24.5}
+        - {x: 32, y: -24.5}
+        - {x: 32, y: 24.5}
+    - name: INGAMETEXTURESHEETS4_10
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 11
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 16.5}
+        - {x: -32, y: -16.5}
+        - {x: 32, y: -16.5}
+        - {x: 32, y: 15.5}
+        - {x: 31, y: 16.5}
     outline: []
   spritePackingTag: 
   userData: 
