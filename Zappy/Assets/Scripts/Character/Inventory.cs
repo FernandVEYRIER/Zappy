@@ -11,13 +11,4 @@ public class Inventory : MonoBehaviour {
         public int value;
     }
     public SerializeDico[] inventory;
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

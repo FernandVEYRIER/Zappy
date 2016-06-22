@@ -11,6 +11,7 @@ public class MapBlock {
         public int Phiras;
         public int Thystame;
 
+        // Set all properties of a cubeMap
         public MapBlock(int food, int lenemate, int deraumere, int sibur, int mendiane, int phiras, int thystame)
         {
             Food = food;

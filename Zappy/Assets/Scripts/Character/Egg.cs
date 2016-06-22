@@ -17,6 +17,7 @@ public class Egg : MonoBehaviour {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
     }
 
+    // Init Egg properties
     public void Init(int id, Character player)
     {
         _id = id;
@@ -25,12 +26,14 @@ public class Egg : MonoBehaviour {
         _team = player._team;
     }
 
+    // Pond un oeuf
     public void hatch()
     {
         GameObject player = GM.addPlayer(_id_player, _pos, 1, 1, _team);
         player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
+    // Call when server send edi commands
     public void die()
     {
         Destroy(gameObject);

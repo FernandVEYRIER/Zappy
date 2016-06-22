@@ -16,11 +16,13 @@ public class AxisKeyDown : MonoBehaviour {
     public Dictionary<string, Action> callbacks = new Dictionary<string, Action>();
     private List<string> keys;
     private List<bool> call;
+
     //private bool isUpdate = false;
     void Start()
     {
         keys = new List<string>(axes.Keys);
     }
+
 	// Update is called once per frame
 	void Update ()
     {

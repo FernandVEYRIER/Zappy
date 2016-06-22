@@ -23,4 +23,7 @@
 
     // Demande de l’unité de temps courante sur le serveur. / Modification de l’unité de temps sur le serveur.
     object sgt(params object[] args);
+
+    // Demande la temps écoulé / Reçoit le temps écoulé depuis le lancement du serveur
+    object time(params object[] args);
 }

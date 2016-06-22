@@ -14,6 +14,7 @@ public class Plateform : MonoBehaviour {
     public bool grid = false;
     protected List<GameObject> blocks = new List<GameObject>();
 
+    // Method Build can be call from Editor or Script : Instanciate all GameObject's map
     public void Build()
     {
         float totalSizeX = size.x * sizeBlockX;
@@ -40,6 +41,7 @@ public class Plateform : MonoBehaviour {
         GetComponent<BoxCollider>().center = centerCollider;
     }
 
+    // Create a grid
     private void createGrid(float totalSizeX, float totalSizeZ, Vector3 origin)
     {
         GameObject line = (GameObject)Instantiate(gridLine, Vector3.zero, Quaternion.identity); ;
@@ -101,6 +103,7 @@ public class Plateform : MonoBehaviour {
         }
     }
 
+    // Delete all GameObject's map Children
     public void Delete()
     {
         

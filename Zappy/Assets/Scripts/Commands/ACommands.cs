@@ -3,18 +3,21 @@ using System.Reflection;
 using System;
 using System.Collections.Generic;
 
-public abstract class Commands : MonoBehaviour, ICommands {
+public abstract class ACommands : MonoBehaviour, ICommands {
 
     public delegate object cmd(object[] args);
     protected InfinitTerrain terrain;
     protected GameManager GM;
+    protected CanvasManager CM;
 
     void Start()
     {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
+        CM = GameObject.Find("CanvasGame").GetComponent<CanvasManager>();
     }
 
+    // Call commands with reflection system (with function name)
     public List<object> CallCommand(string arg)
     {
         List<object> ret = new List<object>();
@@ -53,4 +56,6 @@ public abstract class Commands : MonoBehaviour, ICommands {
     public abstract object pin(params object[] args);
 
     public abstract object sgt(params object[] args);
+
+    public abstract object time(params object[] args);
 }

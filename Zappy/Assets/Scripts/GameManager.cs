@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
-using System.Net.Sockets;
-using TcpAsync;
 
 // TODO: set minion as children to the terrain
 public class GameManager : UnityTcpClientAsync {

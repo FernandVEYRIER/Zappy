@@ -4808,6 +4808,7 @@ MonoBehaviour:
   dialogButton: {fileID: 11454794}
   openButton: {fileID: 11439054}
   eventSystem: {fileID: 11471818}
+  timer: {fileID: 11473200}
 --- !u!114 &11492800
 MonoBehaviour:
   m_ObjectHideFlags: 1
