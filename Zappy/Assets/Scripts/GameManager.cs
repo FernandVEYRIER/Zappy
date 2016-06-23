@@ -200,7 +200,9 @@ public class GameManager : UnityTcpClientAsync {
 
     public void createNewPlayer(string team_name, string lua_path)
     {
-        string filename = Application.dataPath + "/IA/Bin/zappy_ai.exe";
+        string filename = Application.dataPath + "/IA/Bin/zappy_ai";
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+            filename += ".exe";
         if (!File.Exists(filename))
             return;
         Process myProcess = new Process();
