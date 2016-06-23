@@ -4,7 +4,6 @@ using System.Collections;
 public class Egg : MonoBehaviour {
 
     public GameObject character;
-    private GameManager GM;
     public int _id;
     private int _id_player;
     private Vector3 _pos;
@@ -13,7 +12,6 @@ public class Egg : MonoBehaviour {
 
     void Start()
     {
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
     }
 
@@ -29,8 +27,11 @@ public class Egg : MonoBehaviour {
     // Pond un oeuf
     public void hatch()
     {
-        GameObject player = GM.addPlayer(_id_player, _pos, 1, 1, _team);
-        player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        if (GameManager.instance)
+        {
+            GameObject player = GameManager.instance.addPlayer(_id_player, _pos, 1, 1, _team);
+            player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
     }
 
     // Call when server send edi commands

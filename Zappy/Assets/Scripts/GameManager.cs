@@ -10,7 +10,9 @@ public class GameManager : UnityTcpClientAsync {
     private ReceiveCommands receiveCommands;
     public GameObject playerPrefab;
     public GameObject egg;
+    public static GameManager instance = null;
     [Header("UI")]
+    [SerializeField] private DisplayCharac displayCharac;
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
@@ -25,6 +27,16 @@ public class GameManager : UnityTcpClientAsync {
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+        Init();
+    }
+
     public int TimeScale
     {
         get
@@ -38,7 +50,12 @@ public class GameManager : UnityTcpClientAsync {
         }
     }
 
-	void Start()
+    public Dictionary<string, List<Character>> getTeam()
+    {
+        return teams;
+    }
+
+    void Start()
 	{
         panelConnection.SetActive (true);
 		panelGame.SetActive (false);
@@ -85,9 +102,17 @@ public class GameManager : UnityTcpClientAsync {
     public GameObject addPlayer(int id, Vector3 pos, int orientation, int level, string team)
     {
         GameObject player = (Instantiate(playerPrefab, new Vector3(pos.x, 1, pos.z), Quaternion.identity) as GameObject);
-        player.GetComponent<Character>().Init(id, pos.x, pos.z, orientation, level, team);
-        teams[team].Add(player.GetComponent<Character>());
+        Character charac = player.GetComponent<Character>();
+        charac.Init(id, pos.x, pos.z, orientation, level, team);
+        teams[team].Add(charac);
+        displayCharac.addCharacters(charac);
         return player;
+    }
+
+    public void removeCharacter(Character charac)
+    {
+        teams[charac._team].Remove(charac);
+        displayCharac.removeCharacters(charac);
     }
 
     public void addEgg(int id_egg, Character character)

@@ -6,6 +6,7 @@ public class InfinitMove : MonoBehaviour {
     public Vector2 size = Vector2.one;
     public Vector3 cubeSize = Vector3.one;
     public float speed = 20;
+    public bool invert = false;
 
     private float halfX;
     private float halfZ;
@@ -29,9 +30,15 @@ public class InfinitMove : MonoBehaviour {
 
     private bool init = false;
 
+    private int dir;
+
 	public void StartTerrain(Vector2 s)
     {
-		size = s;
+        if (invert)
+            dir = 1;
+        else
+            dir = -1;
+        size = s;
 		halfX = cubeSize.x / 2.0f;
 		halfZ = cubeSize.z / 2.0f;
         totalX = size.x * cubeSize.x;
@@ -82,13 +89,13 @@ public class InfinitMove : MonoBehaviour {
 
     void MoveChildrendVertical()
     {
-        Vector3 move = Vector3.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime);
+        Vector3 move = Vector3.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) * dir;
         bool change = false;
         float limitUp = 0;
         float limitDown = 0;
         foreach (Transform child in children)
             child.Translate(move);
-        if (Input.GetAxis("Vertical") > 0)
+        if ((Input.GetAxis("Vertical") > 0 && dir == 1) || (Input.GetAxis("Vertical") < 0 && dir == -1))
         {
             for (int i = 0; i < up.Length; i++)
             {
@@ -146,13 +153,13 @@ public class InfinitMove : MonoBehaviour {
 
     void MoveChildrendHorizontal()
     {
-        Vector3 move = Vector3.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+        Vector3 move = Vector3.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime) * dir;
         bool change = false;
         float limitRight = 0;
         float limitLeft = 0;
         foreach (Transform child in children)
             child.Translate(move);
-        if (Input.GetAxis("Horizontal") > 0)
+        if ((Input.GetAxis("Horizontal") > 0 && dir == 1) || (Input.GetAxis("Horizontal") < 0 && dir == -1))
         {
             for (int i = 0; i < right.Length; i++)
             {
@@ -227,6 +234,10 @@ public class InfinitMove : MonoBehaviour {
 
     void Update()
     {
+        if (invert)
+            dir = 1;
+        else
+            dir = -1;
         if (init)
         {
 			if (Input.GetAxis("Horizontal") != 0)

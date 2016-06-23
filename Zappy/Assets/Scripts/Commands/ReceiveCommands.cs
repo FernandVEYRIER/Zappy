@@ -6,10 +6,10 @@ public class ReceiveCommands : ACommands {
     // Taille de la carte. 
     public override object msz(params object[] args)
     {
-        if (args.GetLength(0) < 3)
+        if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
         terrain.initMap(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]));
-        GM.StartGame();
+        GameManager.instance.StartGame();
         return null;
     }
 
@@ -34,19 +34,19 @@ public class ReceiveCommands : ACommands {
     // Nom des équipes.
     public override object tna(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        GM.addTeam((args[1] as string));
+        GameManager.instance.addTeam((args[1] as string));
         return null;
     }
 
     // Connexion d’un nouveau joueur.
     public override object pnw(params object[] args)
     {
-        if (args.GetLength(0) < 7)
+        if (args.GetLength(0) < 7 || !GameManager.instance)
             return null;
         GameObject cubeMap = terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]));
-        GameObject player = GM.addPlayer(Convert.ToInt32(args[1]), cubeMap.transform.position, Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), (args[6] as string));
+        GameObject player = GameManager.instance.addPlayer(Convert.ToInt32(args[1]), cubeMap.transform.position, Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), (args[6] as string));
         player.transform.SetParent(cubeMap.transform);
         return null;
     }
@@ -54,9 +54,9 @@ public class ReceiveCommands : ACommands {
     // Position d’un joueur. 
     public override object ppo(params object[] args)
     {
-        if (args.GetLength(0) < 5)
+        if (args.GetLength(0) < 5 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
         {
             GameObject cubeMap = terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]));
@@ -69,9 +69,9 @@ public class ReceiveCommands : ACommands {
     //Niveau d’un joueur.
     public override object plv(params object[] args)
     {
-        if (args.GetLength(0) < 3)
+        if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac._level = Convert.ToInt32(args[2]);
         return null;
@@ -80,7 +80,7 @@ public class ReceiveCommands : ACommands {
     //Inventaire d’un joueur.
     public override object pin(params object[] args)
     {
-        if (args.GetLength(0) < 10)
+        if (args.GetLength(0) < 10 ||  !GameManager.instance)
             return null;
         int[] inventory = new int[7]
         {
@@ -88,7 +88,7 @@ public class ReceiveCommands : ACommands {
             Convert.ToInt32(args[6]), Convert.ToInt32(args[7]), Convert.ToInt32(args[8]),
             Convert.ToInt32(args[9])
         };
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.updateInventory(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), inventory);
         return null;
@@ -97,9 +97,9 @@ public class ReceiveCommands : ACommands {
     // Récupère l'heure de démarrage du serveur
     public override object time(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        GM.SetTimer(args[1].ToString());
+        GameManager.instance.SetTimer(args[1].ToString());
         return null;
     }
 
@@ -115,9 +115,9 @@ public class ReceiveCommands : ACommands {
     //Un joueur fait un broadcast.
     public object pbc(params object[] args)
     {
-        if (args.GetLength(0) < 3)
+        if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.talk((args[2] as string));
         return null;
@@ -145,9 +145,9 @@ public class ReceiveCommands : ACommands {
     //Le joueur pond un œuf.
     public object pfk(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.lay = true;
         return null;
@@ -157,9 +157,9 @@ public class ReceiveCommands : ACommands {
     //Le joueur jette une ressource.
     public object pdr(params object[] args)
     {
-        if (args.GetLength(0) < 3)
+        if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.throwResource(Convert.ToInt32(args[2]));
         return null;
@@ -168,9 +168,9 @@ public class ReceiveCommands : ACommands {
     //Le joueur prend une ressource.
     public object pgt(params object[] args)
     {
-        if (args.GetLength(0) < 3)
+        if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.takeResource(Convert.ToInt32(args[2]));
         return null;
@@ -179,9 +179,9 @@ public class ReceiveCommands : ACommands {
     //Le joueur est mort de faim.
     public object pdi(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[1]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
             charac.die();
         return null;
@@ -191,20 +191,20 @@ public class ReceiveCommands : ACommands {
     //L’œuf a été pondu sur la case par le joueur.
     public object enw(params object[] args)
     {
-        if (args.GetLength(0) < 5)
+        if (args.GetLength(0) < 5 || !GameManager.instance)
             return null;
-        Character charac = GM.getCharacter(Convert.ToInt32(args[2]));
+        Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[2]));
         if (charac)
-            GM.addEgg(Convert.ToInt32(args[1]), charac);
+            GameManager.instance.addEgg(Convert.ToInt32(args[1]), charac);
         return null;
     }
 
     //L’œuf éclot.
     public object eht(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        Egg egg = GM.getEgg(Convert.ToInt32(args[1]));
+        Egg egg = GameManager.instance.getEgg(Convert.ToInt32(args[1]));
         if (egg)
             egg.hatch();
         return null;
@@ -224,9 +224,9 @@ public class ReceiveCommands : ACommands {
     //L’œuf éclos est mort de faim.
     public object edi(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        GM.getEgg(Convert.ToInt32(args[1])).die();
+        GameManager.instance.getEgg(Convert.ToInt32(args[1])).die();
         return null;
     }
 
@@ -234,9 +234,9 @@ public class ReceiveCommands : ACommands {
     //Demande de l’unité de temps courante sur le serveur. / Modification de l’unité de temps sur le serveur.
     public override object sgt(params object[] args)
     {
-        if (args.GetLength(0) < 2)
+        if (args.GetLength(0) < 2 || !GameManager.instance)
             return null;
-        GM.TimeScale = Convert.ToInt32(args[1]);
+        GameManager.instance.TimeScale = Convert.ToInt32(args[1]);
         return null;
     }
 

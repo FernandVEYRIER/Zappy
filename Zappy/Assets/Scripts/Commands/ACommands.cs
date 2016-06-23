@@ -7,13 +7,14 @@ public abstract class ACommands : MonoBehaviour, ICommands {
 
     public delegate object cmd(object[] args);
     protected InfinitTerrain terrain;
-    protected GameManager GM = null;
     protected Queue<string> cmds = new Queue<string>();
+    [Header("Quality level")]
+    [Tooltip("Set number of taks call on one frame, by quality level")]
+    public int[] taskByFrame = new int[6];
 
     void Start()
     {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void PushQueue(string arg)
@@ -25,6 +26,7 @@ public abstract class ACommands : MonoBehaviour, ICommands {
             cmds.Enqueue(line);
         }
     }
+
     // Call commands with reflection system (with function name)
     public object CallCommand(string arg)
     {
@@ -47,9 +49,8 @@ public abstract class ACommands : MonoBehaviour, ICommands {
     {
         if (cmds.Count != 0)
         {
-            int limit = 5;
             int i = 0;
-            while (i < limit && cmds.Count != 0)
+            while (i < taskByFrame[QualitySettings.GetQualityLevel()] && cmds.Count != 0)
             {
                 CallCommand(cmds.Dequeue());
                 ++i;

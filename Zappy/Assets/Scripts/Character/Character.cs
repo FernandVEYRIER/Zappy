@@ -27,8 +27,7 @@ public class Character : MonoBehaviour {
     public int     _orientation;
     public Vector3 _pos;
     public bool _isUpdate = false;
-    public bool lay = true; 
-    private GameManager GM;
+    public bool lay = true;
 
     private Animator animator;
 
@@ -46,8 +45,8 @@ public class Character : MonoBehaviour {
         _level = level;
         _team = team;
         transform.rotation = getOrientation();
-        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        GM.SendServer(GameManager.CMD.pin, _id);
+        if (GameManager.instance)
+            GameManager.instance.SendServer(GameManager.CMD.pin, _id);
     }
 
     void Update()
@@ -125,6 +124,8 @@ public class Character : MonoBehaviour {
     // Destroy this GameObject
     public void destroyPlayer()
     {
+        if (GameManager.instance)
+            GameManager.instance.removeCharacter(this);
         Destroy(gameObject);
     }
 
@@ -148,6 +149,7 @@ public class Character : MonoBehaviour {
     // Demand an Update from server
     public void updateInventoryInfos()
     {
-        GM.SendServer(GameManager.CMD.pin, _id);
+        if (GameManager.instance)
+            GameManager.instance.SendServer(GameManager.CMD.pin, _id);
     }
 }

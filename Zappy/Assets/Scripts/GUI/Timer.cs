@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour {
     {
         DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         dtDateTime = dtDateTime.AddSeconds(Convert.ToDouble(t));
-        time = (DateTime.Now - dtDateTime).TotalSeconds;
+        time = (DateTime.UtcNow - dtDateTime).TotalSeconds;
         init = true;
     }
 

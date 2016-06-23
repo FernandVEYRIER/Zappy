@@ -39,16 +39,21 @@ public class DisplayCharac : MonoBehaviour {
             new string[] { "joueur : 6", "lenemate : 1", "deraumère : 2", "sibur : 3", null, "phiras : 1", null },
             new string[] { "joueur : 6", "lenemate : 2", "deraumère : 2", "sibur : 2", "mendiane : 2", "phiras : 2", "thystame : 1" }
         };
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            characters.Add(obj.GetComponent<Character>());
-        }
-        if (characters.Count != 0)
-            character = characters[index];
         axes = GetComponent<AxisKeyDown>();
         axes.callbacks.Add("Next", OnNext);
         axes.callbacks.Add("Prev", OnPrev);
         updateDisplay();
+    }
+
+    public void addCharacters(Character player)
+    {
+        characters.Add(player);
+        character = player;
+    }
+
+    public void removeCharacters(Character player)
+    {
+        characters.Remove(player);
     }
 
     void Update()
@@ -61,27 +66,34 @@ public class DisplayCharac : MonoBehaviour {
 
     void OnNext()
     {
-        ++index;
-        Character tmp = character;
-        character = characters[index % characters.Count];
-        tmp._isUpdate = false;
-        updateDisplay();
+        
+        if (character)
+        {
+            ++index;
+            Character tmp = character;
+            character = characters[index % characters.Count];
+            tmp._isUpdate = false;
+            updateDisplay();
+        }
     }
 
     void OnPrev()
     {
-        --index;
-        if (index < 0)
-            index = characters.Count - 1;
-        Character tmp = character;
-        character = characters[index % characters.Count];
-        tmp._isUpdate = false;
-        updateDisplay();
+        if (character)
+        {
+            --index;
+            if (index < 0)
+                index = characters.Count - 1;
+            Character tmp = character;
+            character = characters[index % characters.Count];
+            tmp._isUpdate = false;
+            updateDisplay();
+        }
     }
 
     public void updateDisplay()
     {
-        if (character != null)
+        if (character)
         {
             instances.ForEach(chield => Destroy(chield));
             int i = 0;
