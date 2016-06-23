@@ -174,7 +174,7 @@ public class GameManager : UnityTcpClientAsync {
     public void WriteConsole(string msg)
     {
         ++consoleLines;
-        textConsoleOutput.text += msg + "\n";
+        textConsoleOutput.text += "> " + msg + "\n";
         checkConsole();
         updateConsole();
     }
@@ -221,7 +221,7 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-            textConsoleOutput.text += "< " + obj.ToString();
+            textConsoleOutput.text += "<color=lightblue>< " + obj.ToString() + "</color>";
             ++consoleLines;
             checkConsole();
             updateConsole();

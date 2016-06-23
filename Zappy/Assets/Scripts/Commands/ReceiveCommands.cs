@@ -255,23 +255,26 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 2)
             return null;
-        print(args[0]);
-        throw new NotImplementedException();
+        if (GameManager.instance)
+            GameManager.instance.WriteConsole("<color=orange>" + args[1].ToString() + "</color>");
+        return null;
     }
 
     //Commande inconnue.
     public object suc(params object[] args)
     {
-        print(args[0]);
-        throw new NotImplementedException();
+        if (GameManager.instance)
+            GameManager.instance.WriteConsole("<color=red>(Unknow command !)</color>");
+        return null;
     }
 
 
     //Mauvais paramètres pour la commande.
     public object sbp(params object[] args)
     {
-        print(args[0]);
-        throw new NotImplementedException();
+        if (GameManager.instance)
+            GameManager.instance.WriteConsole("<color=red>(Bad parameter !)</color>");
+        return null;
     }
 
     void Update()
