@@ -3,3 +3,9 @@ D:\Users\Nicolas\Documents\Visual Studio 2015\Projects\TcpConnectAsync\TcpConnec
 D:\Users\Nicolas\Documents\Visual Studio 2015\Projects\TcpConnectAsync\TcpConnectAsync\bin\Debug\UnityEngine.dll
 D:\Users\Nicolas\Documents\Visual Studio 2015\Projects\TcpConnectAsync\TcpConnectAsync\obj\Debug\TcpAsync.dll
 D:\Users\Nicolas\Documents\Visual Studio 2015\Projects\TcpConnectAsync\TcpConnectAsync\obj\Debug\TcpAsync.pdb
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\bin\Debug\TcpAsync.dll
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\bin\Debug\TcpAsync.pdb
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\bin\Debug\UnityEngine.dll
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\obj\Debug\TcpAsync.dll
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\obj\Debug\TcpAsync.pdb
+D:\Users\Nicolas\Documents\GitHub\Zappy\TcpConnectAsync\TcpConnectAsync\obj\Debug\TcpConnectAsync.csprojResolveAssemblyReference.cache

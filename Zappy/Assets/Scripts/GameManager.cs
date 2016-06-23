@@ -223,6 +223,11 @@ public class GameManager : UnityTcpClientAsync {
     // Call on Main thread after connect
     public override void OnConnect(params object[] p)
     {
+        if (!tcpClient.getSocket().Connected)
+        {
+            textIp.text = "";
+            textPort.text = "";
+        }
         foreach (object obj in p)
         {
             textConsoleOutput.text += "Connected to host: " + obj.ToString() + "\n";
@@ -261,6 +266,13 @@ public class GameManager : UnityTcpClientAsync {
     {
         string res = sendCommands.CallCommand(cmdNames[Convert.ToInt32(cmd)], p).ToString();
         Send(res);
+    }
+
+    public override void OnError(params object[] p)
+    {
+        textIp.transform.parent.GetComponent<InputField>().text = "";
+        textPort.transform.parent.GetComponent<InputField>().text = "";
+        tcpClient.Disconnect();
     }
     #endregion
 }

@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using TcpAsync;
+using System;
 
 public abstract class UnityTcpClientAsync : MonoBehaviour
 {
     protected TcpClientAsync tcpClient = null;
     private bool run = false;
+    private float timer = 0;
+    private bool start = false;
+    private float timeout;
 
     #region Unity
     void Awake()
@@ -12,7 +16,7 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
         
     }
 
-    protected void Init()
+    protected void Init(float t = 3)
     {
         tcpClient = new TcpClientAsync();
     }
@@ -39,13 +43,28 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
             tcpClient.Receive();
             OnConnect();
         }
+        else if (!run && !tcpClient.connectStatus && start)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeout)
+            {
+                timer = 0;
+                start = false;
+                OnError();
+            }
+        }
     }
+
     #endregion
 
     #region TcpAsync
     public void Connect(string ip, int port)
     {
-        tcpClient.Connect(ip, port);
+        if (!start)
+        {
+            tcpClient.Connect(ip, port);
+            start = true;
+        }
     }
 
     public void Send(string data)
@@ -68,6 +87,9 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
 
     // This function is automatically call after a Send
     abstract public void OnSend(params object[] p);
+
+    // This function is automatically call after an Error
+    abstract public void OnError(params object[] p);
 
     #endregion
 }

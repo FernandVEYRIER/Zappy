@@ -238,6 +238,11 @@ namespace TcpAsync
         {
             return port;
         }
+
+        public Socket getSocket()
+        {
+            return client.Client;
+        }
         #endregion
     }
 }
