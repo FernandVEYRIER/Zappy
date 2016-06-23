@@ -27,6 +27,7 @@ public class GameManager : UnityTcpClientAsync {
     private Dictionary<string, List<Character>> teams = new Dictionary<string, List<Character>>();
     private List<Egg> eggs = new List<Egg>();
     private int timeScale;
+    private bool pause = false;
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
     int consoleLines = 1;
@@ -40,6 +41,19 @@ public class GameManager : UnityTcpClientAsync {
         DontDestroyOnLoad(gameObject);
         Init();
     }
+
+    public bool Pause
+    {
+        get
+        {
+            return pause;
+        }
+        set
+        {
+            pause = value;
+        }
+    }
+
 
     public int TimeScale
     {
@@ -188,6 +202,11 @@ public class GameManager : UnityTcpClientAsync {
         myProcess.StartInfo.FileName = filename;
         myProcess.StartInfo.Arguments = "-n " + team_name + " -p " + Convert.ToString(tcpClient.Port()) + " -h " + tcpClient.IP() + " -s " + lua_path;
         myProcess.Start();
+    }
+
+    public void TooglePause()
+    {
+        pause = !pause;
     }
 
     #region Abstact TcpAsync

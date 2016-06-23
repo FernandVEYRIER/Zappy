@@ -279,14 +279,13 @@ public class ReceiveCommands : ACommands {
 
     void Update()
     {
-        if (cmds.Count != 0)
+        if (GameManager.instance && !GameManager.instance.Pause && cmds.Count != 0)
         {
             int i = 0;
             while (i < taskByFrame[QualitySettings.GetQualityLevel()] && cmds.Count != 0)
             {
                 string tmp = cmds.Dequeue();
                 CallCommand(tmp);
-                if (GameManager.instance)
                     GameManager.instance.WriteConsole(tmp);
                 ++i;
             }

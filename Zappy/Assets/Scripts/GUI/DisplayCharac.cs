@@ -12,6 +12,7 @@ public class DisplayCharac : MonoBehaviour {
     public GameObject parentInfos;
     private AxisKeyDown axes;
     public Text level;
+    public Text IANum;
     private List<Character> characters = new List<Character>();
     private string[][] leveltxt;
     private int index = 0;
@@ -121,6 +122,7 @@ public class DisplayCharac : MonoBehaviour {
                 }
             }
             level.text = "Level " + (character._level + 1).ToString();
+            IANum.text = "IA N°" + character._id;
             character._isUpdate = true;
         }
     }

@@ -2085,7 +2085,7 @@ MonoBehaviour:
   inventory:
   - name: Nourriture
     count: 1
-    sprite: {fileID: 21300000, guid: 94c0b23aa16af0b428a34914c76d4b31, type: 3}
+    sprite: {fileID: 21300002, guid: 6ea6ede729e4f0741b26e0999e16181a, type: 3}
     color: {r: 0.52156866, g: 0, b: 0, a: 1}
   - name: Linemate
     count: 1
