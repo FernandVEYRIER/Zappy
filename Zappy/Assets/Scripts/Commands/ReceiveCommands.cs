@@ -132,8 +132,10 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			block.GetComponent<ParticleSystem> ().emission.enabled = true;
+			ParticleSystem.EmissionModule em = block.GetComponent<ParticleSystem> ().emission;
+			em.enabled = true;
 		}
+		return null;
     }
 
     //Fin de l’incantation sur la case donnée avec le résultat R (0 ou 1).
@@ -144,8 +146,10 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			block.GetComponent<ParticleSystem> ().emission.enabled = false;
+			ParticleSystem.EmissionModule em = block.GetComponent<ParticleSystem> ().emission;
+			em.enabled = false;
 		}
+		return null;
     }
 
 
