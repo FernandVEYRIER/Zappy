@@ -1,17 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Commands\ReceiveCommands.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameManager.cs" Line="157" Column="1" />
-      <File FileName="Assets\Scripts\ReceiveCommands.cs" Line="9" Column="6" />
-      <File FileName="Assets\Scripts\SendCommands.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InfinitTerrain.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CameraScaling.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Commands.cs" Line="1" Column="1" />
-      <File FileName="Assets\InfinitMove.cs" Line="49" Column="23" NotebookId="1" />
-      <File FileName="Assets\Scripts\Character.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\SocketClientAsync.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\ICommands.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="219" Column="101" />
+      <File FileName="Assets\Scripts\Commands\ReceiveCommands.cs" Line="147" Column="66" />
+      <File FileName="Assets\Scripts\Character\Egg.cs" Line="32" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

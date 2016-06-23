@@ -129,8 +129,11 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 6)
             return null;
-        print(args[0]);
-        throw new NotImplementedException();
+		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
+		if (block)
+		{
+			block.GetComponent<ParticleSystem> ().emission.enabled = true;
+		}
     }
 
     //Fin de l’incantation sur la case donnée avec le résultat R (0 ou 1).
@@ -138,8 +141,11 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 4)
             return null;
-        print(args[0]);
-        throw new NotImplementedException();
+		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
+		if (block)
+		{
+			block.GetComponent<ParticleSystem> ().emission.enabled = false;
+		}
     }
 
 
@@ -217,8 +223,12 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 2)
             return null;
-        print(args[0]);
-        throw new NotImplementedException();
+		Egg egg = GameManager.instance.getEgg (Convert.ToInt32 (args [1]));
+		if (egg)
+		{
+			egg.die ();
+		}
+		return null;
     }
 
 
