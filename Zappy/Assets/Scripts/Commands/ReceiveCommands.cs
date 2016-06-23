@@ -246,9 +246,9 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 2)
             return null;
-        print(args[0]);
-        throw new NotImplementedException();
-    }
+		GameManager.instance.DisplayVictoryScreen (args[1].ToString());
+		return null;
+	}
 
     //Message du serveur.
     public object smg(params object[] args)
