@@ -5,7 +5,6 @@ using System;
 using System.IO;
 using System.Diagnostics;
 
-// TODO: set minion as children to the terrain
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;
@@ -19,6 +18,7 @@ public class GameManager : UnityTcpClientAsync {
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
+	[SerializeField] private GameObject panelVictory;
 	[SerializeField] private GameObject panelConsole;
 	[SerializeField] private Text textIp;
 	[SerializeField] private Text textPort;
@@ -78,6 +78,7 @@ public class GameManager : UnityTcpClientAsync {
 	{
         panelConnection.SetActive (true);
 		panelGame.SetActive (false);
+		panelVictory.SetActive (false);
         sendCommands = GetComponent<SendCommands>();
         receiveCommands = GetComponent<ReceiveCommands>();
     }
@@ -93,6 +94,7 @@ public class GameManager : UnityTcpClientAsync {
 	{
         Disconnect();
         panelGame.SetActive(false);
+		panelVictory.SetActive (false);
         panelConnection.SetActive(true);
     }
 
@@ -211,6 +213,12 @@ public class GameManager : UnityTcpClientAsync {
         myProcess.Start();
     }
 
+	public void DisplayVictoryScreen(string team)
+	{
+		panelVictory.SetActive (true);
+		panelVictory.transform.Find ("LabelText").GetComponent<Text> ().text = "Team " + team + " wins !";
+	}
+
     public void TooglePause()
     {
         pause = !pause;
@@ -222,7 +230,7 @@ public class GameManager : UnityTcpClientAsync {
     }
 
     #region Abstact TcpAsync
-    // Call on Main thread after connect
+    // Call on Main thread after connection
     public override void OnConnect(params object[] p)
     {
         if (!tcpClient.getSocket().Connected)
