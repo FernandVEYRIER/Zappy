@@ -122,7 +122,7 @@ public class DisplayCharac : MonoBehaviour {
                 }
             }
             level.text = "Level " + (character._level + 1).ToString();
-            IANum.text = "IA N°" + character._id;
+            IANum.text = "IA N°" + character._id + " - " + character._team;
             character._isUpdate = true;
         }
     }

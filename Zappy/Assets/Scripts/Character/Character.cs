@@ -40,7 +40,7 @@ public class Character : MonoBehaviour {
     public void Init(int id, float X, float Y, int orientation, int level, string team)
     {
         _id = id;
-        _pos = new Vector3(X, 1, Y);
+        _pos = new Vector3(X, 0, Y);
         _orientation = orientation;
         _level = level;
         _team = team;
@@ -84,7 +84,7 @@ public class Character : MonoBehaviour {
     // Set current position of character
     public void setPos(Vector3 pos, int orientation)
     {
-        _pos = new Vector3(pos.x, 1, pos.z);
+        _pos = new Vector3(pos.x, 0, pos.z);
         _orientation = orientation;
         transform.position = _pos;
         transform.rotation = getOrientation();
