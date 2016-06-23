@@ -25,7 +25,7 @@ public class InfinitTerrain : Plateform {
         if (map.GetLength(0) <= Y || map.GetLength(1) <= X)
             return;
         map[Y, X] = block;
-        Transform block_transform = blocks[X + Y * map.GetLength(1)].transform.GetChild(2);
+        Transform block_transform = blocks[X + Y * map.GetLength(1)].transform.GetChild(1);
         block_transform.GetChild(0).gameObject.SetActive(block.Food > 0);
         block_transform.GetChild(1).gameObject.SetActive(block.Lenemate > 0);
         block_transform.GetChild(2).gameObject.SetActive(block.Deraumere > 0);

@@ -12,6 +12,7 @@ public class Plateform : MonoBehaviour {
     public Vector3 centerCollider;
     public Vector3 sizeCollider = Vector3.one;
     public bool grid = false;
+    public bool collision = false;
     protected List<GameObject> blocks = new List<GameObject>();
 
     // Method Build can be call from Editor or Script : Instanciate all GameObject's map
@@ -37,8 +38,13 @@ public class Plateform : MonoBehaviour {
         }
         if (grid)
             createGrid(totalSizeX, totalSizeZ, origin);
-        GetComponent<BoxCollider>().size = new Vector3(totalSizeX, sizeCollider.y, totalSizeZ);
-        GetComponent<BoxCollider>().center = centerCollider;
+        if (collision)
+        {
+            GetComponent<BoxCollider>().size = new Vector3(totalSizeX, sizeCollider.y, totalSizeZ);
+            GetComponent<BoxCollider>().center = centerCollider;
+        }
+        else
+            Destroy(GetComponent<BoxCollider>());
     }
 
     // Create a grid

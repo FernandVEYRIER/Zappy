@@ -12,6 +12,7 @@ public class GameManager : UnityTcpClientAsync {
     public GameObject egg;
     public static GameManager instance = null;
     [Header("UI")]
+    [SerializeField] private int maxLinesConsole;
     [SerializeField] private DisplayCharac displayCharac;
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
@@ -26,6 +27,7 @@ public class GameManager : UnityTcpClientAsync {
     private int timeScale;
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
+    int consoleLines = 1;
 
     void Awake()
     {
@@ -150,6 +152,32 @@ public class GameManager : UnityTcpClientAsync {
         panelGame.transform.parent.GetComponent<CanvasManager>().SetTimer(time);
     }
 
+    void checkConsole()
+    {
+        print(QualitySettings.GetQualityLevel());
+        if (consoleLines == maxLinesConsole * (QualitySettings.GetQualityLevel() + 1))
+        {
+            textConsoleOutput.text = textConsoleOutput.text.Remove(0, textConsoleOutput.text.IndexOf('\n') + 1);
+            --consoleLines;
+        }
+    }
+
+    void updateConsole()
+    {
+        // Forces the canvas to update to scroll
+        Canvas.ForceUpdateCanvases();
+        scrollbarConsole.value = 0f;
+        Canvas.ForceUpdateCanvases();
+    }
+
+    public void WriteConsole(string msg)
+    {
+        ++consoleLines;
+        textConsoleOutput.text += msg + "\n";
+        checkConsole();
+        updateConsole();
+    }
+
     #region Abstact TcpAsync
     // Call on Main thread after connect
     public override void OnConnect(params object[] p)
@@ -157,7 +185,9 @@ public class GameManager : UnityTcpClientAsync {
         foreach (object obj in p)
         {
             textConsoleOutput.text += "Connected to host: " + obj.ToString() + "\n";
+            ++consoleLines;
         }
+        
         //sockClient.Send ("GRAPHIC\n", 0);
         Send("GRAPHIC\n");
 
@@ -170,28 +200,8 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-			//textConsoleOutput.text += "> " + obj.ToString ();
-
-			//string [] toDisp = obj.ToString ().Split('\n');
-
-			//foreach(string str in toDisp)
-			//{
-			//	if (str != "")
-			//		textConsoleOutput.text += "> " + str + "\n";
-			//}
             receiveCommands.PushQueue(obj.ToString());
         }
-
-		// Suppress characters in order not to overflow the box
-		if (textConsoleOutput.text.Length > 10000)
-		{
-			textConsoleOutput.text = textConsoleOutput.text.Remove (0, textConsoleOutput.text.Length - 10000);
-		}
-
-		// Forces the canvas to update to scroll
-		Canvas.ForceUpdateCanvases();
-		scrollbarConsole.value = 0f;
-		Canvas.ForceUpdateCanvases ();
     }
 
     // Call on Main thread after send
@@ -200,6 +210,9 @@ public class GameManager : UnityTcpClientAsync {
         foreach (object obj in p)
         {
             textConsoleOutput.text += "< " + obj.ToString();
+            ++consoleLines;
+            checkConsole();
+            updateConsole();
         }
     }
 

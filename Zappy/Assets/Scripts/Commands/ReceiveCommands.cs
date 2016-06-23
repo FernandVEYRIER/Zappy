@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class ReceiveCommands : ACommands {
-   
+
     // Taille de la carte. 
     public override object msz(params object[] args)
     {
@@ -271,5 +272,21 @@ public class ReceiveCommands : ACommands {
     {
         print(args[0]);
         throw new NotImplementedException();
+    }
+
+    void Update()
+    {
+        if (cmds.Count != 0)
+        {
+            int i = 0;
+            while (i < taskByFrame[QualitySettings.GetQualityLevel()] && cmds.Count != 0)
+            {
+                string tmp = cmds.Dequeue();
+                CallCommand(tmp);
+                if (GameManager.instance)
+                    GameManager.instance.WriteConsole(tmp);
+                ++i;
+            }
+        }
     }
 }
