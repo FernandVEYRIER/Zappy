@@ -64,8 +64,6 @@ public abstract class ACommands : MonoBehaviour, ICommands {
 
     public abstract object tna(params object[] args);
 
-    public abstract object pnw(params object[] args);
-
     public abstract object ppo(params object[] args);
 
     public abstract object plv(params object[] args);

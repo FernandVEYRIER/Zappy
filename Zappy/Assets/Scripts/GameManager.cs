@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using System.IO;
+using System.Diagnostics;
 
 // TODO: set minion as children to the terrain
 public class GameManager : UnityTcpClientAsync {
@@ -103,7 +105,7 @@ public class GameManager : UnityTcpClientAsync {
 
     public GameObject addPlayer(int id, Vector3 pos, int orientation, int level, string team)
     {
-        GameObject player = (Instantiate(playerPrefab, new Vector3(pos.x, 1, pos.z), Quaternion.identity) as GameObject);
+        GameObject player = (Instantiate(playerPrefab, new Vector3(pos.x, 0.1f, pos.z), Quaternion.identity) as GameObject);
         Character charac = player.GetComponent<Character>();
         charac.Init(id, pos.x, pos.z, orientation, level, team);
         teams[team].Add(charac);
@@ -154,7 +156,6 @@ public class GameManager : UnityTcpClientAsync {
 
     void checkConsole()
     {
-        print(QualitySettings.GetQualityLevel());
         if (consoleLines == maxLinesConsole * (QualitySettings.GetQualityLevel() + 1))
         {
             textConsoleOutput.text = textConsoleOutput.text.Remove(0, textConsoleOutput.text.IndexOf('\n') + 1);
@@ -176,6 +177,17 @@ public class GameManager : UnityTcpClientAsync {
         textConsoleOutput.text += msg + "\n";
         checkConsole();
         updateConsole();
+    }
+
+    public void createNewPlayer(string team_name, string lua_path)
+    {
+        string filename = Application.dataPath + "/IA/Bin/zappy_ai.exe";
+        if (!File.Exists(filename))
+            return;
+        Process myProcess = new Process();
+        myProcess.StartInfo.FileName = filename;
+        myProcess.StartInfo.Arguments = "-n " + team_name + " -p " + Convert.ToString(tcpClient.Port()) + " -h " + tcpClient.IP() + " -s " + lua_path;
+        myProcess.Start();
     }
 
     #region Abstact TcpAsync

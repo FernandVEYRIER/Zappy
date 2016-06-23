@@ -70,16 +70,6 @@ public class SendCommands : ACommands
         return "sst " + args[0] + "\n";
     }
 
-    public override object pnw(params object[] args)
-    {
-        string stringPath = Application.dataPath + "/Executable";
-        Process newBot = new Process();
-        newBot.StartInfo.FileName = "zappy_ai.exe";
-        newBot.StartInfo.Arguments = args[0].ToString() + " " + args[1].ToString() + " " + args[2].ToString() + " " +  args[3].ToString();
-        newBot.Start();
-        return null;
-    }
-
     // Demande l'heure de démarrage du serveur
     public override object time(params object[] args)
     {

@@ -42,7 +42,7 @@ public class ReceiveCommands : ACommands {
     }
 
     // Connexion d’un nouveau joueur.
-    public override object pnw(params object[] args)
+    public object pnw(params object[] args)
     {
         if (args.GetLength(0) < 7 || !GameManager.instance)
             return null;

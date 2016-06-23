@@ -9,9 +9,6 @@
     // Nom des équipes.
     object tna(params object[] args);
 
-    // Connexion d’un nouveau joueur.
-    object pnw(params object[] args);
-
     // Position d’un joueur. 
     object ppo(params object[] args);
 
