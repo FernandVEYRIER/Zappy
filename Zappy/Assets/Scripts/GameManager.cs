@@ -28,6 +28,7 @@ public class GameManager : UnityTcpClientAsync {
     private List<Egg> eggs = new List<Egg>();
     private int timeScale;
     private bool pause = false;
+    private bool console = false;
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
     int consoleLines = 1;
@@ -187,10 +188,13 @@ public class GameManager : UnityTcpClientAsync {
 
     public void WriteConsole(string msg)
     {
-        ++consoleLines;
-        textConsoleOutput.text += "> " + msg + "\n";
-        checkConsole();
-        updateConsole();
+        if (console && msg != "")
+        {
+            ++consoleLines;
+            textConsoleOutput.text += "> " + msg + "\n";
+            checkConsole();
+            updateConsole();
+        }
     }
 
     public void createNewPlayer(string team_name, string lua_path)
@@ -207,6 +211,11 @@ public class GameManager : UnityTcpClientAsync {
     public void TooglePause()
     {
         pause = !pause;
+    }
+
+    public void ToogleConsole()
+    {
+        console = !console;
     }
 
     #region Abstact TcpAsync

@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PanelRight
+  m_Name: PanelLeft
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: open
@@ -163,7 +163,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 279187e924167a2408a238e2d031444d, type: 2}
+  m_Motion: {fileID: 7400000, guid: b1a06379b2ec6ab4292d820ab2a384ae, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -187,7 +187,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fcc20a439663fff40a61ed80cc129e1c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9f966cfd49d280f47b68981a477bdeca, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -211,7 +211,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c3c496986bfc36640927645d7cb5bb15, type: 2}
+  m_Motion: {fileID: 7400000, guid: e6c03e667912b9444b4b6bca46b5d519, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
