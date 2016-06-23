@@ -100,6 +100,7 @@ public class GameManager : UnityTcpClientAsync {
     {
         panelConnection.SetActive(false);
         Send(sendCommands.CallCommand("time", null).ToString());
+        panelGame.transform.parent.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
         panelGame.SetActive(true);
     }
 

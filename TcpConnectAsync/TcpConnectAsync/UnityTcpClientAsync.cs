@@ -17,7 +17,6 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
         tcpClient = new TcpClientAsync();
     }
 
-
     void Update()
     {
         if (run)
