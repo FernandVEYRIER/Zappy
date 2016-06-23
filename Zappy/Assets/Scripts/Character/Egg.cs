@@ -8,12 +8,6 @@ public class Egg : MonoBehaviour {
     private int _id_player;
     private Vector3 _pos;
     private string _team;
-    private InfinitTerrain terrain;
-
-    void Start()
-    {
-        terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
-    }
 
     // Init Egg properties
     public void Init(int id, Character player)

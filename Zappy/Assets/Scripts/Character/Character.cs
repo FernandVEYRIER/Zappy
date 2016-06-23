@@ -28,6 +28,7 @@ public class Character : MonoBehaviour {
     public Vector3 _pos;
     public bool _isUpdate = false;
     public bool lay = true;
+    private float offsetY = 0;
 
     private Animator animator;
 
@@ -40,7 +41,7 @@ public class Character : MonoBehaviour {
     public void Init(int id, float X, float Y, int orientation, int level, string team)
     {
         _id = id;
-        _pos = new Vector3(X, 0, Y);
+        _pos = new Vector3(X, offsetY, Y);
         _orientation = orientation;
         _level = level;
         _team = team;
@@ -84,7 +85,7 @@ public class Character : MonoBehaviour {
     // Set current position of character
     public void setPos(Vector3 pos, int orientation)
     {
-        _pos = new Vector3(pos.x, 0, pos.z);
+        _pos = new Vector3(pos.x, offsetY, pos.z);
         _orientation = orientation;
         transform.position = _pos;
         transform.rotation = getOrientation();
