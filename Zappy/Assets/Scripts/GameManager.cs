@@ -83,6 +83,7 @@ public class GameManager : UnityTcpClientAsync {
         receiveCommands = GetComponent<ReceiveCommands>();
     }
 
+
     public void ConnectToServer()
 	{
 		if (textIp.text == "" || textPort.text == "")

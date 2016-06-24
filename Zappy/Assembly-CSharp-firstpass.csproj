@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CD0FD9FB-ABFD-BDF5-BACE-C4A6A19CBF94}</ProjectGuid>
+    <ProjectGuid>{577E37CF-C29D-B994-6C85-DDF1306D574B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,48 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Axis Controller\AxisKeyDown.cs" />
-     <Compile Include="Assets\Scripts\Billboard\Billboard.cs" />
-     <Compile Include="Assets\Scripts\Builder &amp; Terrain\BuilderScript.cs" />
-     <Compile Include="Assets\Scripts\Builder &amp; Terrain\InfinitMove.cs" />
-     <Compile Include="Assets\Scripts\Builder &amp; Terrain\InfinitTerrain.cs" />
-     <Compile Include="Assets\Scripts\Builder &amp; Terrain\MapBlock.cs" />
-     <Compile Include="Assets\Scripts\Builder &amp; Terrain\Plateform.cs" />
-     <Compile Include="Assets\Scripts\CameraScaling.cs" />
-     <Compile Include="Assets\Scripts\Character\Character.cs" />
-     <Compile Include="Assets\Scripts\Character\Egg.cs" />
-     <Compile Include="Assets\Scripts\Character\Inventory.cs" />
-     <Compile Include="Assets\Scripts\Commands\ACommands.cs" />
-     <Compile Include="Assets\Scripts\Commands\ICommands.cs" />
-     <Compile Include="Assets\Scripts\Commands\ReceiveCommands.cs" />
-     <Compile Include="Assets\Scripts\Commands\SendCommands.cs" />
-     <Compile Include="Assets\Scripts\GUI\CanvasManager.cs" />
-     <Compile Include="Assets\Scripts\GUI\DisplayCharac.cs" />
-     <Compile Include="Assets\Scripts\GUI\DropDownGui.cs" />
-     <Compile Include="Assets\Scripts\GUI\SliderUI.cs" />
-     <Compile Include="Assets\Scripts\GUI\Timer.cs" />
-     <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\Scripts\Socket\SocketClient.cs" />
-     <Compile Include="Assets\Scripts\Socket\SocketClientAsync.cs" />
-     <Compile Include="Assets\Scripts\Turntable.cs" />
-     <Compile Include="Assets\SerializeDictonary\AbstractDictionary.cs" />
-     <Compile Include="Assets\SerializeDictonary\Dictionaries.cs" />
-     <Compile Include="Assets\SerializeDictonary\DictionaryDrawer.cs" />
-     <Compile Include="Assets\SerializeDictonary\DictionaryScript.cs" />
-     <Compile Include="Assets\SerializeDictonary\DictionaryUnity.cs" />
-     <Compile Include="Assets\SerializeDictonary\DictonaryTester.cs" />
-     <Compile Include="Assets\SerializeDictonary\DrawableDictionary.cs" />
-     <Compile Include="Assets\SerializeDictonary\SerializableDictionary.cs" />
+     <Compile Include="Assets\Plugins\ITcpClientAsync.cs" />
+     <Compile Include="Assets\Plugins\TcpClientAsync.cs" />
+     <Compile Include="Assets\Plugins\UnityTcpClientAsync.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{577E37CF-C29D-B994-6C85-DDF1306D574B}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
