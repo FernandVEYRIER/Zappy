@@ -132,7 +132,7 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			ParticleSystem.EmissionModule em = block.GetComponent<ParticleSystem> ().emission;
+			ParticleSystem.EmissionModule em = block.GetComponentInChildren<ParticleSystem> ().emission;
 			em.enabled = true;
 		}
 		return null;
@@ -146,7 +146,7 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			ParticleSystem.EmissionModule em = block.GetComponent<ParticleSystem> ().emission;
+			ParticleSystem.EmissionModule em = block.GetComponentInChildren<ParticleSystem> ().emission;
 			em.enabled = false;
 		}
 		return null;
