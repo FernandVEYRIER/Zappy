@@ -25,14 +25,14 @@ public class InfinitTerrain : Plateform {
         if (map.GetLength(0) <= Y || map.GetLength(1) <= X)
             return;
         map[Y, X] = block;
-        Transform block_transform = blocks[X + Y * map.GetLength(1)].transform.GetChild(1);
-        block_transform.GetChild(0).gameObject.SetActive(block.Food > 0);
-        block_transform.GetChild(1).gameObject.SetActive(block.Lenemate > 0);
-        block_transform.GetChild(2).gameObject.SetActive(block.Deraumere > 0);
-        block_transform.GetChild(3).gameObject.SetActive(block.Sibur > 0);
-        block_transform.GetChild(4).gameObject.SetActive(block.Mendiane > 0);
-        block_transform.GetChild(5).gameObject.SetActive(block.Phiras > 0);
-        block_transform.GetChild(6).gameObject.SetActive(block.Thystame > 0);
+        //Transform block_transform = blocks[X + Y * map.GetLength(1)].transform.GetChild(1);
+        //block_transform.GetChild(0).gameObject.SetActive(block.Food > 0);
+        //block_transform.GetChild(1).gameObject.SetActive(block.Lenemate > 0);
+        //block_transform.GetChild(2).gameObject.SetActive(block.Deraumere > 0);
+        //block_transform.GetChild(3).gameObject.SetActive(block.Sibur > 0);
+        //block_transform.GetChild(4).gameObject.SetActive(block.Mendiane > 0);
+        //block_transform.GetChild(5).gameObject.SetActive(block.Phiras > 0);
+        //block_transform.GetChild(6).gameObject.SetActive(block.Thystame > 0);
     }
 
     // Return the cubeMap GameObject at X Y

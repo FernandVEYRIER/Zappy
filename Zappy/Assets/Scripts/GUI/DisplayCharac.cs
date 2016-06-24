@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class DisplayCharac : MonoBehaviour {
 
-    private Character character = null;
+    public Character character = null;
     public GameObject item;
     public GameObject textInfo;
     public GameObject parentIcons;

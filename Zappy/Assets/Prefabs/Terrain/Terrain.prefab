@@ -54,10 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6257bc0d0ae600c41af86192013b5015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 10}
+  size: {x: 1, y: 1}
   cubeSize: {x: 1, y: 1, z: 1}
-  speed: 5
+  speed: 20
   invert: 0
+  display: {fileID: 0}
 --- !u!114 &11485196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,13 +70,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62716bedd88e47248b956fe694f53489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 10, y: 10}
-  prefab: {fileID: 107016, guid: 4d3394cec90dca9458a57df25d37302b, type: 2}
-  gridLine: {fileID: 156354, guid: 4fa447667548f30458a8feb7df976298, type: 2}
+  size: {x: 1, y: 1}
+  prefab:
+  - {fileID: 171306, guid: 1312ca021fc9a9d42a62e5a53c4608c6, type: 2}
+  - {fileID: 160438, guid: 408d23d594450ee4fae1bd809375497b, type: 2}
+  - {fileID: 123204, guid: 98bcc4051c4fcd84db02565b2f2e669e, type: 2}
+  - {fileID: 149662, guid: 58ccd7811acadc3488e218685d55bafb, type: 2}
+  - {fileID: 177866, guid: 4312c440455f12749be0914602cdddeb, type: 2}
+  - {fileID: 167708, guid: 6e57925f20324534e95c4d6410bfcc79, type: 2}
+  - {fileID: 107462, guid: bc6198181f6f47e4eac79beff45cb987, type: 2}
+  - {fileID: 158608, guid: 774ce2a11635d2b46959a2297f1fdb7c, type: 2}
+  - {fileID: 184378, guid: 198a6cf6bb97ef248b60d71d32e9fa18, type: 2}
+  - {fileID: 167708, guid: 6e57925f20324534e95c4d6410bfcc79, type: 2}
+  gridLine: {fileID: 172430, guid: 1f14d62282039f64da0fe963c3ee1985, type: 2}
   sizeBlockX: 1
   sizeBlockZ: 1
-  centerCollider: {x: 0, y: 0, z: 0}
-  sizeCollider: {x: 1, y: 0.02, z: 1}
+  centerCollider: {x: 0, y: -0.06, z: 0}
+  sizeCollider: {x: 1, y: 0.1, z: 1}
   grid: 0
   collision: 1
   status: 0

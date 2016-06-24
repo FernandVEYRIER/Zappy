@@ -190,7 +190,6 @@ namespace TcpAsync
             try
             {
                 ActionCallback<Tparams> action = (ActionCallback<Tparams>)ar.AsyncState;
-                int bytesSent = client.Client.EndSend(ar);
                 if (action != null)
                     action.exec();
                 sendStatus = true;

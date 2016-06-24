@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100492
 GameObject:
   m_ObjectHideFlags: 1
@@ -441,7 +441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &114118
 GameObject:
   m_ObjectHideFlags: 1
@@ -3904,10 +3904,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178808}
-  m_LocalRotation: {x: 0.08320054, y: -0.109709434, z: 0.9588529, w: -0.24827947}
+  m_LocalRotation: {x: 0.07946338, y: -0.11257206, z: 0.9496924, w: -0.28124267}
   m_LocalPosition: {x: -0.454, y: 1.086, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 9.734099, y: 12.5421, z: -149.8938}
+  m_LocalEulerAnglesHint: {x: 9.7367, y: 12.5554, z: -145.93399}
   m_Children: []
   m_Father: {fileID: 469624}
   m_RootOrder: 2
@@ -5657,6 +5657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09f817052d133489e5fa0460564329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   item: {fileID: 188986, guid: 31eb3cd2ba017af468dc14302fe851d0, type: 2}
   textInfo: {fileID: 192892, guid: e968595901f6b384e8db42b79f335de2, type: 2}
   parentIcons: {fileID: 144088}
@@ -9170,6 +9171,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 22436654}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: isFree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

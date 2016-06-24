@@ -28,11 +28,10 @@ public class Timer : MonoBehaviour {
         if (init)
         {
             time += Time.deltaTime;
-            var minutes = time / 60;
-            var seconds = time % 60;
 
+            TimeSpan t = TimeSpan.FromSeconds(time);
             //update the label value
-            txt.text = "Time " + string.Format("{0:00} : {1:00}", minutes, seconds);
+            txt.text = "Time " + string.Format("{0:D2}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
         }
     }
 }

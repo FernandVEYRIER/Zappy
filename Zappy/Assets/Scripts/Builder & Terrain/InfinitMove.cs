@@ -7,6 +7,7 @@ public class InfinitMove : MonoBehaviour {
     public Vector3 cubeSize = Vector3.one;
     public float speed = 20;
     public bool invert = false;
+    public DisplayCharac display;
 
     private float halfX;
     private float halfZ;
@@ -31,6 +32,7 @@ public class InfinitMove : MonoBehaviour {
     private bool init = false;
 
     private int dir;
+    private bool free;
 
 	public void StartTerrain(Vector2 s)
     {
@@ -38,6 +40,7 @@ public class InfinitMove : MonoBehaviour {
             dir = 1;
         else
             dir = -1;
+        free = true;
         size = s;
 		halfX = cubeSize.x / 2.0f;
 		halfZ = cubeSize.z / 2.0f;
@@ -87,15 +90,15 @@ public class InfinitMove : MonoBehaviour {
         init = true;
     }
 
-    void MoveChildrendVertical()
+    void MoveChildrendVertical(float factor)
     {
-        Vector3 move = Vector3.forward * (Input.GetAxis("Vertical") * speed * Time.deltaTime) * dir;
+        Vector3 move = Vector3.forward * (factor * speed * Time.deltaTime) * dir;
         bool change = false;
         float limitUp = 0;
         float limitDown = 0;
         foreach (Transform child in children)
             child.Translate(move);
-        if ((Input.GetAxis("Vertical") > 0 && dir == 1) || (Input.GetAxis("Vertical") < 0 && dir == -1))
+        if ((factor > 0 && dir == 1) || (factor < 0 && dir == -1))
         {
             for (int i = 0; i < up.Length; i++)
             {
@@ -151,15 +154,15 @@ public class InfinitMove : MonoBehaviour {
         //debugBorder();
     }
 
-    void MoveChildrendHorizontal()
+    void MoveChildrendHorizontal(float factor)
     {
-        Vector3 move = Vector3.right * (Input.GetAxis("Horizontal") * speed * Time.deltaTime) * dir;
+        Vector3 move = Vector3.right * (factor * speed * Time.deltaTime) * dir;
         bool change = false;
         float limitRight = 0;
         float limitLeft = 0;
         foreach (Transform child in children)
             child.Translate(move);
-        if ((Input.GetAxis("Horizontal") > 0 && dir == 1) || (Input.GetAxis("Horizontal") < 0 && dir == -1))
+        if ((factor > 0 && dir == 1) || (factor < 0 && dir == -1))
         {
             for (int i = 0; i < right.Length; i++)
             {
@@ -240,14 +243,39 @@ public class InfinitMove : MonoBehaviour {
             dir = -1;
         if (init)
         {
-			if (Input.GetAxis("Horizontal") != 0)
+            if (free)
             {
-                MoveChildrendHorizontal();
+                if (Input.GetAxis("Horizontal") != 0)
+                {
+                    MoveChildrendHorizontal(Input.GetAxis("Horizontal"));
+                }
+                if (Input.GetAxis("Vertical") != 0)
+                {
+                    MoveChildrendVertical(Input.GetAxis("Vertical"));
+                }
             }
-            if (Input.GetAxis("Vertical") != 0)
+            else if (!free && display.character)
             {
-                MoveChildrendVertical();
+                if (Vector3.Distance(Vector3.zero, new Vector3(display.character.transform.position.x, 0, 0)) >= 0.1f)
+                {
+                    if (display.character.transform.position.x > 0)
+                        MoveChildrendHorizontal(0.3f);
+                    else
+                        MoveChildrendHorizontal(-0.3f);
+                }
+                if (Vector3.Distance(Vector3.zero, new Vector3(0, 0, display.character.transform.position.z)) >= 0.1f)
+                {
+                    if (display.character.transform.position.z > 0)
+                        MoveChildrendVertical(0.2f);
+                    else
+                        MoveChildrendVertical(-0.2f);
+                }
             }
         }
+    }
+
+    public void isFree()
+    {
+        free = !free;
     }
 }

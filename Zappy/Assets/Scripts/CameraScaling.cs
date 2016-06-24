@@ -34,11 +34,18 @@ public class CameraScaling : MonoBehaviour {
                     ++count;
                 }
             }
-            if (count != 4)
+            if (count == 4)
+            {
+                count = 0;
+                cam.transform.Translate(-Vector3.forward * 0.5f);
+            }
+            else if (count != 4 && init)
             {
                 count = 0;
                 cam.transform.Translate(Vector3.forward * 0.5f);
             }
+            else
+                init = true;
         }
 	}
 }

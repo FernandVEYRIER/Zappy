@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Plateform : MonoBehaviour {
 
     public Vector2 size = Vector2.one;
-    public GameObject prefab;
+    public GameObject[] prefab;
     public GameObject gridLine;
     public float sizeBlockX = 1;
     public float sizeBlockZ = 1;
@@ -29,8 +29,8 @@ public class Plateform : MonoBehaviour {
         {
             for (int z = 0; z < size.y; z++)
             {
-                GameObject tmp = null;
-                tmp = (GameObject)Instantiate(prefab, origin + new Vector3(x * sizeBlockX, 0, z * sizeBlockZ), Quaternion.identity);
+                GameObject tmp = prefab[Random.Range(0, prefab.Length)];
+                tmp = (GameObject)Instantiate(tmp, origin + new Vector3(x * sizeBlockX, 0, z * sizeBlockZ), tmp.transform.rotation);
                 if (tmp != null)
                     tmp.transform.parent = transform;
                 blocks.Add(tmp);
