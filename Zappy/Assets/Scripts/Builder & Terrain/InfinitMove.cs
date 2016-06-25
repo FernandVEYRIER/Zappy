@@ -160,8 +160,11 @@ public class InfinitMove : MonoBehaviour {
         bool change = false;
         float limitRight = 0;
         float limitLeft = 0;
-        foreach (Transform child in children)
-            child.Translate(move);
+		foreach (Transform child in children)
+		{
+			if (child)
+				child.Translate (move);
+		}
         if ((factor > 0 && dir == 1) || (factor < 0 && dir == -1))
         {
             for (int i = 0; i < right.Length; i++)

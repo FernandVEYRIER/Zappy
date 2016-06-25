@@ -34,6 +34,8 @@ public class Character : MonoBehaviour {
 
     private Animator animator;
 
+	private bool isYelling = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -118,8 +120,11 @@ public class Character : MonoBehaviour {
     public void talk(string message)
     {
         StartCoroutine("talkCoroutine");
-		talkInfos.sound.clip = talkInfos.soundClips [Random.Range (0, talkInfos.soundClips.Length - 1)];
-        talkInfos.sound.Play();
+		//talkInfos.sound.clip = talkInfos.soundClips [Random.Range (0, talkInfos.soundClips.Length - 1)];
+		//talkInfos.sound.Play ();
+		//GetComponent<AudioSource> ().PlayOneShot (talkInfos.soundClips [Random.Range (0, talkInfos.soundClips.Length - 1)]);
+		if (!isYelling)
+			StartCoroutine (SoundCoroutine (talkInfos.soundClips [Random.Range (0, talkInfos.soundClips.Length - 1)]));
     }
 
     // Display bubble while talkInfos time
@@ -129,6 +134,15 @@ public class Character : MonoBehaviour {
         yield return new WaitForSeconds(talkInfos.time);
         talkInfos.renderer.enabled = false;
     }
+
+	IEnumerator SoundCoroutine(AudioClip clip)
+	{
+		isYelling = true;
+		GetComponent<AudioSource> ().PlayOneShot (clip);
+
+		yield return new WaitForSeconds (clip.length);
+		isYelling = false;
+	}
 
     // Call when server send die command
     public void die()
