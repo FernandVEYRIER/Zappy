@@ -16,6 +16,7 @@ public class Character : MonoBehaviour {
     {
         public SpriteRenderer renderer;
         public AudioSource sound;
+		public AudioClip[] soundClips;
         public float time = 0.5f;
     }
     public ItemInventory[] inventory;
@@ -117,6 +118,7 @@ public class Character : MonoBehaviour {
     public void talk(string message)
     {
         StartCoroutine("talkCoroutine");
+		talkInfos.sound.clip = talkInfos.soundClips [Random.Range (0, talkInfos.soundClips.Length - 1)];
         talkInfos.sound.Play();
     }
 

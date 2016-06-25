@@ -134,8 +134,16 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			ParticleSystem.EmissionModule em = block.GetComponentInChildren<ParticleSystem> ().emission;
-			em.enabled = true;
+			block = block.transform.FindChild ("Particles").gameObject;
+			if (block)
+			{
+				ParticleSystem [] ps = block.GetComponentsInChildren<ParticleSystem> ();
+				foreach (ParticleSystem p in ps)
+				{
+					ParticleSystem.EmissionModule em = p.emission;
+					em.enabled = true;
+				}
+			}
 		}
 		return null;
     }
@@ -148,8 +156,16 @@ public class ReceiveCommands : ACommands {
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
-			ParticleSystem.EmissionModule em = block.GetComponentInChildren<ParticleSystem> ().emission;
-			em.enabled = false;
+			block = block.transform.FindChild ("Particles").gameObject;
+			if (block)
+			{
+				ParticleSystem [] ps = block.GetComponentsInChildren<ParticleSystem> ();
+				foreach (ParticleSystem p in ps)
+				{
+					ParticleSystem.EmissionModule em = p.emission;
+					em.enabled = false;
+				}
+			}
 		}
 		return null;
     }

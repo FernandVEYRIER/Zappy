@@ -2269,6 +2269,10 @@ MonoBehaviour:
   talkInfos:
     renderer: {fileID: 21229894}
     sound: {fileID: 8238090}
+    soundClips:
+    - {fileID: 8300000, guid: 5bb76ba882cdf3f4c949b0452cd1ac82, type: 3}
+    - {fileID: 8300000, guid: 587fcc9354572f447a8cfc3283636ca0, type: 3}
+    - {fileID: 8300000, guid: cabad7f719046e34495bd0c8f136feed, type: 3}
     time: 0.5
   _team: 
   _id: 0
