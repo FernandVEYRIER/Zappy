@@ -40,4 +40,15 @@ public class InfinitTerrain : Plateform {
     {
         return blocks[x + y * map.GetLength(1)];
     }
+
+    public void DeleteOnGame()
+    {
+
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        GetComponent<BoxCollider>().size = Vector3.one;
+        status = false;
+    }
 }

@@ -97,6 +97,7 @@ public class DisplayCharac : MonoBehaviour {
         {
             instances.ForEach(chield => Destroy(chield));
             int i = 0;
+            instances.Clear();
             foreach (var itemInfos in character.inventory)
             {
                 GameObject tmp = (GameObject)Instantiate(item, transform.position, Quaternion.identity);
@@ -124,5 +125,13 @@ public class DisplayCharac : MonoBehaviour {
             IANum.text = "IA N°" + character._id + " - " + character._team;
             character._isUpdate = true;
         }
+    }
+
+    public void Reset()
+    {
+        instances.ForEach(chield => Destroy(chield));
+        instances.Clear();
+        characters.Clear();
+        character = null;
     }
 }

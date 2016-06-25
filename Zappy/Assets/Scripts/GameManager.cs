@@ -15,6 +15,8 @@ public class GameManager : UnityTcpClientAsync {
     public GameObject playerPrefab;
     public GameObject egg;
     public static GameManager instance = null;
+
+    [SerializeField] private InfinitTerrain terrain;
     [Header("UI")]
     [SerializeField] private int maxLinesConsole;
     [SerializeField] private DisplayCharac displayCharac;
@@ -90,13 +92,24 @@ public class GameManager : UnityTcpClientAsync {
     public void ConnectToServer()
 	{
 		if (textIp.text == "" || textPort.text == "")
-			return;
+        {
+            textIp.transform.parent.GetComponent<InputField>().text = "";
+            textPort.transform.parent.GetComponent<InputField>().text = "";
+            return;
+        }
         Connect(textIp.text, Convert.ToInt32(textPort.text));
     }
 
 	public void DisconnectFromServer()
 	{
+        eggs.Clear();
+        teams.Clear();
+        displayCharac.Reset();
         Disconnect();
+        if (terrain.status)
+        {
+            terrain.DeleteOnGame();
+        }
         panelGame.SetActive(false);
 		panelVictory.SetActive (false);
         panelConnection.SetActive(true);

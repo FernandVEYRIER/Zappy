@@ -13,7 +13,7 @@ public class Plateform : MonoBehaviour {
     public Vector3 sizeCollider = Vector3.one;
     public bool grid = false;
     public bool collision = false;
-    protected List<GameObject> blocks = new List<GameObject>();
+    protected List<GameObject> blocks;
 
     // Method Build can be call from Editor or Script : Instanciate all GameObject's map
     public void Build()
@@ -23,6 +23,7 @@ public class Plateform : MonoBehaviour {
         float halfX = totalSizeX / 2 - sizeBlockX / 2;
         float halfZ = totalSizeZ / 2 - sizeBlockZ / 2;
         Vector3 origin = transform.position - new Vector3(halfX, 0, halfZ);
+        blocks = new List<GameObject>();
         if (transform.childCount != 0)
             Delete();
         for (int x = 0; x < size.x; x++)

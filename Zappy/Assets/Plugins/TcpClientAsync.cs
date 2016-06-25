@@ -75,6 +75,8 @@ namespace TcpAsync
                 ip = _ip;
                 port = _port;
                 connectStatus = false;
+                if (client == null)
+                    client = new TcpClient();
                 if (client.Connected)
                     Disconnect();
                 ActionCallback<Tparams> action = null;
@@ -205,11 +207,12 @@ namespace TcpAsync
         {
             if (client.Connected)
             {
-                client.GetStream().Close();
+                client.Client.Disconnect(true);
                 client.Close();
                 connectStatus = false;
                 receiveStatus = false;
                 sendStatus = false;
+                client = null;
             }
         }
 
