@@ -69,7 +69,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Axis Controller\AxisKeyDown.cs" />
     <Compile Include="Assets\Scripts\Billboard\Billboard.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\BuilderScript.cs" />
@@ -77,6 +76,7 @@
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\InfinitTerrain.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\MapBlock.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\Plateform.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CameraScaling.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\Egg.cs" />

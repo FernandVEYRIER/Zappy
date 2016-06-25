@@ -165,4 +165,10 @@ public class Character : MonoBehaviour {
         if (GameManager.instance)
             GameManager.instance.SendServer(GameManager.CMD.pin, _id);
     }
+
+	public void SetLevel(int level)
+	{
+		_level = level;
+		_isUpdate = false;
+	}
 }

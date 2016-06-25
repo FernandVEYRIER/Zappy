@@ -73,8 +73,10 @@ public class ReceiveCommands : ACommands {
         if (args.GetLength(0) < 3 || !GameManager.instance)
             return null;
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
-        if (charac)
-            charac.UpLevel(Convert.ToInt32(args[2]));
+		if (charac)
+		{
+			charac.SetLevel(Convert.ToInt32 (args [2]));
+		}
         return null;
     }
 
@@ -127,7 +129,7 @@ public class ReceiveCommands : ACommands {
     //Premier joueur lance l’incantation pour tous les suivants sur la case.
     public object pic(params object[] args)
     {
-        if (args.GetLength(0) < 6)
+        if (args.GetLength(0) < 5)
             return null;
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
@@ -205,8 +207,10 @@ public class ReceiveCommands : ACommands {
         if (args.GetLength(0) < 5 || !GameManager.instance)
             return null;
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[2]));
-        if (charac)
-            GameManager.instance.addEgg(Convert.ToInt32(args[1]), charac);
+		if (charac)
+		{
+			GameManager.instance.addEgg (Convert.ToInt32 (args [1]), charac, Convert.ToInt32(args[3]), Convert.ToInt32(args[4]));
+		}
         return null;
     }
 
