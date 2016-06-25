@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections.Generic;
 
 public class ReceiveCommands : ACommands {
 
@@ -290,7 +289,7 @@ public class ReceiveCommands : ACommands {
         if (args.GetLength(0) < 2)
             return null;
         if (GameManager.instance)
-            GameManager.instance.WriteConsole("<color=orange>" + args[1].ToString() + "</color>");
+            GameManager.instance.WriteConsole("<color=orange>" + args[1].ToString() + "</color>\n");
         return null;
     }
 
@@ -298,7 +297,7 @@ public class ReceiveCommands : ACommands {
     public object suc(params object[] args)
     {
         if (GameManager.instance)
-            GameManager.instance.WriteConsole("<color=red>(Unknow command !)</color>");
+            GameManager.instance.WriteConsole("<color=red>(Unknow command !)</color>\n");
         return null;
     }
 
@@ -307,7 +306,7 @@ public class ReceiveCommands : ACommands {
     public object sbp(params object[] args)
     {
         if (GameManager.instance)
-            GameManager.instance.WriteConsole("<color=red>(Bad parameter !)</color>");
+            GameManager.instance.WriteConsole("<color=red>(Bad parameter !)</color>\n");
         return null;
     }
 

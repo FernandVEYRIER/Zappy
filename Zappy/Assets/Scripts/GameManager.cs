@@ -34,8 +34,8 @@ public class GameManager : UnityTcpClientAsync {
     private int timeScale;
     private bool pause = false;
     private bool console = false;
-    public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt };
-    private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt" };
+    public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt, sst };
+    private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt", "sst" };
     int consoleLines = 1;
 
     void Awake()
@@ -70,7 +70,7 @@ public class GameManager : UnityTcpClientAsync {
         set
         {
             timeScale = value;
-            timeButton.value = timeScale;
+            timeButton.GetComponent<SliderUI>().InitServerTime();
         }
     }
 
@@ -102,6 +102,7 @@ public class GameManager : UnityTcpClientAsync {
 
 	public void DisconnectFromServer()
 	{
+        print("bite");
         eggs.Clear();
         teams.Clear();
         displayCharac.Reset();
@@ -113,6 +114,7 @@ public class GameManager : UnityTcpClientAsync {
         panelGame.SetActive(false);
 		panelVictory.SetActive (false);
         panelConnection.SetActive(true);
+        timeButton.GetComponent<SliderUI>().Reset();
     }
 
     public void StartGame()
@@ -221,13 +223,15 @@ public class GameManager : UnityTcpClientAsync {
     public void createNewPlayer(string team_name, string lua_path)
     {
         string filename = Application.dataPath + "/IA/Bin/zappy_ai";
-        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        #if UNITY_STANDALONE_WIN
             filename += ".exe";
+        #endif
         if (!File.Exists(filename))
             return;
         Process myProcess = new Process();
         myProcess.StartInfo.FileName = filename;
         myProcess.StartInfo.Arguments = "-n " + team_name + " -p " + Convert.ToString(tcpClient.Port()) + " -h " + tcpClient.IP() + " -s " + lua_path;
+        print(myProcess.StartInfo.Arguments);
         myProcess.Start();
     }
 
@@ -283,7 +287,7 @@ public class GameManager : UnityTcpClientAsync {
     {
         foreach (object obj in p)
         {
-            textConsoleOutput.text += "<color=lightblue>< " + obj.ToString() + "</color>";
+            textConsoleOutput.text += "< " + obj.ToString();
             ++consoleLines;
             checkConsole();
             updateConsole();

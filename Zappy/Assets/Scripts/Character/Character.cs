@@ -65,15 +65,15 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-        //if (_pos != transform.position)
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, _pos, Time.deltaTime * speed);
-        //    animator.SetBool("Move", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("Move", false);
-        //}
+        if (_pos != transform.position)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _pos, Time.deltaTime * speed);
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
+        }
     }
 
     // Get the Quaternion from _orientation
