@@ -5,6 +5,9 @@ using System;
 using System.IO;
 using System.Diagnostics;
 
+// TODO: coller les oeufs sur la map, éclosion etc
+// TODO: déplacements ? anim de ramassage ? fx d'incantation
+// TODO: deconnection
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;
@@ -138,11 +141,12 @@ public class GameManager : UnityTcpClientAsync {
         displayCharac.removeCharacters(charac);
     }
 
-    public void addEgg(int id_egg, Character character)
+	public void addEgg(int id_egg, Character character, int _x, int _y)
     {
         GameObject tmp = (Instantiate(egg, character._pos, Quaternion.identity) as GameObject);
         tmp.GetComponent<Egg>().Init(id_egg, character);
         eggs.Add(tmp.GetComponent<Egg>());
+		tmp.transform.SetParent(getMap ().getMapPos (_x, _y).transform);
     }
 
     public Character getCharacter(int id)

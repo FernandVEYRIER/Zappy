@@ -207,8 +207,10 @@ public class ReceiveCommands : ACommands {
         if (args.GetLength(0) < 5 || !GameManager.instance)
             return null;
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[2]));
-        if (charac)
-            GameManager.instance.addEgg(Convert.ToInt32(args[1]), charac);
+		if (charac)
+		{
+			GameManager.instance.addEgg (Convert.ToInt32 (args [1]), charac, Convert.ToInt32(args[3]), Convert.ToInt32(args[4]));
+		}
         return null;
     }
 
