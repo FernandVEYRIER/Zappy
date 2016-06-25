@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zappy.CSharp.Plugins", "Zappy.CSharp.Plugins.csproj", "{A9824366-5DCB-2461-8EF9-88EBB237581B}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{4454AC98-06B9-B219-633E-3FCB0051B667}") = "Zappy", "Assembly-CSharp-firstpass.csproj", "{577E37CF-C29D-B994-6C85-DDF1306D574B}"
 EndProject
 Project("{4454AC98-06B9-B219-633E-3FCB0051B667}") = "Zappy", "Assembly-CSharp.csproj", "{CD0FD9FB-ABFD-BDF5-BACE-C4A6A19CBF94}"
 EndProject
@@ -22,5 +22,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
