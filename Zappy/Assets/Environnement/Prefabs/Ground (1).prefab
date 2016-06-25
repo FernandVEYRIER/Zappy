@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &143530
 GameObject:
   m_ObjectHideFlags: 1
@@ -1722,7 +1722,7 @@ ParticleSystem:
     m_UseMeshColors: 1
     randomDirection: 0
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     m_Type: 0
     rate:
@@ -3196,7 +3196,7 @@ ParticleSystem:
     m_UseMeshColors: 1
     randomDirection: 0
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     m_Type: 0
     rate:
@@ -4685,7 +4685,7 @@ ParticleSystem:
     m_UseMeshColors: 1
     randomDirection: 0
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     m_Type: 0
     rate:
@@ -6179,7 +6179,7 @@ ParticleSystem:
     m_UseMeshColors: 1
     randomDirection: 0
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     m_Type: 0
     rate:

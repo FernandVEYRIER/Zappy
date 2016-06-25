@@ -7,6 +7,8 @@ using System.Diagnostics;
 
 // TODO: coller les oeufs sur la map, éclosion etc
 // TODO: déplacements ? anim de ramassage ?
+// TODO: déplacer la caméra au touch, switch des persos au touch
+// TODO: cas spécial du déco sur victoire
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;

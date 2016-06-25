@@ -131,6 +131,7 @@ public class ReceiveCommands : ACommands {
     {
         if (args.GetLength(0) < 5)
             return null;
+
 		GameObject block = GameManager.instance.getMap ().getMapPos (Convert.ToInt32 (args [1]), Convert.ToInt32 (args [2]));
 		if (block)
 		{
