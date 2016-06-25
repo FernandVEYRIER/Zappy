@@ -13,7 +13,6 @@ namespace TcpAsync
         public bool connectStatus = false;
         public bool receiveStatus = false;
         public bool sendStatus = false;
-        public bool disconnectStatus = false;
         public const int BufferSize = 256;
         private byte[] buffer = new byte[BufferSize];
         private string sendMsg = String.Empty;
@@ -153,11 +152,8 @@ namespace TcpAsync
                 }
             }
             else
-            {
-                if (returndata.Length > 1)
-                    returndata += Encoding.ASCII.GetString(buffer, 0, bytesRead);
-                receiveStatus = true;
-            }
+                connectStatus = false;
+                
         }
         #endregion
 

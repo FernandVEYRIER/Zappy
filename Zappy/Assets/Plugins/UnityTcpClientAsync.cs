@@ -37,6 +37,8 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
                 tcpClient.sendStatus = false;
                 OnSend(tcpClient.getSend());
             }
+            if (!tcpClient.connectStatus)
+                OnDisconnect();
         }
         else if (!run && tcpClient.connectStatus)
         {
@@ -94,6 +96,9 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
 
     // This function is automatically call after an Error
     abstract public void OnError(params object[] p);
+
+    // This function is automatically call after an Disconnect
+    abstract public void OnDisconnect(params object[] p);
 
     #endregion
 }

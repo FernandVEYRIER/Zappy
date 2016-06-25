@@ -302,5 +302,10 @@ public class GameManager : UnityTcpClientAsync {
         textPort.transform.parent.GetComponent<InputField>().text = "";
         tcpClient.Disconnect();
     }
+
+    public override void OnDisconnect(params object[] p)
+    {
+        DisconnectFromServer();
+    }
     #endregion
 }
