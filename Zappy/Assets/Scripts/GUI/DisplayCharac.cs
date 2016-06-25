@@ -53,9 +53,9 @@ public class DisplayCharac : MonoBehaviour {
 
     public void removeCharacters(Character player)
     {
-        if (player == character)
-            character = null;
         characters.Remove(player);
+        if (characters.Count != 0)
+            character = characters[0];
     }
 
     void Update()
@@ -68,7 +68,8 @@ public class DisplayCharac : MonoBehaviour {
 
     void OnNext()
     {
-        
+        if (character == null && characters.Count != 0)
+            character = characters[0];
         if (character)
         {
             ++index;
@@ -81,6 +82,8 @@ public class DisplayCharac : MonoBehaviour {
 
     void OnPrev()
     {
+        if (character == null && characters.Count != 0)
+            character = characters[0];
         if (character)
         {
             --index;
@@ -95,6 +98,8 @@ public class DisplayCharac : MonoBehaviour {
 
     public void updateDisplay()
     {
+        if (character == null && characters.Count != 0)
+            character = characters[0];
         if (character)
         {
             instances.ForEach(chield => Destroy(chield));
