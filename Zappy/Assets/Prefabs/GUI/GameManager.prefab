@@ -5157,7 +5157,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22458540}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7064,7 +7064,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22498230}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.9999998
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7597,7 +7597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 155592, guid: f7ab6a2de28126942bcb0933678aea73, type: 2}
-  egg: {fileID: 153756, guid: fc3ce90c4198dca4cb62d6890c5aa939, type: 2}
+  egg: {fileID: 103792, guid: d426191d248e0a848a4bbfa03d9e0ac9, type: 2}
   terrain: {fileID: 0}
   maxLinesConsole: 5
   displayCharac: {fileID: 11433042}

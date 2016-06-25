@@ -156,7 +156,7 @@ public class GameManager : UnityTcpClientAsync {
 
 	public void addEgg(int id_egg, Character character, int _x, int _y)
     {
-        GameObject tmp = (Instantiate(egg, character._pos, Quaternion.identity) as GameObject);
+        GameObject tmp = (Instantiate(egg, character._pos, egg.transform.rotation) as GameObject);
         tmp.GetComponent<Egg>().Init(id_egg, character);
         eggs.Add(tmp.GetComponent<Egg>());
 		tmp.transform.SetParent(getMap ().getMapPos (_x, _y).transform);

@@ -53,6 +53,8 @@ public class DisplayCharac : MonoBehaviour {
 
     public void removeCharacters(Character player)
     {
+        if (player == character)
+            character = null;
         characters.Remove(player);
     }
 
