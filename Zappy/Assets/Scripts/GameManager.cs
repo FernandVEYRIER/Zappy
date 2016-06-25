@@ -6,8 +6,7 @@ using System.IO;
 using System.Diagnostics;
 
 // TODO: coller les oeufs sur la map, éclosion etc
-// TODO: déco si server close
-// TODO: déplacements ? anim de ramassage ? fx d'incantation
+// TODO: déplacements ? anim de ramassage ?
 public class GameManager : UnityTcpClientAsync {
 
     private SendCommands sendCommands;
