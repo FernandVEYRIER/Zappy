@@ -185,6 +185,34 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 231600906}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.07941785
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.11254537
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0.94970566
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.28122163
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 9.7355995
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 12.5491
+      objectReference: {fileID: 0}
+    - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -145.9374
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
   m_IsPrefabParent: 0

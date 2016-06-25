@@ -74,7 +74,7 @@ public class ReceiveCommands : ACommands {
             return null;
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
-            charac._level = Convert.ToInt32(args[2]);
+            charac.UpLevel(Convert.ToInt32(args[2]));
         return null;
     }
 

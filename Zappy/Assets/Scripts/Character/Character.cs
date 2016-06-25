@@ -21,13 +21,14 @@ public class Character : MonoBehaviour {
     public ItemInventory[] inventory;
     public float speed = 10;
     public Talk talkInfos;
-    public int _level = 0;
+    private int level = 0;
     public string  _team;
     public int     _id;
     public int     _orientation;
     public Vector3 _pos;
     public bool _isUpdate = false;
     public bool lay = true;
+    public GameObject upFx;
     private float offsetY = 0;
 
     private Animator animator;
@@ -37,13 +38,24 @@ public class Character : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
+    public void UpLevel(int lvl)
+    {
+        level = lvl;
+        upFx.SetActive(true);
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
     // Init Character's properties
-    public void Init(int id, float X, float Y, int orientation, int level, string team)
+    public void Init(int id, float X, float Y, int orientation, int lvl, string team)
     {
         _id = id;
         _pos = new Vector3(X, offsetY, Y);
         _orientation = orientation;
-        _level = level;
+        level = lvl;
         _team = team;
         transform.rotation = getOrientation();
         if (GameManager.instance)
