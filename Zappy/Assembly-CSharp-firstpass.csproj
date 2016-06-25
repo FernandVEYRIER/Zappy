@@ -49,6 +49,7 @@
      <Compile Include="Assets\Plugins\TcpClientAsync.cs" />
      <Compile Include="Assets\Plugins\UnityTcpClientAsync.cs" />
      <None Include="Assets\Environnement\atsV2WavingGrass.shader" />
+     <None Include="Assets\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

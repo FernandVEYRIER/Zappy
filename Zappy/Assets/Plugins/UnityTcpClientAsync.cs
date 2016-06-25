@@ -75,7 +75,10 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
 
     public void Disconnect()
     {
-        tcpClient.Disconnect();
+		start = false;
+		run = false;
+		timer = 0;
+		tcpClient.Disconnect ();
     }
 
     // !! Theses three functions must be implement !!

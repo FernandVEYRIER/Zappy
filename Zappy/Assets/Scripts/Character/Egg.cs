@@ -21,11 +21,12 @@ public class Egg : MonoBehaviour {
     // Pond un oeuf
     public void hatch()
     {
-        if (GameManager.instance)
+        /*if (GameManager.instance)
         {
             GameObject player = GameManager.instance.addPlayer(_id_player, _pos, 1, 1, _team);
             player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-        }
+        }*/
+		// TODO: changer la texture
     }
 
     // Call when server send edi commands

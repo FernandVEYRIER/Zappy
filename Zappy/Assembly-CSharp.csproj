@@ -78,7 +78,23 @@
      <Compile Include="Assets\SerializeDictonary\DictonaryTester.cs" />
      <Compile Include="Assets\SerializeDictonary\DrawableDictionary.cs" />
      <Compile Include="Assets\SerializeDictonary\SerializableDictionary.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Demo\Scripts\SC_ClickButton.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Demo\Scripts\SC_EffectsModeDemo.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Demo\Scripts\SC_ToggleButton.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Demo\Scripts\SC_Translate.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\Helpers\SC_Helper.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_Billboard.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_FadeOut.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_OnClickGround.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_Projectile.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_RandomDirection.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_Rotation.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_ScaleOverTime.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_Siny.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_SpawnSpellLocationGround.cs" />
+     <Compile Include="Assets\SpellCraft Assets\Scripts\SC_SpellDuration.cs" />
      <None Include="Assets\Environnement\atsV2WavingGrass.shader" />
+     <None Include="Assets\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
