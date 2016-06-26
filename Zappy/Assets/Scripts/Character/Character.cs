@@ -31,6 +31,8 @@ public class Character : MonoBehaviour {
     public bool lay = true;
     public GameObject upFx;
     private float offsetY = 0;
+    private Transform tr = null;
+    private bool target = false;
 
     private Animator animator;
 
@@ -67,14 +69,20 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-        if (_pos != transform.position)
+        if (target && tr && Vector3.Distance(tr.position, transform.position) > 0.05f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _pos, Time.deltaTime * speed);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
             animator.SetBool("Move", true);
         }
         else
         {
+            if (animator.GetBool("Move"))
+            {
+                transform.position = tr.position;
+                transform.SetParent(tr);
+            }
             animator.SetBool("Move", false);
+            target = false;
         }
     }
 
@@ -98,11 +106,13 @@ public class Character : MonoBehaviour {
     }
 
     // Set current position of character
-    public void setPos(Vector3 pos, int orientation)
+    public void setPos(Transform pos, int orientation)
     {
-        _pos = new Vector3(pos.x, offsetY, pos.z);
+        _pos = new Vector3(pos.position.x, offsetY, pos.position.z);
         _orientation = orientation;
-        transform.position = _pos;
+        tr = pos;
+        target = true;
+        //transform.position = _pos;
         transform.rotation = getOrientation();
     }
 

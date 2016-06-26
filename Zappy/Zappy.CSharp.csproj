@@ -72,10 +72,14 @@
     <Compile Include="Assets\Scripts\Axis Controller\AxisKeyDown.cs" />
     <Compile Include="Assets\Scripts\Billboard\Billboard.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\BuilderScript.cs" />
+    <Compile Include="Assets\Scripts\Builder &amp; Terrain\DOWN.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\InfinitMove.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\InfinitTerrain.cs" />
+    <Compile Include="Assets\Scripts\Builder &amp; Terrain\LEFT.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\MapBlock.cs" />
     <Compile Include="Assets\Scripts\Builder &amp; Terrain\Plateform.cs" />
+    <Compile Include="Assets\Scripts\Builder &amp; Terrain\RIGHT.cs" />
+    <Compile Include="Assets\Scripts\Builder &amp; Terrain\UP.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CameraScaling.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />

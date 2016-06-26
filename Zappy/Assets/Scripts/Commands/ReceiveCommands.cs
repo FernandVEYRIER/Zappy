@@ -60,7 +60,7 @@ public class ReceiveCommands : ACommands {
         if (charac)
         {
             GameObject cubeMap = terrain.getMapPos(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]));
-            charac.setPos(cubeMap.transform.position, Convert.ToInt32(args[4]));
+            charac.setPos(cubeMap.transform, Convert.ToInt32(args[4]));
             charac.transform.SetParent(cubeMap.transform);
         }
         return null;

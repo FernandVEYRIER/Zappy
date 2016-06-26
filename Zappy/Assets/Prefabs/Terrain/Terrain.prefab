@@ -42,7 +42,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -1, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!114 &11423498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6257bc0d0ae600c41af86192013b5015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  size: {x: 3, y: 3}
   cubeSize: {x: 1, y: 1, z: 1}
   speed: 20
   invert: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62716bedd88e47248b956fe694f53489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 1, y: 1}
+  size: {x: 3, y: 3}
   prefab:
   - {fileID: 171306, guid: 1312ca021fc9a9d42a62e5a53c4608c6, type: 2}
   - {fileID: 160438, guid: 408d23d594450ee4fae1bd809375497b, type: 2}

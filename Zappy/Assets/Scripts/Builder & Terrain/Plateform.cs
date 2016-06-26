@@ -14,18 +14,25 @@ public class Plateform : MonoBehaviour {
     public bool grid = false;
     public bool collision = false;
     protected List<GameObject> blocks;
+    protected float totalSizeX;
+    protected float totalSizeZ;
+    protected float halfX;
+    protected float halfZ;
+    GameObject parent = null;
 
     // Method Build can be call from Editor or Script : Instanciate all GameObject's map
-    public void Build()
+    public virtual void Build()
     {
-        float totalSizeX = size.x * sizeBlockX;
-        float totalSizeZ = size.y * sizeBlockZ;
-        float halfX = totalSizeX / 2 - sizeBlockX / 2;
-        float halfZ = totalSizeZ / 2 - sizeBlockZ / 2;
+        totalSizeX = size.x * sizeBlockX;
+        totalSizeZ = size.y * sizeBlockZ;
+        halfX = totalSizeX / 2 - sizeBlockX / 2;
+        halfZ = totalSizeZ / 2 - sizeBlockZ / 2;
         Vector3 origin = transform.position - new Vector3(halfX, 0, halfZ);
+        parent = new GameObject();
         blocks = new List<GameObject>();
         if (transform.childCount != 0)
             Delete();
+        parent.transform.SetParent(transform);
         for (int x = 0; x < size.x; x++)
         {
             for (int z = 0; z < size.y; z++)
@@ -33,7 +40,7 @@ public class Plateform : MonoBehaviour {
                 GameObject tmp = prefab[Random.Range(0, prefab.Length)];
                 tmp = (GameObject)Instantiate(tmp, origin + new Vector3(x * sizeBlockX, 0, z * sizeBlockZ), tmp.transform.rotation);
                 if (tmp != null)
-                    tmp.transform.parent = transform;
+                    tmp.transform.SetParent(parent.transform);
                 blocks.Add(tmp);
             }
         }
@@ -111,7 +118,7 @@ public class Plateform : MonoBehaviour {
     }
 
     // Delete all GameObject's map Children
-    public void Delete()
+    public virtual void Delete()
     {
         
         for (int i = transform.childCount - 1; i >= 0 ; i--)

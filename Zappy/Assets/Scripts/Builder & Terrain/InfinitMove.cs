@@ -34,6 +34,12 @@ public class InfinitMove : MonoBehaviour {
     private int dir;
     private bool free;
 
+    void Start()
+    {
+        StartTerrain(new Vector2(3, 3));
+        Init();
+    }
+
 	public void StartTerrain(Vector2 s)
     {
         if (invert)
@@ -62,10 +68,10 @@ public class InfinitMove : MonoBehaviour {
         int l = 0;
         int u = 0;
         int d = 0;
-        children = new Transform[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
+        children = new Transform[transform.GetChild(0).childCount];
+        for (int i = 0; i < transform.GetChild(0).childCount; i++)
         {
-            children[i] = transform.GetChild(i);
+            children[i] = transform.GetChild(0).GetChild(i);
             if (children[i].position.x == rightValue)
             {
                 right[r] = children[i];
@@ -280,5 +286,25 @@ public class InfinitMove : MonoBehaviour {
     public void isFree()
     {
         free = !free;
+    }
+
+    public Transform[] GetRight()
+    {
+        return right;
+    }
+
+    public Transform[] GetLeft()
+    {
+        return left;
+    }
+
+    public Transform[] GetUp()
+    {
+        return up;
+    }
+
+    public Transform[] GetDown()
+    {
+        return down;
     }
 }
