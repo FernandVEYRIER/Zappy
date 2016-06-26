@@ -24,7 +24,7 @@ public class CameraScaling : MonoBehaviour {
 
 	void Update ()
 	{
-        if (terrain.status && !init)
+        if (terrain.status)
         {
             for (int i = 0; count != 4 && i < 4; ++i)
             {
@@ -34,18 +34,15 @@ public class CameraScaling : MonoBehaviour {
                     ++count;
                 }
             }
-            if (count != 4)
+            if (count != 4 && !init)
             {
                 count = 0;
-                cam.transform.Translate(Vector3.forward * 0.5f);
-            }
-            else if (count == 4 && init)
-            {
-                count = 0;
-                cam.transform.Translate(Vector3.forward * -0.1f);
+                cam.transform.Translate(Vector3.forward * 0.25f);
             }
             else
+            {
                 init = true;
+            }
         }
     }
 }

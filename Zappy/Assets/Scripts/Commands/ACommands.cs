@@ -17,7 +17,7 @@ public abstract class ACommands : MonoBehaviour, ICommands {
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<InfinitTerrain>();
     }
 
-    public void PushQueue(string arg)
+    public virtual void PushQueue(string arg)
     {
         arg.Trim();
         string[] lines = arg.Split('\n');

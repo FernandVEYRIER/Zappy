@@ -36,6 +36,7 @@ public class GameManager : UnityTcpClientAsync {
     private int timeScale;
     private bool pause = false;
     private bool console = false;
+    private bool end = false;
     public enum CMD { msz, bct, tna, pnw, ppo, plv, pin, sgt, sst };
     private static readonly string[] cmdNames = { "msz", "bct", "tna", "pnw", "ppo", "plv", "pin", "sgt", "sst" };
     int consoleLines = 1;
@@ -256,6 +257,11 @@ public class GameManager : UnityTcpClientAsync {
         console = !console;
     }
 
+    public void SetEnd()
+    {
+        end = true;
+    }
+
     #region Abstact TcpAsync
     // Call on Main thread after connection
     public override void OnConnect(params object[] p)
@@ -314,7 +320,8 @@ public class GameManager : UnityTcpClientAsync {
 
     public override void OnDisconnect(params object[] p)
     {
-        DisconnectFromServer();
+        if (!end)
+            DisconnectFromServer();
     }
     #endregion
 }

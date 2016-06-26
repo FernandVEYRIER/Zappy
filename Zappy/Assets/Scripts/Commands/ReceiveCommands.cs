@@ -326,4 +326,13 @@ public class ReceiveCommands : ACommands {
             }
         }
     }
+
+    public override void PushQueue(string arg)
+    {
+        base.PushQueue(arg);
+        if (arg.Substring(0, 3) == "seg")
+        {
+            GameManager.instance.SetEnd();
+        }
+    }
 }
