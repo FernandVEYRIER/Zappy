@@ -34,11 +34,11 @@ public class InfinitMove : MonoBehaviour {
     private int dir;
     private bool free;
 
-    void Start()
-    {
-        StartTerrain(new Vector2(3, 3));
-        Init();
-    }
+    //void Start()
+    //{
+    //    StartTerrain(new Vector2(3, 3));
+    //    Init();
+    //}
 
 	public void StartTerrain(Vector2 s)
     {

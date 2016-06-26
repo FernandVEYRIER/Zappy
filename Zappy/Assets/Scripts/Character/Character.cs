@@ -69,9 +69,13 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-        if (target && tr && Vector3.Distance(tr.position, transform.position) > 0.05f)
+
+        if (target && tr && Vector3.Distance(tr.position, transform.position) > 0.2f)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            if (GameManager.instance)
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * GameManager.instance.TimeScale * 0.1f);
+            else
+                transform.Translate(Vector3.forward * Time.deltaTime * speed);
             animator.SetBool("Move", true);
         }
         else

@@ -103,7 +103,6 @@ public class GameManager : UnityTcpClientAsync {
 
 	public void DisconnectFromServer()
 	{
-        print("bite");
         eggs.Clear();
         teams.Clear();
         displayCharac.Reset();

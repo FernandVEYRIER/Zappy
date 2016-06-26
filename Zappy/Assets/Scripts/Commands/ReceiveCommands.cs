@@ -16,16 +16,16 @@ public class ReceiveCommands : ACommands {
     // Contenu d’une case de la carte. 
     public override object bct(params object[] args)
     {
-        if (args.GetLength(0) < 9)
+        if (args.GetLength(0) < 10)
             return null;
         MapBlock block = new MapBlock(
-            Convert.ToInt32(args[2]),
             Convert.ToInt32(args[3]),
             Convert.ToInt32(args[4]),
             Convert.ToInt32(args[5]),
             Convert.ToInt32(args[6]),
             Convert.ToInt32(args[7]),
-            Convert.ToInt32(args[8])
+            Convert.ToInt32(args[8]),
+            Convert.ToInt32(args[9])
             );
         terrain.setBlock(Convert.ToInt32(args[1]), Convert.ToInt32(args[2]), ref block);
         return null;
@@ -82,13 +82,13 @@ public class ReceiveCommands : ACommands {
     //Inventaire d’un joueur.
     public override object pin(params object[] args)
     {
-        if (args.GetLength(0) < 10 ||  !GameManager.instance)
+        if (args.GetLength(0) < 11 ||  !GameManager.instance)
             return null;
         int[] inventory = new int[7]
         {
-            Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), Convert.ToInt32(args[5]),
-            Convert.ToInt32(args[6]), Convert.ToInt32(args[7]), Convert.ToInt32(args[8]),
-            Convert.ToInt32(args[9])
+            Convert.ToInt32(args[4]), Convert.ToInt32(args[5]), Convert.ToInt32(args[6]),
+            Convert.ToInt32(args[7]), Convert.ToInt32(args[8]), Convert.ToInt32(args[9]),
+            Convert.ToInt32(args[10])
         };
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
@@ -216,7 +216,6 @@ public class ReceiveCommands : ACommands {
         return null;
     }
 
-
     //L’œuf a été pondu sur la case par le joueur.
     public object enw(params object[] args)
     {
@@ -241,7 +240,6 @@ public class ReceiveCommands : ACommands {
         return null;
     }
 
-
     //Un joueur s’est connecté pour l’œuf.
     public object ebo(params object[] args)
     {
@@ -254,7 +252,6 @@ public class ReceiveCommands : ACommands {
 		}
 		return null;
     }
-
 
     //L’œuf éclos est mort de faim.
     public object edi(params object[] args)

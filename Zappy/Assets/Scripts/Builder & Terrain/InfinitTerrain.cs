@@ -7,10 +7,10 @@ public class InfinitTerrain : Plateform {
     private GameObject[] colliders = new GameObject[4];
     public GameObject prefab_test;
 
-    void Start()
-    {
-        initMap(3, 3);
-    }
+    //void Start()
+    //{
+    //    initMap(3, 3);
+    //}
 
     // Init Map and Create all cubeMap
     public void initMap(int X, int Y)
@@ -21,13 +21,6 @@ public class InfinitTerrain : Plateform {
         status = true;
 		GetComponent<InfinitMove> ().StartTerrain (size);
 		GetComponent<InfinitMove> ().Init ();
-        Invoke("test", 1);
-    }
-    void test()
-    {
-        GameObject tmp = Instantiate(prefab_test, getMapPos(0, 0).transform.position, Quaternion.identity) as GameObject;
-        tmp.transform.SetParent(getMapPos(0, 0).transform);
-        tmp.GetComponent<Character>().setPos(getMapPos(2, 0).transform, 0);
     }
 
     public override void Build()
@@ -37,33 +30,37 @@ public class InfinitTerrain : Plateform {
         colliders[0].transform.SetParent(transform);
         colliders[0].AddComponent<BoxCollider>();
         colliders[0].GetComponent<BoxCollider>().isTrigger = true;
-        colliders[0].GetComponent<BoxCollider>().size = new Vector3(totalSizeX, 0.5f, 0.5f);
-        colliders[0].GetComponent<BoxCollider>().center = new Vector3(0, 0, totalSizeZ / 2 + 0.25f);
+        colliders[0].GetComponent<BoxCollider>().size = new Vector3(totalSizeX, 0.5f, 10f);
+        colliders[0].GetComponent<BoxCollider>().center = new Vector3(0, 0, totalSizeZ / 2 + 5f);
         colliders[0].AddComponent<UP>();
+        colliders[0].layer = 0;
 
         colliders[1] = new GameObject();
         colliders[1].transform.SetParent(transform);
         colliders[1].AddComponent<BoxCollider>();
         colliders[1].GetComponent<BoxCollider>().isTrigger = true;
-        colliders[1].GetComponent<BoxCollider>().size = new Vector3(totalSizeX, 0.5f, 0.5f);
-        colliders[1].GetComponent<BoxCollider>().center = new Vector3(0, 0, -totalSizeZ / 2 - 0.25f -1);
+        colliders[1].GetComponent<BoxCollider>().size = new Vector3(totalSizeX, 0.5f, 10f);
+        colliders[1].GetComponent<BoxCollider>().center = new Vector3(0, 0, -totalSizeZ / 2 - 5f -1);
         colliders[1].AddComponent<DOWN>();
+        colliders[1].layer = 0;
 
         colliders[2] = new GameObject();
         colliders[2].transform.SetParent(transform);
         colliders[2].AddComponent<BoxCollider>();
         colliders[2].GetComponent<BoxCollider>().isTrigger = true;
-        colliders[2].GetComponent<BoxCollider>().size = new Vector3(0.5f, 0.5f, totalSizeZ);
-        colliders[2].GetComponent<BoxCollider>().center = new Vector3(totalSizeX / 2 + 0.25f, 0, 0);
-        colliders[2].AddComponent<LEFT>();
+        colliders[2].GetComponent<BoxCollider>().size = new Vector3(10f, 0.5f, totalSizeZ);
+        colliders[2].GetComponent<BoxCollider>().center = new Vector3(totalSizeX / 2 + 5f, 0, 0);
+        colliders[2].AddComponent<RIGHT>();
+        colliders[2].layer = 0;
 
         colliders[3] = new GameObject();
         colliders[3].transform.SetParent(transform);
         colliders[3].AddComponent<BoxCollider>();
         colliders[3].GetComponent<BoxCollider>().isTrigger = true;
-        colliders[3].GetComponent<BoxCollider>().size = new Vector3(0.5f, 0.5f, totalSizeZ);
-        colliders[3].GetComponent<BoxCollider>().center = new Vector3(-totalSizeX / 2 - 0.25f - 1, 0);
-        colliders[3].AddComponent<RIGHT>();
+        colliders[3].GetComponent<BoxCollider>().size = new Vector3(10f, 0.5f, totalSizeZ);
+        colliders[3].GetComponent<BoxCollider>().center = new Vector3(-totalSizeX / 2 - 5f - 1, 0);
+        colliders[3].AddComponent<LEFT>();
+        colliders[3].layer = 0;
     }
 
     // Set a block properties with this X and Y coord

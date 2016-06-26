@@ -7,7 +7,7 @@ public class UP : MonoBehaviour {
     {
         if (col.CompareTag("Player") && col.GetComponent<Animator>().GetBool("Move"))
         {
-            print("Coucou");
+            print("UP");
             Transform[] tmp = transform.parent.GetComponent<InfinitMove>().GetDown();
             foreach (Transform tr in tmp)
             {
