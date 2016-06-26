@@ -11,7 +11,6 @@ public class DOWN : MonoBehaviour {
             Transform[] tmp = transform.parent.GetComponent<InfinitMove>().GetUp();
             foreach (Transform tr in tmp)
             {
-                print(Mathf.Abs(tr.position.x - col.transform.position.x));
                 if (tr.position.x == col.transform.position.x)
                 {
                     col.transform.position = new Vector3(col.transform.position.x, 0, tr.position.z + 0.2f);

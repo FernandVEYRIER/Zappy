@@ -3,7 +3,7 @@
 --- !u!29 &1
 SceneSettings:
   m_ObjectHideFlags: 0
-  m_PVSData:
+  m_PVSData: 
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
@@ -257,43 +257,43 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22316876, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_Camera
-      value:
+      value: 
       objectReference: {fileID: 231600906}
     - target: {fileID: 11466072, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: terrain
-      value:
+      value: 
       objectReference: {fileID: 2112102139}
     - target: {fileID: 11497524, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value:
+      value: 
       objectReference: {fileID: 631104085}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.079367004
+      value: 0.07850016
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.11251421
+      value: -0.111981384
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.9497205
+      value: 0.9499724
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.28119844
+      value: -0.2808033
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 9.734099
+      value: 9.7106
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 12.5421
+      value: 12.4223995
       objectReference: {fileID: 0}
     - target: {fileID: 493478, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -145.9412
+      value: -146.0062
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10a5142802f16c14fba673794e0d93eb, type: 2}
@@ -381,7 +381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11423498, guid: cfb305273a60da04ca4b5c6efea4c57e, type: 2}
       propertyPath: display
-      value:
+      value: 
       objectReference: {fileID: 2030864770}
     - target: {fileID: 6572968, guid: cfb305273a60da04ca4b5c6efea4c57e, type: 2}
       propertyPath: m_Size.y

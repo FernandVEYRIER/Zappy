@@ -20,6 +20,7 @@ public class Character : MonoBehaviour {
         public float time = 0.5f;
     }
     public ItemInventory[] inventory;
+    public Material[] levels;
     public float speed = 10;
     public Talk talkInfos;
     private int level = 0;
@@ -65,6 +66,8 @@ public class Character : MonoBehaviour {
         transform.rotation = getOrientation();
         if (GameManager.instance)
             GameManager.instance.SendServer(GameManager.CMD.pin, _id);
+        SkinnedMeshRenderer renderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        renderer.material = renderer.materials[Mathf.Clamp(level - 1, 0, renderer.materials.Length)];
     }
 
     void Update()
@@ -199,6 +202,8 @@ public class Character : MonoBehaviour {
 	public void SetLevel(int _level)
 	{
 		level = _level;
+        SkinnedMeshRenderer renderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
+        renderer.material = renderer.materials[Mathf.Clamp(level - 1, 0, renderer.materials.Length)];
 		_isUpdate = false;
 	}
 }
