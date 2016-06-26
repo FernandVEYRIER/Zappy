@@ -104,6 +104,7 @@ public class GameManager : UnityTcpClientAsync {
 
 	public void DisconnectFromServer()
 	{
+		pause = false;
         eggs.Clear();
         teams.Clear();
         displayCharac.Reset();
@@ -160,7 +161,9 @@ public class GameManager : UnityTcpClientAsync {
 
 	public void addEgg(int id_egg, Character character, int _x, int _y)
     {
-        GameObject tmp = (Instantiate(egg, character._pos, egg.transform.rotation) as GameObject);
+        //GameObject tmp = (Instantiate(egg, character._pos, egg.transform.rotation) as GameObject);
+		GameObject tmp = (Instantiate(egg, getMap ().getMapPos (_x, _y).transform.position, egg.transform.rotation) as GameObject);
+
         tmp.GetComponent<Egg>().Init(id_egg, character);
         eggs.Add(tmp.GetComponent<Egg>());
 		tmp.transform.SetParent(getMap ().getMapPos (_x, _y).transform);
@@ -225,7 +228,7 @@ public class GameManager : UnityTcpClientAsync {
     public void createNewPlayer(string team_name, string lua_path)
     {
         string filename = Application.dataPath + "/IA/Bin/zappy_ai";
-        #if UNITY_STANDALONE_WIN
+		#if UNITY_STANDALONE_WIN
             filename += ".exe";
         #endif
         if (!File.Exists(filename))
