@@ -21,7 +21,7 @@ public class GameManager : UnityTcpClientAsync {
     [SerializeField] private InfinitMove move;
     [Header("UI")]
     [SerializeField] private int maxLinesConsole;
-    [SerializeField] private DisplayCharac displayCharac;
+    [SerializeField] public DisplayCharac displayCharac;
     [SerializeField] private Slider timeButton;
     [SerializeField] private GameObject panelConnection;
 	[SerializeField] private GameObject panelGame;
@@ -107,7 +107,7 @@ public class GameManager : UnityTcpClientAsync {
 		pause = false;
         eggs.Clear();
         teams.Clear();
-        displayCharac.Reset();
+        displayCharac.ResetD();
         Disconnect();
         if (terrain.status)
         {

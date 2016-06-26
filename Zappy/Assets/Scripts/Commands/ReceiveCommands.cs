@@ -92,7 +92,9 @@ public class ReceiveCommands : ACommands {
         };
         Character charac = GameManager.instance.getCharacter(Convert.ToInt32(args[1]));
         if (charac)
+        {
             charac.updateInventory(Convert.ToInt32(args[2]), Convert.ToInt32(args[3]), inventory);
+        }
         return null;
     }
 

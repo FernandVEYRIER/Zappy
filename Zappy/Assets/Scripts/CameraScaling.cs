@@ -14,7 +14,7 @@ public class CameraScaling : MonoBehaviour {
 	void Awake()
 	{
 		cam = Camera.main;
-        offsetX = 50;
+        offsetX = 0;
         dirs [0] = new Vector3 (-offsetX, 0, 0);
 		dirs [1] = new Vector3 (Screen.width + offsetX, 0, 0);
 		dirs [2] = new Vector3 (-offsetX, Screen.height, 0);
@@ -34,18 +34,18 @@ public class CameraScaling : MonoBehaviour {
                     ++count;
                 }
             }
-            if (count == 4)
-            {
-                count = 0;
-                cam.transform.Translate(-Vector3.forward * 0.5f);
-            }
-            else if (count != 4 && init)
+            if (count != 4)
             {
                 count = 0;
                 cam.transform.Translate(Vector3.forward * 0.5f);
             }
+            else if (count == 4 && init)
+            {
+                count = 0;
+                cam.transform.Translate(Vector3.forward * -0.1f);
+            }
             else
                 init = true;
         }
-	}
+    }
 }

@@ -131,7 +131,7 @@ public class Character : MonoBehaviour {
         {
             inventory[i].count = items[i];
         }
-        _isUpdate = true;
+        _isUpdate = false;
     }
 
     // Call when server send a broadcast command

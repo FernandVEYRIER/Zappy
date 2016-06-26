@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class DisplayCharac : MonoBehaviour {
 
@@ -100,7 +101,7 @@ public class DisplayCharac : MonoBehaviour {
     {
         if (character == null && characters.Count != 0)
             character = characters[0];
-        if (character)
+        if (character && !character._isUpdate)
         {
             instances.ForEach(chield => Destroy(chield));
             int i = 0;
@@ -117,10 +118,10 @@ public class DisplayCharac : MonoBehaviour {
             }
             for (int h = 0; h < leveltxt[character.GetLevel() -1].Length; h++)
             {
-                if (leveltxt[character.GetLevel()][h] != null)
+                if (leveltxt[character.GetLevel() - 1][h] != null)
                 {
                     GameObject tmp = (GameObject)Instantiate(textInfo, transform.position, Quaternion.identity);
-                    tmp.GetComponent<Text>().text = leveltxt[character.GetLevel()][h];
+                    tmp.GetComponent<Text>().text = leveltxt[character.GetLevel() - 1][h];
                     if (h != 0)
                         tmp.GetComponent<Text>().color = character.inventory[h - 1].color;
                     tmp.transform.SetParent(parentInfos.transform);
@@ -134,7 +135,7 @@ public class DisplayCharac : MonoBehaviour {
         }
     }
 
-    public void Reset()
+    public void ResetD()
     {
         instances.ForEach(chield => Destroy(chield));
         instances.Clear();

@@ -244,7 +244,7 @@ public class InfinitMove : MonoBehaviour {
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (invert)
             dir = 1;
@@ -275,16 +275,16 @@ public class InfinitMove : MonoBehaviour {
                 if (Vector3.Distance(Vector3.zero, new Vector3(display.character.transform.position.x, 0, 0)) >= 0.1f)
                 {
                     if (display.character.transform.position.x > 0)
-                        MoveChildrendHorizontal(0.3f);
+                        MoveChildrendHorizontal(5f);
                     else
-                        MoveChildrendHorizontal(-0.3f);
+                        MoveChildrendHorizontal(-5f);
                 }
                 if (Vector3.Distance(Vector3.zero, new Vector3(0, 0, display.character.transform.position.z)) >= 0.1f)
                 {
                     if (display.character.transform.position.z > 0)
-                        MoveChildrendVertical(0.2f);
+                        MoveChildrendVertical(5f);
                     else
-                        MoveChildrendVertical(-0.2f);
+                        MoveChildrendVertical(-5f);
                 }
             }
         }
