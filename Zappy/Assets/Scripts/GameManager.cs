@@ -18,6 +18,7 @@ public class GameManager : UnityTcpClientAsync {
     public static GameManager instance = null;
 
     [SerializeField] private InfinitTerrain terrain;
+    [SerializeField] private InfinitMove move;
     [Header("UI")]
     [SerializeField] private int maxLinesConsole;
     [SerializeField] private DisplayCharac displayCharac;
@@ -115,6 +116,7 @@ public class GameManager : UnityTcpClientAsync {
 		panelVictory.SetActive (false);
         panelConnection.SetActive(true);
         timeButton.GetComponent<SliderUI>().Reset();
+        move.Reset();
     }
 
     public void StartGame()

@@ -20,7 +20,6 @@ public class Character : MonoBehaviour {
         public float time = 0.5f;
     }
     public ItemInventory[] inventory;
-    public Material[] levels;
     public float speed = 10;
     public Talk talkInfos;
     private int level = 0;

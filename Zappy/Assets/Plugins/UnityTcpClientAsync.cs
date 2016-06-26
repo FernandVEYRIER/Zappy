@@ -40,13 +40,13 @@ public abstract class UnityTcpClientAsync : MonoBehaviour
             if (!tcpClient.connectStatus)
                 OnDisconnect();
         }
-        else if (!run && tcpClient.connectStatus)
+        else if (!run && tcpClient != null && tcpClient.connectStatus)
         {
             run = true;
             tcpClient.Receive();
             OnConnect();
         }
-        else if (!run && !tcpClient.connectStatus && start)
+        else if (!run && tcpClient != null && !tcpClient.connectStatus && start)
         {
             timer += Time.deltaTime;
             if (timer > timeout)

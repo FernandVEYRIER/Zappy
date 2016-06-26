@@ -307,4 +307,9 @@ public class InfinitMove : MonoBehaviour {
     {
         return down;
     }
+
+    public void Reset()
+    {
+        init = false;
+    }
 }
