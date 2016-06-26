@@ -66,7 +66,7 @@ public class DisplayCharac : MonoBehaviour {
         }
     }
 
-    void OnNext()
+    public void OnNext()
     {
         if (character == null && characters.Count != 0)
             character = characters[0];
@@ -80,7 +80,7 @@ public class DisplayCharac : MonoBehaviour {
         }
     }
 
-    void OnPrev()
+    public void OnPrev()
     {
         if (character == null && characters.Count != 0)
             character = characters[0];

@@ -254,6 +254,9 @@ public class InfinitMove : MonoBehaviour {
         {
             if (free)
             {
+				#if UNITY_ANDROID
+				HandleTouch();
+				#endif
                 if (Input.GetAxis("Horizontal") != 0)
                 {
                     MoveChildrendHorizontal(Input.GetAxis("Horizontal"));
@@ -265,6 +268,10 @@ public class InfinitMove : MonoBehaviour {
             }
             else if (!free && display.character)
             {
+				#if UNITY_ANDROID
+				HandleSwipe();
+				#endif
+
                 if (Vector3.Distance(Vector3.zero, new Vector3(display.character.transform.position.x, 0, 0)) >= 0.1f)
                 {
                     if (display.character.transform.position.x > 0)
@@ -282,6 +289,105 @@ public class InfinitMove : MonoBehaviour {
             }
         }
     }
+
+	//--------------------- touch vars ----------------------------//
+	private float fingerStartTime = 0.0f;
+	private Vector2 fingerStartPos = Vector2.zero;
+
+	private bool isSwipe = false;
+	private float minSwipeDist = 50.0f;
+	private float maxSwipeTime = 0.5f;
+	//-------------------------------------------------------------//
+
+	void HandleSwipe()
+	{
+		if (Input.touchCount > 0)
+		{
+			foreach (Touch touch in Input.touches)
+			{
+				switch (touch.phase)
+				{
+				case TouchPhase.Began:
+					/* this is a new touch */
+					isSwipe = true;
+					fingerStartTime = Time.time;
+					fingerStartPos = touch.position;
+					break;
+
+				case TouchPhase.Canceled:
+					/* The touch is being canceled */
+					isSwipe = false;
+					break;
+
+				case TouchPhase.Ended:
+
+					float gestureTime = Time.time - fingerStartTime;
+					float gestureDist = (touch.position - fingerStartPos).magnitude;
+
+					if (isSwipe && gestureTime < maxSwipeTime && gestureDist > minSwipeDist)
+					{
+						Vector2 direction = touch.position - fingerStartPos;
+						Vector2 swipeType = Vector2.zero;
+
+						if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+						{
+							// the swipe is horizontal:
+							swipeType = Vector2.right * Mathf.Sign(direction.x);
+						}
+
+						if (swipeType.x != 0.0f)
+						{
+							if (swipeType.x > 0.0f)
+							{
+								// MOVE RIGHT
+								GameObject.Find ("PanelRight").GetComponent<DisplayCharac> ().OnNext ();
+							}
+							else
+							{
+								// MOVE LEFT
+								GameObject.Find ("PanelRight").GetComponent<DisplayCharac> ().OnPrev ();
+							}
+						}
+					}
+					break;
+				}
+			}
+		}		
+	}
+
+	void HandleTouch()
+	{
+		if (Input.touchCount > 0)
+		{
+			float gestureDist = 0;
+			foreach (Touch touch in Input.touches)
+			{
+				switch (touch.phase)
+				{
+				case TouchPhase.Began:
+					fingerStartPos = touch.position;
+					break;
+
+				case TouchPhase.Canceled:
+					break;
+
+				case TouchPhase.Ended:
+					gestureDist = (touch.position - fingerStartPos).magnitude;
+
+					if (gestureDist == 0)
+					{
+						Debug.Log ("Single touch");
+					}
+					break;
+				
+				case TouchPhase.Moved:
+					MoveChildrendHorizontal (-touch.deltaPosition.normalized.x / 3f);
+					MoveChildrendVertical (-touch.deltaPosition.normalized.y / 3f);
+					break;
+				}
+			}
+		}
+	}
 
     public void isFree()
     {
