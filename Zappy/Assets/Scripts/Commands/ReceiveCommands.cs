@@ -163,9 +163,9 @@ public class ReceiveCommands : ACommands {
 				ParticleSystem [] ps = block.GetComponentsInChildren<ParticleSystem> ();
 				foreach (ParticleSystem p in ps)
 				{
-					p.transform.gameObject.SetActive (false);
 					ParticleSystem.EmissionModule em = p.emission;
 					em.enabled = false;
+					p.transform.gameObject.SetActive (false);
 				}
 			}
 		}
