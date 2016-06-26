@@ -115,7 +115,7 @@ public class DisplayCharac : MonoBehaviour {
                 instances.Add(tmp);
                 ++i;
             }
-            for (int h = 0; h < leveltxt[character.GetLevel()].Length; h++)
+            for (int h = 0; h < leveltxt[character.GetLevel() -1].Length; h++)
             {
                 if (leveltxt[character.GetLevel()][h] != null)
                 {

@@ -2296,12 +2296,12 @@ MonoBehaviour:
     color: {r: 0.59401023, g: 0.9338235, b: 0.39824826, a: 1}
   levels:
   - {fileID: 2100000, guid: febd9a8d310a50c478702d96fc12e5e2, type: 2}
-  - {fileID: 2100000, guid: 515aef357b324904e9eb76a765f2c0b9, type: 2}
   - {fileID: 2100000, guid: 3805c28c88fc0c74586147f26e6b3794, type: 2}
-  - {fileID: 2100000, guid: d1c45deb69464a446b934d5ce7748f3a, type: 2}
-  - {fileID: 2100000, guid: 56cdb10ef86c5844c897f346276d5006, type: 2}
   - {fileID: 2100000, guid: 5f1b7ef8ef73b7441a809c39f486d1ef, type: 2}
   - {fileID: 2100000, guid: eebdd0dbfdd3822419c84e6a6cb912b0, type: 2}
+  - {fileID: 2100000, guid: 515aef357b324904e9eb76a765f2c0b9, type: 2}
+  - {fileID: 2100000, guid: d1c45deb69464a446b934d5ce7748f3a, type: 2}
+  - {fileID: 2100000, guid: 56cdb10ef86c5844c897f346276d5006, type: 2}
   - {fileID: 2100000, guid: 23954e856f4e442448afecade81f68a4, type: 2}
   speed: 1
   talkInfos:
@@ -2353,13 +2353,6 @@ SkinnedMeshRenderer:
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: febd9a8d310a50c478702d96fc12e5e2, type: 2}
-  - {fileID: 2100000, guid: 3805c28c88fc0c74586147f26e6b3794, type: 2}
-  - {fileID: 2100000, guid: 515aef357b324904e9eb76a765f2c0b9, type: 2}
-  - {fileID: 2100000, guid: 5f1b7ef8ef73b7441a809c39f486d1ef, type: 2}
-  - {fileID: 2100000, guid: eebdd0dbfdd3822419c84e6a6cb912b0, type: 2}
-  - {fileID: 2100000, guid: d1c45deb69464a446b934d5ce7748f3a, type: 2}
-  - {fileID: 2100000, guid: 56cdb10ef86c5844c897f346276d5006, type: 2}
-  - {fileID: 2100000, guid: 23954e856f4e442448afecade81f68a4, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

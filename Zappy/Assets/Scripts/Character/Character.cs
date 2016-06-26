@@ -20,6 +20,7 @@ public class Character : MonoBehaviour {
         public float time = 0.5f;
     }
     public ItemInventory[] inventory;
+    public Material[] levels;
     public float speed = 10;
     public Talk talkInfos;
     private int level = 0;
@@ -31,8 +32,8 @@ public class Character : MonoBehaviour {
     public bool lay = true;
     public GameObject upFx;
     private float offsetY = 0;
-    private Transform tr = null;
-    private bool target = false;
+    //private Transform tr = null;
+    //private bool target = false;
 
     private Animator animator;
 
@@ -65,31 +66,31 @@ public class Character : MonoBehaviour {
         transform.rotation = getOrientation();
         if (GameManager.instance)
             GameManager.instance.SendServer(GameManager.CMD.pin, _id);
-        SkinnedMeshRenderer renderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
-        renderer.material = renderer.materials[Mathf.Clamp(level - 1, 0, renderer.materials.Length)];
+        if (level > 0)
+            transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = levels[level - 1];
     }
 
     void Update()
     {
 
-        if (target && tr && Vector3.Distance(tr.position, transform.position) > 0.2f)
-        {
-            if (GameManager.instance)
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * GameManager.instance.TimeScale * 0.1f);
-            else
-                transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            animator.SetBool("Move", true);
-        }
-        else
-        {
-            if (animator.GetBool("Move"))
-            {
-                transform.position = tr.position;
-                transform.SetParent(tr);
-            }
-            animator.SetBool("Move", false);
-            target = false;
-        }
+        //if (target && tr && Vector3.Distance(tr.position, transform.position) > 0.2f)
+        //{
+        //    if (GameManager.instance)
+        //        transform.Translate(Vector3.forward * Time.deltaTime * speed * GameManager.instance.TimeScale * 0.1f);
+        //    else
+        //        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        //    animator.SetBool("Move", true);
+        //}
+        //else
+        //{
+        //    if (animator.GetBool("Move"))
+        //    {
+        //        transform.position = tr.position;
+        //        transform.SetParent(tr);
+        //    }
+        //    animator.SetBool("Move", false);
+        //    target = false;
+        //}
     }
 
     // Get the Quaternion from _orientation
@@ -116,9 +117,10 @@ public class Character : MonoBehaviour {
     {
         _pos = new Vector3(pos.position.x, offsetY, pos.position.z);
         _orientation = orientation;
-        tr = pos;
-        target = true;
-        //transform.position = _pos;
+        //tr = pos;
+        //target = true;
+        transform.SetParent(pos);
+        transform.position = _pos;
         transform.rotation = getOrientation();
     }
 
@@ -201,8 +203,8 @@ public class Character : MonoBehaviour {
 	public void SetLevel(int _level)
 	{
 		level = _level;
-        SkinnedMeshRenderer renderer = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>();
-        renderer.material = renderer.materials[Mathf.Clamp(level - 1, 0, renderer.materials.Length)];
-		_isUpdate = false;
+        if (level > 0)
+            transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = levels[level - 1];
+        _isUpdate = false;
 	}
 }
